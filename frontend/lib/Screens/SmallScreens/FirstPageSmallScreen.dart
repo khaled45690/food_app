@@ -3,21 +3,16 @@
 // ignore: file_names
 import 'dart:collection';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/drawer_menuu.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-class FirstPageSmallScreen extends StatefulWidget {
-  const FirstPageSmallScreen({ Key? key }) : super(key: key);
-  static const routename = '/FirstPageScreen';
 
-
-  @override
-  State<FirstPageSmallScreen> createState() => _FirstPageSmallScreenState();
-}
-
-class _FirstPageSmallScreenState extends State<FirstPageSmallScreen> {
-  var myMarkers = HashSet<Marker>(); //collection
-
+// var myMarkers = HashSet<Marker>(); //collection
+class FirstPageSmallScreen extends StatelessWidget {
+  final HashSet<Marker> myMarkers;
+  final Function onMapCreated;
+  const FirstPageSmallScreen(this.myMarkers, this.onMapCreated);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,47 +20,23 @@ class _FirstPageSmallScreenState extends State<FirstPageSmallScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-    //    leading: Icon(Icons.three_k_plus_outlined,color: Colors.grey,),
+        //    leading: Icon(Icons.three_k_plus_outlined,color: Colors.grey,),
 
-        title: const Text("data",),
+        title: const Text(
+          "data",
+        ),
         centerTitle: true,
-        
       ),
       drawer: const Drawer_Widget(),
-
-//shadowColor: Colors.transparent,
-        //title: Text("data",),
-       // centerTitle: true,
-    
-  
-     
-      body: Stack(
-        children:[ GoogleMap(initialCameraPosition: CameraPosition(
-          target: LatLng(31.2001, 29.9187),
-          zoom: 15
-          ),
-          onMapCreated: (GoogleMapController googleMapController){
-         //   googleMapController.showMarkerInfoWindow(MarkerId('1'));
-            setState(() {
-              myMarkers.add(Marker(markerId:MarkerId('1'),
-            position: LatLng(31.2001, 29.9187),
-            visible: true,
-            infoWindow: InfoWindow(
-              title: 'خواطر دمشقيه',
-              snippet: 'خواطر دمشقيه',
-              onTap: (){},
-            ),
-            
-             ),
-             );
-            });
-
-          },
+      body: Stack(children: [
+        GoogleMap(
+          initialCameraPosition:
+              const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 15),
+          onMapCreated: (GoogleMapController googleMapController) =>
+              onMapCreated(googleMapController),
           markers: myMarkers,
-
-          ),
-        ]),
-      
+        ),
+      ]),
     );
   }
 }

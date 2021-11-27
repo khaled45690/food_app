@@ -1,7 +1,11 @@
 // ignore_for_file: file_names
 
+import 'dart:collection';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/Widgets/drawer_menuu.dart';
+import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FirstPageScreen extends StatefulWidget {
   const FirstPageScreen({Key? key}) : super(key: key);
@@ -11,11 +15,35 @@ class FirstPageScreen extends StatefulWidget {
 }
 
 class _FirstPageScreenState extends State<FirstPageScreen> {
+   var myMarkers = HashSet<Marker>(); //collection
+
+   onMapCreated(GoogleMapController googleMapController){
+
+     setState(() {
+       myMarkers.add(Marker(markerId:const MarkerId('1'),
+         position: const LatLng(31.2001, 29.9187),
+         visible: true,
+         infoWindow: InfoWindow(
+           title: 'خواطر دمشقيه',
+           onTap: (){},
+         ),
+
+       ),
+       );
+
+     });
+
+     MarkerId marker = const MarkerId('1');
+     googleMapController.showMarkerInfoWindow(marker);
+   }
+   @override
+   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+     super.debugFillProperties(properties);
+     properties.add(DiagnosticsProperty<Marker>('myMarkers', myMarkers.first));
+   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      drawer: const Drawer_Widget(),
-    );
+    return MediaQuery.of(context).size.width < 700 ? FirstPageSmallScreen(myMarkers , onMapCreated) : Container();
   }
 }
