@@ -20,11 +20,12 @@ class FirstPageSmallScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         //    leading: Icon(Icons.three_k_plus_outlined,color: Colors.grey,),
 
-        title: const Text(
-          "data",
-        ),
+        // title: const Text(
+        //   "data",
+        // ),
         centerTitle: true,
       ),
       drawer: const Drawer_Widget(),

@@ -33,8 +33,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
 
      });
 
-     MarkerId marker = const MarkerId('1');
-     googleMapController.showMarkerInfoWindow(marker);
+
    }
    @override
    void debugFillProperties(DiagnosticPropertiesBuilder properties) {
