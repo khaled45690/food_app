@@ -9,6 +9,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FirstPageScreen extends StatefulWidget {
   const FirstPageScreen({Key? key}) : super(key: key);
+    static const roteName ='/FirstPagee';
+
 
   @override
   _FirstPageScreenState createState() => _FirstPageScreenState();

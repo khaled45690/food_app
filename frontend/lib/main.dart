@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
+import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
+import 'package:food_app/Screens/SmallScreens/addresses_screen.dart';
+import 'package:food_app/Screens/SmallScreens/privacy_screen.dart';
+import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
+import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
+import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
 
@@ -18,14 +25,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xffb74093)
       ),
-      home: const FirstPageScreen(),
-      routes: const {
-        // FirstPageSmallScreen.routename:(ctx) => const FirstPageSmallScreen(),
-        // ProfileScreen.roteName:(ctx) => const ProfileScreen(),
-        // Addresses_screen.roteName:(ctx) => const Addresses_screen(),
-        // Terms_screen.roteName:(ctx) => const Terms_screen(),
-        // AboutScreen.routename:(ctx) => const AboutScreen(),
-        // Privacy_screen.roteName:(ctx) => const Privacy_screen(),
+      home: const SplashScreen(),
+      routes:  {
+        FirstPageScreen.roteName:(ctx) =>  FirstPageScreen(),
+        ProfileScreen.roteName:(ctx) => const ProfileScreen(),
+        Addresses_screen.roteName:(ctx) => const Addresses_screen(),
+        Terms_screen.roteName:(ctx) => const Terms_screen(),
+        AboutScreen.routename:(ctx) => const AboutScreen(),
+        Privacy_screen.roteName:(ctx) => const Privacy_screen(),
       },
     );
   }

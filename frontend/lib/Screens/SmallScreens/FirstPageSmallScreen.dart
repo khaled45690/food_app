@@ -10,6 +10,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // var myMarkers = HashSet<Marker>(); //collection
 class FirstPageSmallScreen extends StatelessWidget {
+  //static String routename ='/FirstPagee';
   final HashSet<Marker> myMarkers;
   final Function onMapCreated;
   const FirstPageSmallScreen(this.myMarkers, this.onMapCreated);
@@ -21,11 +22,7 @@ class FirstPageSmallScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        //    leading: Icon(Icons.three_k_plus_outlined,color: Colors.grey,),
-
-        // title: const Text(
-        //   "data",
-        // ),
+        
         centerTitle: true,
       ),
       drawer: const Drawer_Widget(),
