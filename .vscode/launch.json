@@ -8,7 +8,11 @@
             "name": "frontend",
             "cwd": "frontend",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "--no-sound-null-safety"
+            ]
+            
         },
         {
             "name": "frontend (profile mode)",
