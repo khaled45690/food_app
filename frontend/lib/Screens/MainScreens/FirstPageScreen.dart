@@ -1,22 +1,21 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/drawer_menuu.dart';
 
-
-
-class First_screen extends StatefulWidget {
-  const First_screen({ Key? key }) : super(key: key);
+class FirstPageScreen extends StatefulWidget {
+  const FirstPageScreen({Key? key}) : super(key: key);
 
   @override
-  _First_screenState createState() => _First_screenState();
+  _FirstPageScreenState createState() => _FirstPageScreenState();
 }
 
-class _First_screenState extends State<First_screen> {
+class _FirstPageScreenState extends State<FirstPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: Drawer_Widget(),
-      
+      drawer: const Drawer_Widget(),
     );
   }
 }

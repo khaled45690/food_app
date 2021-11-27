@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/drawer_menuu.dart';
 class FirstPageSmallScreen extends StatefulWidget {
@@ -18,11 +20,11 @@ class _FirstPageSmallScreenState extends State<FirstPageSmallScreen> {
         backgroundColor: Colors.transparent,
     //    leading: Icon(Icons.three_k_plus_outlined,color: Colors.grey,),
 
-        title: Text("data",),
+        title: const Text("data",),
         centerTitle: true,
         
       ),
-      drawer: Drawer_Widget(),
+      drawer: const Drawer_Widget(),
       
     );
   }

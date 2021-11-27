@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/Screens/MainScreens/firstPageScreen.dart';
 import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
 import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
 import 'package:food_app/Screens/SmallScreens/addresses_screen.dart';
@@ -20,17 +19,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-       
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xffb74093)
       ),
       home: const FirstPageSmallScreen(),
       routes: {
-        FirstPageSmallScreen.routename:(ctx) => FirstPageSmallScreen(),
-        ProfileScreen.roteName:(ctx) =>ProfileScreen(),
-        Addresses_screen.roteName:(ctx) =>Addresses_screen(),
-        Terms_screen.roteName:(ctx) => Terms_screen(),
-        AboutScreen.routename:(ctx) => AboutScreen(),
-        Privacy_screen.roteName:(ctx) => Privacy_screen(),
+        FirstPageSmallScreen.routename:(ctx) => const FirstPageSmallScreen(),
+        ProfileScreen.roteName:(ctx) => const ProfileScreen(),
+        Addresses_screen.roteName:(ctx) => const Addresses_screen(),
+        Terms_screen.roteName:(ctx) => const Terms_screen(),
+        AboutScreen.routename:(ctx) => const AboutScreen(),
+        Privacy_screen.roteName:(ctx) => const Privacy_screen(),
       },
     );
   }
