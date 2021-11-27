@@ -6,10 +6,9 @@ import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 import 'package:food_app/Widgets/divider.dart';
 import 'package:food_app/Widgets/inkwell_widget.dart';
 
-
 // ignore: camel_case_types
 class Drawer_Widget extends StatefulWidget {
-  const Drawer_Widget({ Key? key }) : super(key: key);
+  const Drawer_Widget({Key? key}) : super(key: key);
 
   @override
   _Drawer_WidgetState createState() => _Drawer_WidgetState();
@@ -19,76 +18,80 @@ class Drawer_Widget extends StatefulWidget {
 class _Drawer_WidgetState extends State<Drawer_Widget> {
   @override
   Widget build(BuildContext context) {
-    return  Drawer(
-      
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    height: 330,
-                    color: Colors.grey[700],
-                    child: Column(children:  [
-                   const   SizedBox(
-
-                        height: 10,
-                        
-                        width: 100,
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          Container(
+            height: 330,
+            color: Color(0xff313943),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                  width: 100,
+                ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(10, 30, 30, 10),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.redAccent,
+                    radius: 33,
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "خواطر دمشقيه",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
                       ),
-                      
-             const    Padding(
-                   padding:  EdgeInsets.fromLTRB(10, 30,30 , 10),
-                   child:      CircleAvatar(
-                          backgroundColor: Colors.redAccent,
-                          radius: 33,
-                          
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text("خواطر دمشقيه",style: TextStyle(color: Colors.white,fontSize: 15),),
-                          ),
-
-                        ),
-                 ),
-                const   SizedBox(
-                        height: 30,
-                      ),
-               const  Dividerr(),
-               Inkwekk("Home",24,24,Icons.home,(){}),
-                     
-              const  Dividerr(),
-                                  Inkwekk("Profile",24,24,Icons.person,(){Navigator.of(context).pushReplacementNamed(ProfileScreen.roteName);}
-                                  ),
-
-              const Dividerr(),
-                      Inkwekk("Addresses",24,24,Icons.location_on_outlined,(){Navigator.of(context).pushReplacementNamed(Addresses_screen.roteName);}),
-                         const         Dividerr(),
-                      
-                    ],
                     ),
                   ),
-                  Container(
-                    height: 380,
-                    color: Colors.grey,
-                    child: Column(
-                      children: [
-                      const  ListTile(
-                          title: Text("OTHER",style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w100),),
-                        ),
-                        Inkwekk("Language",24,24,Icons.language,(){}),
-                        Inkwekk("Terms",24,24,Icons.border_all,(){Navigator.of(context).pushReplacementNamed(Terms_screen.roteName);}),
-                        Inkwekk("Privacy",24,24,Icons.lock_clock_outlined,(){Navigator.of(context).pushReplacementNamed(Privacy_screen.roteName);}),
-                        Inkwekk("About",24,24,Icons.info,(){}),
-
-                      
-                      
-                        
-
-                     
-
-                      ],
-                    ),
-                  )
-             
-                ],
-              ),
-              );
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Dividerr(),
+                Inkwekk("Home", 24, 24, Icons.home, () {}),
+                const Dividerr(),
+                Inkwekk("Profile", 24, 24, Icons.person, () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(ProfileScreen.roteName);
+                }),
+                const Dividerr(),
+                Inkwekk("Addresses", 24, 24, Icons.location_on_outlined, () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(Addresses_screen.roteName);
+                }),
+                const Dividerr(),
+              ],
+            ),
+          ),
+          Container(
+            height: 380,
+            color: Color(0xff2d343e),
+            child: Column(
+              children: [
+                const ListTile(
+                  title: Text(
+                    "OTHER",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w100),
+                  ),
+                ),
+                Inkwekk("Language", 24, 24, Icons.language, () {}),
+                Inkwekk("Terms", 24, 24, Icons.border_all, () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(Terms_screen.roteName);
+                }),
+                Inkwekk("Privacy", 24, 24, Icons.lock_clock_outlined, () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(Privacy_screen.roteName);
+                }),
+                Inkwekk("About", 24, 24, Icons.info, () {}),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
