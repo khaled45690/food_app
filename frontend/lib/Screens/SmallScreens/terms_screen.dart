@@ -8,6 +8,8 @@ class Terms_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+                  iconTheme: IconThemeData(color: Colors.black),
+
         centerTitle: true,
           title: Text(
             "Terms",style: TextStyle(fontSize: 18,color: Colors.black),

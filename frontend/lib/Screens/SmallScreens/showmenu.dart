@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/divider.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
@@ -18,6 +19,8 @@ class _ShowMenuState extends State<ShowMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+                  iconTheme: IconThemeData(color: Colors.black),
+
         backgroundColor: Colors.white54,
         shadowColor: Colors.white54,
    
@@ -45,7 +48,12 @@ class _ShowMenuState extends State<ShowMenu> {
                         Divider_widget(),
 
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                    Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>Cartshopscreen(),
+                               ),
+                               );
+              },
               icon: Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.grey,

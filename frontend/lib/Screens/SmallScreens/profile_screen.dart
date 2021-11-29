@@ -16,6 +16,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+                    iconTheme: IconThemeData(color: Colors.black),
+
           centerTitle: true,
           title: Text(
             "My contact info",style: TextStyle(fontSize: 18,color: Colors.black),
@@ -82,7 +84,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Positioned(
                     bottom:0,
-                    child: Button_Widget("Continue",392,75,Colors.orange,(){})),
+                    child: Button_Widget("Continue",392,75,Colors.orange,(){}),
+                    
+                    ),
               ],
             ),
           ),
