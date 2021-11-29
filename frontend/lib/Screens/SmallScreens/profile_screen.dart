@@ -16,11 +16,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Center(
-            child: Text(
-              "My contact info",style: TextStyle(fontSize: 18,color: Colors.black),
-              ),
-          ),
+          centerTitle: true,
+          title: Text(
+            "My contact info",style: TextStyle(fontSize: 18,color: Colors.black),
+            ),
           shape:const Border(bottom: BorderSide(color: Colors.red ,width: 2)),
 
             backgroundColor: Colors.white,)

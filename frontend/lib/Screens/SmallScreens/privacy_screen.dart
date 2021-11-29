@@ -10,6 +10,7 @@ class Privacy_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
           title: const Center(
             child: Text(
               "Privacy",style: TextStyle(fontSize: 18,color: Colors.black),

@@ -10,11 +10,10 @@ class LanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            "Languages",
-            style: TextStyle(fontSize: 20, color: Colors.black),
-          ),
+        centerTitle: true,
+        title: Text(
+          "Languages",
+          style: TextStyle(fontSize: 20, color: Colors.black),
         ),
         shape: const Border(bottom: BorderSide(color: Colors.red, width: 2)),
         backgroundColor: Colors.white,

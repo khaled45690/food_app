@@ -16,11 +16,10 @@ class _Addresses_screenState extends State<Addresses_screen> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: const Center(
-              child: Text(
-                "Addresses",
-                style: TextStyle(fontSize: 18, color: Colors.black),
-              ),
+            centerTitle: true,
+            title: Text(
+              "Addresses",
+              style: TextStyle(fontSize: 18, color: Colors.black),
             ),
             shape:
                 const Border(bottom: BorderSide(color: Colors.red, width: 2)),
