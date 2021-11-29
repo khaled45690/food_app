@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
 import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
+import 'package:food_app/Screens/SmallScreens/Languagesscreen.dart';
 import 'package:food_app/Screens/SmallScreens/addresses_screen.dart';
+import 'package:food_app/Screens/SmallScreens/mealsdetailsscree.dart';
 import 'package:food_app/Screens/SmallScreens/privacy_screen.dart';
 import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
+import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 
@@ -21,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: const Color(0xffb74093)
@@ -33,6 +37,9 @@ class MyApp extends StatelessWidget {
         Terms_screen.roteName:(ctx) => const Terms_screen(),
         AboutScreen.routename:(ctx) => const AboutScreen(),
         Privacy_screen.roteName:(ctx) => const Privacy_screen(),
+        ShowMenu.roteName:(ctx) =>const ShowMenu(),
+        MealScreen.roteName:(ctx)=> MealScreen(),
+        LanguageScreen.roteName:(ctx)=> LanguageScreen()
       },
     );
   }

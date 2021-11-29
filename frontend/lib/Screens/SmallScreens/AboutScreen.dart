@@ -10,7 +10,17 @@ class AboutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+            title: Text(
+              "About",
+              style: TextStyle(fontSize: 18, color: Colors.black),
+            ),
+            shape:
+                const Border(bottom: BorderSide(color: Colors.red, width: 2)),
+            backgroundColor: Colors.white,
+          ),
+
       
     );
   }

@@ -75,9 +75,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     TextField_Widget("Telephone*",Icons.phone,350),
                       
                       SizedBox(
-                        height: 345,
+                        height: 355,
                       ),
-                      Button_Widget("Continue"),
+                      Button_Widget("Continue",392,75,Colors.orange,(){}),
                     ],
                   ),
                 ),

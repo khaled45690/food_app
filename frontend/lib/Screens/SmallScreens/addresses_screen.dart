@@ -60,16 +60,30 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       Container(
                        // color: Colors.amber,
                         width: 350,
-                        child: const TextField(
+                        child:  TextFormField(
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return  'please enter a value';
+                            }
+                            if(value.length<10){
+                              return 'Should be at  least 10 characters long';
+                            }
+                            return null;
+                          },
+                          
                           decoration: InputDecoration(
                               labelText: "Street name & number*",
                               border: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.grey, width: 5)),
-                              prefixIcon: Icon(Icons.person),
+                              prefixIcon: Icon(Icons.streetview_sharp),
                               disabledBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: Colors.yellow, width: 5))),
+                                      BorderSide(color: Colors.yellow, width: 5),
+                                      ),
+                                      
+                                      ),
+                                      
                         ),
                       ),
                       SizedBox(
@@ -77,7 +91,17 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       ),
                       Container(
                         width: 350,
-                        child: const TextField(
+                        child:  TextFormField(
+                           validator: (value){
+                            if(value!.isEmpty){
+                              return  'please enter a value';
+                            }
+                            if(value.length<10){
+                              return 'Should be at  least 10 characters long';
+                            }
+                            return null;
+                          },
+                          
                           decoration: InputDecoration(
                               labelText: "Town or City Area*",
                               border: OutlineInputBorder(
@@ -94,7 +118,18 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       ),
                       Container(
                         width: 350,
-                        child: const TextField(
+                        child:  TextFormField(
+                          validator: (value){
+                            if( value!.isEmpty){
+                              return 'please enter a number';
+                            }
+                            if(double.tryParse(value)== null){
+                              return 'please enter a valid number';
+                            }
+                            if(value.characters==7){
+                              return 'non valid';
+                            }
+                          },
                           decoration: InputDecoration(
                               labelText: "Postcode, Block,intercom where tp park*",
                               border: OutlineInputBorder(
@@ -107,9 +142,9 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         ),
                       ),
                       SizedBox(
-                        height: 300,
+                        height: 331,
                       ),
-                                          Button_Widget("Continue"),
+                                          Button_Widget("Continue",392,75,Colors.orange,(){}),
 
                     ],
                   ),

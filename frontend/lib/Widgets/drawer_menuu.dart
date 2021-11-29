@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
+import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
+import 'package:food_app/Screens/SmallScreens/Languagesscreen.dart';
 import 'package:food_app/Screens/SmallScreens/addresses_screen.dart';
 import 'package:food_app/Screens/SmallScreens/privacy_screen.dart';
 import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
@@ -27,43 +29,42 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             color: Color(0xff313943),
             child: Column(
               children: [
+                 const SizedBox(
+                  height:20,
+                  width: 100,
+                ),
+                Container(
+                  height: 95,
+                  width: 100,
+                  child: Image.asset('assets/images/nkhw.png')),
                 const SizedBox(
                   height: 10,
                   width: 100,
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(10, 30, 30, 10),
-                  child: CircleAvatar(
-                    
-                   // backgroundColor: Colors.redAccent,
-                    backgroundImage: AssetImage('assets/images/kkhw.jpg'),
-                    radius: 32,
-                    child: Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        "خواطر دمشقيه",
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 const Dividerr(),
                 Inkwekk("Home", 24, 24, Icons.home, () {
-                    Navigator.of(context)
-                      .pushReplacementNamed(FirstPageScreen.roteName);
+                     Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>FirstPageScreen(),
+                               ),
+                               );
                 }),
                 const Dividerr(),
                 Inkwekk("Profile", 24, 24, Icons.person, () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(ProfileScreen.roteName);
+                    Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>ProfileScreen(),
+                               ),
+                               );
                 }),
                 const Dividerr(),
                 Inkwekk("Addresses", 24, 24, Icons.location_on_rounded, () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(Addresses_screen.roteName);
+              Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>Addresses_screen(),
+                               ),
+                               );
+                                
                 }),
                 const Dividerr(),
               ],
@@ -83,16 +84,31 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                         fontWeight: FontWeight.w100),
                   ),
                 ),
-                Inkwekk("Language", 24, 24, Icons.language, () {}),
+                Inkwekk("Language", 24, 24, Icons.language, () {
+                   Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>LanguageScreen(),
+                                ),
+                                );
+                }),
                 Inkwekk("Terms", 24, 24, Icons.border_inner_outlined, () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(Terms_screen.roteName);
+                     Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>Terms_screen(),
+                               ),
+                               );
                 }),
                 Inkwekk("Privacy", 24, 24, Icons.lock_outline_rounded, () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(Privacy_screen.roteName);
+                     Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>Privacy_screen(),
+                               ),
+                               );
                 }),
-                Inkwekk("About", 24, 24, Icons.info_outline, () {}),
+                Inkwekk("About", 24, 24, Icons.info_outline, () {
+Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>AboutScreen(),
+                               ),
+                               );
+
+                }),
               ],
             ),
           )
