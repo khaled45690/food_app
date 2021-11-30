@@ -25,23 +25,33 @@ class _ShowMenuState extends State<ShowMenu> {
         shadowColor: Colors.white54,
    
         actions: <Widget>[
-          Row(children: <Widget>[
-             Divider_widget(),
-            Text(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+                       //   Divider_widget(),          
+
+                  Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left:25,),
+                        child: Text(
               "خواطر دمشقيه",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 19),
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
             ),
-                          Divider_widget(),
+                      ),
+                    ],
+                  ),
+             Divider_widget(),
+        
 
-          
             IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.info_outline,
-                size: 32,
+                size: 31,
                 color: Colors.grey,
               ),
             ),
@@ -57,7 +67,7 @@ class _ShowMenuState extends State<ShowMenu> {
               icon: Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.grey,
-                size: 32,
+                size: 28,
               ),
             ),
           ])
@@ -66,7 +76,7 @@ class _ShowMenuState extends State<ShowMenu> {
       body: ListView(
         children: <Widget>[
           Container(
-            height: 230,
+            height: MediaQuery.of(context).size.height/3,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(

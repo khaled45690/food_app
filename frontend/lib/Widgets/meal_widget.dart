@@ -8,8 +8,8 @@ class MealWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      // width: double.infinity,
+      height: MediaQuery.of(context).size.height / 2.55,
+      width: MediaQuery.of(context).size.width / 5,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         image: DecorationImage(
@@ -30,74 +30,108 @@ class MealWidget extends StatelessWidget {
 
           //   Spacer(),
           SizedBox(
-            height: 100,
+            height: 50,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Button_Widget("learn more", 176, 40, Colors.transparent, () {
+              Button_Widget(
+                  "learn more",
+                  MediaQuery.of(context).size.width / 2.4,
+                  MediaQuery.of(context).size.height / 13,
+                  Colors.black12, () {
                 showDialog(
                     context: context,
                     builder: (context) {
                       return AlertDialog(
                         title: Container(
-                          width: 800,
+                          width: MediaQuery.of(context).size.width / 5,
+                          height: MediaQuery.of(context).size.height / 4,
                           child: Column(
                             children: [
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("What you get:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text(
+                                    "What you get:",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   Spacer(),
                                 ],
                               ),
                               Row(
                                 children: [
-                                  Text("   *Special offer for 100 EGP",style: TextStyle(fontSize: 15),),
-                                  
+                                  Text(
+                                    "*Special offer for 100 EGP",
+                                    style: TextStyle(fontSize: 15),
+                                  ),
                                 ],
-                                
                               ),
-                              SizedBox(height: 30,),
-                                  Row(
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Row(mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("Conditions:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                  Text(
+                                    "Conditions:",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   Spacer(),
                                 ],
                               ),
-                                Row(
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("   *Order Type:Pickup,Delivery",style: TextStyle(fontSize: 15),),
-                                  
+                                  Text(
+                                    "*Order Type:Pickup,Delivery",
+                                    style: TextStyle(fontSize: 15),
+                                  ),
                                 ],
-                              )
-                              
+                              ),
                             ],
                           ),
                         ),
                         content: Container(
-                          width:400,
+                          width: 400,
                           height: 140,
-                          child: Column(children: [
-    Button_Widget("Get it now", 250, 60, Colors.orange, () {}),
-                             SizedBox(height: 15),
-                               Button_Widget("Back to menu", 250, 60, Colors.grey, () {}),
-                                 
-                        
-
-                          ],),
+                          child: Column(
+                            children: [
+                              Button_Widget(
+                                  "Get it now",
+                                  MediaQuery.of(context).size.width / 1.75,
+                                  60,
+                                  Colors.orange,
+                                  () {}),
+                              SizedBox(height: 15),
+                              Button_Widget(
+                                  "Back to menu",
+                                  MediaQuery.of(context).size.width / 1.75,
+                                  60,
+                                  Colors.grey,
+                                  () {}),
+                            ],
+                          ),
                         ),
-                        actions: <Widget>[
-               
-                        ],
+                        actions: <Widget>[],
                       );
                     });
               }),
               Spacer(),
-              Button_Widget("Get it now", 176, 40, Colors.orange, () {
-
-                Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>MealScreen(),
-                               ),
-                               );
+              Button_Widget(
+                  "Get it now",
+                  MediaQuery.of(context).size.width / 2.25,
+                  MediaQuery.of(context).size.height / 13,
+                  Colors.orange, () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => MealScreen(),
+                  ),
+                );
               })
             ],
           ),

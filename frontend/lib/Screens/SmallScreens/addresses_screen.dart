@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 
 class Addresses_screen extends StatefulWidget {
-  const Addresses_screen({Key? key}) : super(key: key);
   static const roteName = '/AddressScreen';
 
   @override
   _Addresses_screenState createState() => _Addresses_screenState();
+
 }
 
 class _Addresses_screenState extends State<Addresses_screen> {
+      final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+                    iconTheme: IconThemeData(color: Colors.black),
+
           centerTitle: true,
           title: Text(
             "Addresses",
@@ -24,6 +28,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
           backgroundColor: Colors.white,
         ),
         body: Form(
+          key: _formKey,
           child: Stack(
             children: [
               ListView(
@@ -53,7 +58,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           child: TextFormField(
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'please enter a value';
+                                return 'please enter your name';
                               }
                               if (value.length < 10) {
                                 return 'Should be at  least 10 characters long';
@@ -62,6 +67,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             },
                             decoration: InputDecoration(
                               labelText: "Street name & number*",
+                              isDense: true,
                               border: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.grey, width: 5)),
@@ -81,7 +87,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           child: TextFormField(
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'please enter a value';
+                                return 'please enter your town';
                               }
                               if (value.length < 10) {
                                 return 'Should be at  least 10 characters long';
@@ -90,6 +96,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             },
                             decoration: InputDecoration(
                                 labelText: "Town or City Area*",
+                                isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.grey, width: 5)),
@@ -119,6 +126,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             decoration: InputDecoration(
                                 labelText:
                                     "Postcode, Block,intercom where tp park*",
+                                    isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.grey, width: 5)),
@@ -136,7 +144,15 @@ class _Addresses_screenState extends State<Addresses_screen> {
               ),
               Positioned(
                   bottom: 0,
-                  child: Button_Widget("Continue", 392, 75, Colors.orange, () {}),
+                  child: Button_Widget("Save",  MediaQuery.of(context).size.width, 75, Colors.orange, () {
+
+                      if(_formKey.currentState!.validate()){
+                        return;
+                      }
+                  //    _formKey.currentState!.save()();
+
+                  }
+                  ),
               ),
             ],
           ),

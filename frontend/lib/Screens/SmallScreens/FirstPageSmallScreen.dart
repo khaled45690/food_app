@@ -22,6 +22,7 @@ class FirstPageSmallScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         centerTitle: true,
@@ -36,48 +37,52 @@ class FirstPageSmallScreen extends StatelessWidget {
           markers: myMarkers,
         ),
         Positioned(
-          bottom: 20,
+          bottom: 0,
+          
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 230,
-                width: 300,
+                height: MediaQuery.of(context).size.height/2.7,
+                width: MediaQuery.of(context).size.width/1,
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage("assets/images/krs.jpg"),
-                    )),
-                margin: EdgeInsets.fromLTRB(45, 8, 8, 8),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 190,
                     ),
-                    Row(
-                      children: [
-                        // Text("data"),
-                        Button_Widget(
-                          "See Menu&Order",
-                          300,
-                          40,
-                          Colors.grey,
-                          () {
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(
-                                builder: (context) => ShowMenu(),
-                              ),
-                            );
-                          },
-                        ),
 
-                        //   Button_Widget("Get it now",173,40,Colors.orange)
-                      ],
                     ),
+                margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
+                child: Stack(
+                  children: [
+                 
+                           Positioned(
+                             bottom: 0,
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                             children: [                      
+                              Button_Widget(
+                                "See Menu&Order",
+                                MediaQuery.of(context).size.width,
+                                40,
+                                Colors.grey,
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    new MaterialPageRoute(
+                                      builder: (context) => ShowMenu(),
+                                    ),
+                                  );
+                                },
+                              ),
+                           
+                                                     ],
+                                                   ),
+                           ),
                   ],
                 ),
-                //margin: EdgeInsets.fromLTRB(20, 8, 20, 8),
+               
               )
             ],
           ),

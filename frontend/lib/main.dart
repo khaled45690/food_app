@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       routes:  {
         FirstPageScreen.roteName:(ctx) =>  FirstPageScreen(),
         ProfileScreen.roteName:(ctx) => const ProfileScreen(),
-        Addresses_screen.roteName:(ctx) => const Addresses_screen(),
+        Addresses_screen.roteName:(ctx) =>  Addresses_screen(),
         Terms_screen.roteName:(ctx) => const Terms_screen(),
         AboutScreen.routename:(ctx) => const AboutScreen(),
         Privacy_screen.roteName:(ctx) => const Privacy_screen(),

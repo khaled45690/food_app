@@ -31,8 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 746,
-              width: 800,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
            //   color: Colors.red,
               decoration: BoxDecoration(
                 image: DecorationImage(
