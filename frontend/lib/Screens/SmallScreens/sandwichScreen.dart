@@ -77,21 +77,23 @@ class _SandwichScreenState extends State<SandwichScreen> {
               SizedBox(
                 height: 35,
               ),
-              // Container(
-              //   width: MediaQuery.of(context).size.width,
-              // height: MediaQuery.of(context).size.height/7,
-              // decoration: BoxDecoration(
-              //   color: Colors.white,
-
-              //   ),
-
-              SizedBox(height: 150),
               InkWell(
                 onTap: () {},
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.red),
-                  child: ListTile(),
-                ),
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                        color: Colors.white54,
+                        border: Border.all(color: Colors.black)),
+                    child: ListTile(title: Text("data"))),
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                        color: Colors.white54,
+                        border: Border.all(color: Colors.grey)),
+                    child: ListTile()),
               ),
             ],
           ),
