@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Addresses_screen extends StatefulWidget {
   static const roteName = '/AddressScreen';
@@ -11,14 +12,28 @@ class Addresses_screen extends StatefulWidget {
 
 class _Addresses_screenState extends State<Addresses_screen> {
       final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+      String streetName= '';
+      String town='';
+      String postcode ='';
+      
+
+
+
+
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+  Widget build(BuildContext context) {          
+final streetNameController = TextEditingController();
+      final townController = TextEditingController();
+      final postcodeController = TextEditingController();
+      SharedPreferences localStorage;
+ Future init() async{
+   localStorage =await SharedPreferences.getInstance();
+  
+}
+    return  Scaffold(
         appBar: AppBar(
-                    iconTheme: IconThemeData(color: Colors.black),
-
+          iconTheme: IconThemeData(color: Colors.black),
           centerTitle: true,
           title: Text(
             "Addresses",
@@ -56,6 +71,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           // color: Colors.amber,
                           width: 350,
                           child: TextFormField(
+                            controller: streetNameController,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter your name';
@@ -66,7 +82,12 @@ class _Addresses_screenState extends State<Addresses_screen> {
                               return null;
                             },
                             decoration: InputDecoration(
-                              labelText: "Street name & number*",
+                              labelText:
+                              //streetNamme.text 
+                               //==null ?
+                                    "Street name & number*",
+                             // : notesController.text
+                                    
                               isDense: true,
                               border: OutlineInputBorder(
                                   borderSide:
@@ -77,6 +98,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                                     BorderSide(color: Colors.yellow, width: 5),
                               ),
                             ),
+                            onChanged: (  streetName)=> setState(() => this.streetName ==streetName),
                           ),
                         ),
                         SizedBox(
@@ -85,6 +107,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         Container(
                           width: 350,
                           child: TextFormField(
+                            controller:townController ,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter your town';
@@ -103,7 +126,12 @@ class _Addresses_screenState extends State<Addresses_screen> {
                                 prefixIcon: Icon(Icons.location_on_outlined),
                                 disabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Colors.yellow, width: 5))),
+                                        color: Colors.yellow, width: 5),
+                                        ),
+                                        
+                                        ),
+                          onChanged: (town)=> setState(() => this.town ==town),
+
                           ),
                         ),
                         SizedBox(
@@ -112,6 +140,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         Container(
                           width: 350,
                           child: TextFormField(
+                            controller: postcodeController,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter a number';
@@ -124,8 +153,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                               }
                             },
                             decoration: InputDecoration(
-                                labelText:
-                                    "Postcode, Block,intercom where tp park*",
+                                labelText:"Postcode, Block,intercom where tp park*" ,
                                     isDense: true,
                                 border: OutlineInputBorder(
                                     borderSide:
@@ -133,7 +161,12 @@ class _Addresses_screenState extends State<Addresses_screen> {
                                 prefixIcon: Icon(Icons.info),
                                 disabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Colors.yellow, width: 5))),
+                                        color: Colors.yellow, width: 5),
+                                        ),
+                                        ),
+                        onChanged: (postcode)=> setState(() => this.postcode ==postcode),
+
+
                           ),
                         ),
 
@@ -145,19 +178,19 @@ class _Addresses_screenState extends State<Addresses_screen> {
               Positioned(
                   bottom: 0,
                   child: Button_Widget("Save",  MediaQuery.of(context).size.width, 75, Colors.orange, () {
-
                       if(_formKey.currentState!.validate()){
                         return;
                       }
-                  //    _formKey.currentState!.save()();
-
                   }
                   ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
+      );
+
+      
+   
+  }      
 }
+

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
+import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/divider.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
@@ -91,23 +92,46 @@ class _ShowMenuState extends State<ShowMenu> {
          
           MealWidget("assets/images/zzz.jpg"),
           MealWidget("assets/images/zzz.jpg"),
-         Listtile_widet("شاورما فراخ","32"),
+         Listtile_widet("شاورما فراخ","32",(){
+
+         }),
           Divider(
             color: Colors.grey,
           ),
-          Listtile_widet("شاورما لحمه","35"),
+          Listtile_widet("شاورما لحمه","35",(){
+Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>SandwichScreen(),
+                                ),
+                                );
+          }),
           Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("بطاطس بالجبنه","16"),
+         Listtile_widet("بطاطس بالجبنه","16",(){
+Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>SandwichScreen(),
+                                ),
+                                );
+         }),
          Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("كرسبي","28"),
+         Listtile_widet("كرسبي","28",(){
+           Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>SandwichScreen(),
+                                ),
+                                );
+
+         }),
          Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("فاهيتا","26"),
+         Listtile_widet("فاهيتا","26",(){
+           Navigator.push(context, new MaterialPageRoute(
+                               builder:(context)=>SandwichScreen(),
+                                ),
+                                );
+         }),
 
         ],
       ),

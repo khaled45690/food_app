@@ -7,6 +7,7 @@ import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Screens/SmallScreens/mealsdetailsscree.dart';
 import 'package:food_app/Screens/SmallScreens/privacy_screen.dart';
 import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
+import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
@@ -15,6 +16,7 @@ import 'Screens/MainScreens/FirstPageScreen.dart';
 
 
 void main() {
+
   runApp(const MyApp());
 }
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xffb74093)
       ),
-      home: const SplashScreen(),
+      home:  SplashScreen(),
       routes:  {
         FirstPageScreen.roteName:(ctx) =>  FirstPageScreen(),
         ProfileScreen.roteName:(ctx) => const ProfileScreen(),
@@ -42,6 +44,7 @@ class MyApp extends StatelessWidget {
         MealScreen.roteName:(ctx)=> MealScreen(),
         LanguageScreen.roteName:(ctx)=> LanguageScreen(),
         Cartshopscreen.roteName:(ctx)=>Cartshopscreen(),
+        SandwichScreen.roteName:(ctx) =>SandwichScreen(),
       },
     );
   }

@@ -50,7 +50,9 @@ class FirstPageSmallScreen extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: AssetImage("assets/images/krs.jpg"),
+                      
                     ),
+                    
 
                     ),
                 margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
