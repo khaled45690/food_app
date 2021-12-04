@@ -14,9 +14,7 @@ import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
 
-
 void main() {
-
   runApp(const MyApp());
 }
 
@@ -29,24 +27,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: const Color(0xffb74093)
-      ),
-      home:  SplashScreen(),
-      routes:  {
-        FirstPageScreen.roteName:(ctx) =>  FirstPageScreen(),
-        ProfileScreen.roteName:(ctx) => const ProfileScreen(),
-        Addresses_screen.roteName:(ctx) =>  Addresses_screen(),
-        Terms_screen.roteName:(ctx) => const Terms_screen(),
-        AboutScreen.routename:(ctx) => const AboutScreen(),
-        Privacy_screen.roteName:(ctx) => const Privacy_screen(),
-        ShowMenu.roteName:(ctx) =>const ShowMenu(),
-        MealScreen.roteName:(ctx)=> MealScreen(),
-        LanguageScreen.roteName:(ctx)=> LanguageScreen(),
-        Cartshopscreen.roteName:(ctx)=>Cartshopscreen(),
-        SandwichScreen.roteName:(ctx) =>SandwichScreen(),
+      theme: ThemeData(primaryColor: const Color(0xffb74093)),
+      home: SplashScreen(),
+      routes: {
+        FirstPageScreen.roteName: (ctx) => FirstPageScreen(),
+        ProfileScreen.roteName: (ctx) => const ProfileScreen(),
+        Addresses_screen.roteName: (ctx) => Addresses_screen(),
+        Terms_screen.roteName: (ctx) => const Terms_screen(),
+        AboutScreen.routename: (ctx) => const AboutScreen(),
+        Privacy_screen.roteName: (ctx) => const Privacy_screen(),
+        ShowMenu.roteName: (ctx) => const ShowMenu(),
+        MealScreen.roteName: (ctx) => MealScreen(),
+        LanguageScreen.roteName: (ctx) => LanguageScreen(),
+        Cartshopscreen.roteName: (ctx) => Cartshopscreen(),
+        SandwichScreen.roteName: (ctx) => SandwichScreen(),
       },
     );
   }
 }
-

@@ -17,26 +17,21 @@ class _SandwichScreenState extends State<SandwichScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                  iconTheme: IconThemeData(color: Colors.black),
-
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white54,
         shadowColor: Colors.white54,
-   
         actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                       //   Divider_widget(),          
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            //   Divider_widget(),
 
-                  Text(
+            Text(
               "خواطر دمشقيه",
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 19),
             ),
-             Divider_widget(),
-        
+            Divider_widget(),
 
             IconButton(
               onPressed: () {},
@@ -46,14 +41,16 @@ class _SandwichScreenState extends State<SandwichScreen> {
                 color: Colors.grey,
               ),
             ),
-                        Divider_widget(),
+            Divider_widget(),
 
             IconButton(
               onPressed: () {
-                    Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Cartshopscreen(),
-                               ),
-                               );
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => Cartshopscreen(),
+                  ),
+                );
               },
               icon: Icon(
                 Icons.shopping_cart_outlined,
@@ -69,7 +66,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
           Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height/3,
+                height: MediaQuery.of(context).size.height / 3,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -77,40 +74,25 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   image: AssetImage("assets/images/krs.jpg"),
                 )),
               ),
-              SizedBox(height: 35,),
+              SizedBox(
+                height: 35,
+              ),
               // Container(
               //   width: MediaQuery.of(context).size.width,
               // height: MediaQuery.of(context).size.height/7,
               // decoration: BoxDecoration(
               //   color: Colors.white,
-                 
-               
+
               //   ),
-            
-                
-                  
-                    SizedBox(
-                      height:150
-                    ),
-                      InkWell(
-                      onTap: (){},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red
-                         ),
-                        child: ListTile(
 
-
-
-                        ),
-
-                        
-                    
-                      ),
-                    ),
-                    
-
-              
+              SizedBox(height: 150),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  decoration: BoxDecoration(color: Colors.red),
+                  child: ListTile(),
+                ),
+              ),
             ],
           ),
         ],

@@ -20,33 +20,30 @@ class _ShowMenuState extends State<ShowMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                  iconTheme: IconThemeData(color: Colors.black),
-
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white54,
         shadowColor: Colors.white54,
-   
         actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                       //   Divider_widget(),          
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            //   Divider_widget(),
 
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left:25,),
-                        child: Text(
-              "خواطر دمشقيه",
-              style: TextStyle(
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 25,
+                  ),
+                  child: Text(
+                    "خواطر دمشقيه",
+                    style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
-            ),
-                      ),
-                    ],
                   ),
-             Divider_widget(),
-        
+                ),
+              ],
+            ),
+            Divider_widget(),
 
             IconButton(
               onPressed: () {},
@@ -56,14 +53,16 @@ class _ShowMenuState extends State<ShowMenu> {
                 color: Colors.grey,
               ),
             ),
-                        Divider_widget(),
+            Divider_widget(),
 
             IconButton(
               onPressed: () {
-                    Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Cartshopscreen(),
-                               ),
-                               );
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => Cartshopscreen(),
+                  ),
+                );
               },
               icon: Icon(
                 Icons.shopping_cart_outlined,
@@ -77,7 +76,7 @@ class _ShowMenuState extends State<ShowMenu> {
       body: ListView(
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height/3,
+            height: MediaQuery.of(context).size.height / 3,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -89,50 +88,53 @@ class _ShowMenuState extends State<ShowMenu> {
             height: 20,
           ),
           MealWidget("assets/images/zz.jpg"),
-         
           MealWidget("assets/images/zzz.jpg"),
           MealWidget("assets/images/zzz.jpg"),
-         Listtile_widet("شاورما فراخ","32",(){
-
-         }),
+          Listtile_widet("شاورما فراخ", "32", () {}),
           Divider(
             color: Colors.grey,
           ),
-          Listtile_widet("شاورما لحمه","35",(){
-Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>SandwichScreen(),
-                                ),
-                                );
+          Listtile_widet("شاورما لحمه", "35", () {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => SandwichScreen(),
+              ),
+            );
           }),
           Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("بطاطس بالجبنه","16",(){
-Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>SandwichScreen(),
-                                ),
-                                );
-         }),
-         Divider(
+          Listtile_widet("بطاطس بالجبنه", "16", () {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => SandwichScreen(),
+              ),
+            );
+          }),
+          Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("كرسبي","28",(){
-           Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>SandwichScreen(),
-                                ),
-                                );
-
-         }),
-         Divider(
+          Listtile_widet("كرسبي", "28", () {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => SandwichScreen(),
+              ),
+            );
+          }),
+          Divider(
             color: Colors.grey,
           ),
-         Listtile_widet("فاهيتا","26",(){
-           Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>SandwichScreen(),
-                                ),
-                                );
-         }),
-
+          Listtile_widet("فاهيتا", "26", () {
+            Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => SandwichScreen(),
+              ),
+            );
+          }),
         ],
       ),
     );

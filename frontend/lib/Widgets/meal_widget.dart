@@ -4,7 +4,9 @@ import 'package:food_app/Widgets/button_widget.dart';
 
 class MealWidget extends StatelessWidget {
   final String imagee;
+
   MealWidget(this.imagee);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,7 +74,8 @@ class MealWidget extends StatelessWidget {
                               SizedBox(
                                 height: 30,
                               ),
-                              Row(mainAxisAlignment: MainAxisAlignment.center,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     "Conditions:",

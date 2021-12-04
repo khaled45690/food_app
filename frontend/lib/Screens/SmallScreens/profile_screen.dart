@@ -11,8 +11,13 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-        final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,37 +52,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            TextField_Widget("Fist Name*", Icons.person, MediaQuery.of(context).size.width/2.3 ,
-                             (value) {
-                              if (value!.isEmpty) {
-                                return 'please enter your name';
-                              }
-                              if (value.length < 10) {
-                                return 'Should be at  least 10 characters long';
-                              }
-                              return null;
-                            }, ),
+                            TextField_Widget(
+                              "Fist Name*",
+                              Icons.person,
+                              MediaQuery.of(context).size.width / 2.3,
+                              (value) {
+                                if (value!.isEmpty) {
+                                  return 'please enter your name';
+                                }
+                                if (value.length < 10) {
+                                  return 'Should be at  least 10 characters long';
+                                }
+                                return null;
+                              },
+                            ),
                             Container(
                               // color: Colors.amber,
-                              width: MediaQuery.of(context).size.width/2.3,
-                              child:  TextFormField(
-                                   validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'please enter your name';
-                              }
-                              if (value.length < 10) {
-                                return 'Should be at  least 10 characters long';
-                              }
-                              return null;
-                            },
+                              width: MediaQuery.of(context).size.width / 2.3,
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'please enter your name';
+                                  }
+                                  if (value.length < 10) {
+                                    return 'Should be at  least 10 characters long';
+                                  }
+                                  return null;
+                                },
                                 decoration: InputDecoration(
                                     labelText: "Last Name*",
-                                    
                                     isDense: true,
                                     border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.grey, width: 5),
-                                            ),
+                                      borderSide: BorderSide(
+                                          color: Colors.grey, width: 5),
+                                    ),
                                     //  prefixIcon: Icon(Icons.person),
                                     disabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -89,29 +97,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(
                           height: 15,
                         ),
-                        TextField_Widget("E-mail*", Icons.email,  MediaQuery.of(context).size.width/1.15, (value) {
-                              if (value!.isEmpty) {
-                                return 'please enter your Email';
-                              }
-                              
-                              return null;
-                            },),
+                        TextField_Widget(
+                          "E-mail*",
+                          Icons.email,
+                          MediaQuery.of(context).size.width / 1.15,
+                          (value) {
+                            if (value!.isEmpty) {
+                              return 'please enter your Email';
+                            }
+
+                            return null;
+                          },
+                        ),
                         SizedBox(
                           height: 15,
                         ),
-                        TextField_Widget("Telephone*", Icons.phone, MediaQuery.of(context).size.width/1.15, 
-                 (value) {
-                              if (value!.isEmpty) {
-                                return 'please enter a number';
-                              }
-                              if (double.tryParse(value) == null) {
-                                return 'please enter a valid number';
-                              }
-                              if (value.characters == 7) {
-                                return 'non valid';
-                              }
-                            },
-                            ),
+                        TextField_Widget(
+                          "Telephone*",
+                          Icons.phone,
+                          MediaQuery.of(context).size.width / 1.15,
+                          (value) {
+                            if (value!.isEmpty) {
+                              return 'please enter a number';
+                            }
+                            if (double.tryParse(value) == null) {
+                              return 'please enter a valid number';
+                            }
+                            if (value.characters == 7) {
+                              return 'non valid';
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -119,10 +135,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Positioned(
                 bottom: 0,
-                child: Button_Widget("Save", MediaQuery.of(context).size.width, 75, Colors.orange, () {
-                   if(_formKey.currentState!.validate()){
-                        return;
-                      }
+                child: Button_Widget("Save", MediaQuery.of(context).size.width,
+                    75, Colors.orange, () {
+                  if (_formKey.currentState!.validate()) {
+                    return;
+                  }
                 }),
               ),
             ],

@@ -15,14 +15,15 @@ class FirstPageSmallScreen extends StatelessWidget {
   //static String routename ='/FirstPagee';
   final HashSet<Marker> myMarkers;
   final Function onMapCreated;
+
   const FirstPageSmallScreen(this.myMarkers, this.onMapCreated);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         centerTitle: true,
@@ -38,53 +39,46 @@ class FirstPageSmallScreen extends StatelessWidget {
         ),
         Positioned(
           bottom: 0,
-          
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height/2.7,
-                width: MediaQuery.of(context).size.width/1,
+                height: MediaQuery.of(context).size.height / 2.7,
+                width: MediaQuery.of(context).size.width / 1,
                 decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("assets/images/krs.jpg"),
-                      
-                    ),
-                    
-
-                    ),
+                  shape: BoxShape.rectangle,
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage("assets/images/krs.jpg"),
+                  ),
+                ),
                 margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
                 child: Stack(
                   children: [
-                 
-                           Positioned(
-                             bottom: 0,
-                             child: Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
-                             children: [                      
-                              Button_Widget(
-                                "See Menu&Order",
-                                MediaQuery.of(context).size.width,
-                                40,
-                                Colors.grey,
-                                () {
-                                  Navigator.push(
-                                    context,
-                                    new MaterialPageRoute(
-                                      builder: (context) => ShowMenu(),
-                                    ),
-                                  );
-                                },
-                              ),
-                           
-                                                     ],
-                                                   ),
-                           ),
+                    Positioned(
+                      bottom: 0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Button_Widget(
+                            "See Menu&Order",
+                            MediaQuery.of(context).size.width,
+                            40,
+                            Colors.grey,
+                            () {
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                  builder: (context) => ShowMenu(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-               
               )
             ],
           ),

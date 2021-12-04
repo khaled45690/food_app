@@ -7,15 +7,14 @@ class Appbarr_widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-          title: const Center(
-            child: Text(
-              "Addresses",style: TextStyle(fontSize: 18,color: Colors.black),
-              ),
-              
-              
-          ),
-          shape:const Border(bottom: BorderSide(color: Colors.red ,width: 2)),
-
-            backgroundColor: Colors.white,);
+      title: const Center(
+        child: Text(
+          "Addresses",
+          style: TextStyle(fontSize: 18, color: Colors.black),
+        ),
+      ),
+      shape: const Border(bottom: BorderSide(color: Colors.red, width: 2)),
+      backgroundColor: Colors.white,
+    );
   }
 }

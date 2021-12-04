@@ -5,6 +5,7 @@ class Inkwekk extends StatelessWidget {
   final double sizeOfIcon, fontSize;
   final IconData icon;
   final GestureTapCallback navigator;
+
   const Inkwekk(
       this.name, this.fontSize, this.sizeOfIcon, this.icon, this.navigator);
 

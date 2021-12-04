@@ -22,7 +22,6 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      
       child: ListView(
         children: <Widget>[
           Container(
@@ -30,14 +29,14 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             color: Color(0xff313943),
             child: Column(
               children: [
-                 const SizedBox(
-                  height:20,
+                const SizedBox(
+                  height: 20,
                   width: 100,
                 ),
                 Container(
-                  height: 95,
-                  width: 100,
-                  child: Image.asset('assets/images/nkhw.png')),
+                    height: 95,
+                    width: 100,
+                    child: Image.asset('assets/images/nkhw.png')),
                 const SizedBox(
                   height: 10,
                   width: 100,
@@ -47,25 +46,30 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                 ),
                 const Dividerr(),
                 Inkwekk("Home", 24, 24, Icons.home, () {
-                     Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>FirstPageScreen(),
-                               ),
-                               );
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => FirstPageScreen(),
+                    ),
+                  );
                 }),
                 const Dividerr(),
                 Inkwekk("Profile", 24, 24, Icons.person, () {
-                    Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>ProfileScreen(),
-                               ),
-                               );
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => ProfileScreen(),
+                    ),
+                  );
                 }),
                 const Dividerr(),
                 Inkwekk("Addresses", 24, 24, Icons.location_on_rounded, () {
-              Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Addresses_screen(),
-                               ),
-                               );
-                                
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => Addresses_screen(),
+                    ),
+                  );
                 }),
                 const Dividerr(),
               ],
@@ -86,29 +90,36 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                   ),
                 ),
                 Inkwekk("Language", 24, 24, Icons.language, () {
-                   Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>LanguageScreen(),
-                                ),
-                                );
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => LanguageScreen(),
+                    ),
+                  );
                 }),
                 Inkwekk("Terms", 24, 24, Icons.border_inner_outlined, () {
-                     Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Terms_screen(),
-                               ),
-                               );
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => Terms_screen(),
+                    ),
+                  );
                 }),
                 Inkwekk("Privacy", 24, 24, Icons.lock_outline_rounded, () {
-                     Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Privacy_screen(),
-                               ),
-                               );
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => Privacy_screen(),
+                    ),
+                  );
                 }),
                 Inkwekk("About", 24, 24, Icons.info_outline, () {
-Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>AboutScreen(),
-                               ),
-                               );
-
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => AboutScreen(),
+                    ),
+                  );
                 }),
               ],
             ),

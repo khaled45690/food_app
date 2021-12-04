@@ -15,26 +15,21 @@ class _MealScreenState extends State<MealScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-                  iconTheme: IconThemeData(color: Colors.black),
-
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white54,
         shadowColor: Colors.white54,
-   
         actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-                       //   Divider_widget(),          
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            //   Divider_widget(),
 
-                  Text(
+            Text(
               "خواطر دمشقيه",
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 19),
             ),
-             Divider_widget(),
-        
+            Divider_widget(),
 
             IconButton(
               onPressed: () {},
@@ -44,14 +39,16 @@ class _MealScreenState extends State<MealScreen> {
                 color: Colors.grey,
               ),
             ),
-                        Divider_widget(),
+            Divider_widget(),
 
             IconButton(
               onPressed: () {
-                    Navigator.push(context, new MaterialPageRoute(
-                               builder:(context)=>Cartshopscreen(),
-                               ),
-                               );
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => Cartshopscreen(),
+                  ),
+                );
               },
               icon: Icon(
                 Icons.shopping_cart_outlined,
@@ -65,7 +62,7 @@ class _MealScreenState extends State<MealScreen> {
       body: ListView(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height/3,
+            height: MediaQuery.of(context).size.height / 3,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -92,7 +89,7 @@ class _MealScreenState extends State<MealScreen> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height/4,
+                height: MediaQuery.of(context).size.height / 4,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
