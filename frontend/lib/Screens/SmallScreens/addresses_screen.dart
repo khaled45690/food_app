@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:food_app/models/UserData.dart';
+import 'package:provider/src/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Addresses_screen extends StatefulWidget {
@@ -11,19 +13,28 @@ class Addresses_screen extends StatefulWidget {
 
 class _Addresses_screenState extends State<Addresses_screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String streetName = '';
-  String town = '';
-  String postcode = '';
+  Map data = {
+    "streetName":null,
+    "town":null,
+    "postcode":null,
+  };
 
+onChange(value , VariableName){
+  setState(() {
+    data[VariableName] = value;
+  });
+}
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<UserData>().getUserAddressData();
+    data =  context.read<UserData>().userAddressData;
+  }
   @override
   Widget build(BuildContext context) {
-    final streetNameController = TextEditingController();
-    final townController = TextEditingController();
-    final postcodeController = TextEditingController();
-    SharedPreferences localStorage;
-    Future init() async {
-      localStorage = await SharedPreferences.getInstance();
-    }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +76,6 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         // color: Colors.amber,
                         width: 350,
                         child: TextFormField(
-                          controller: streetNameController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your name';
@@ -79,7 +89,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             labelText:
                                 //streetNamme.text
                                 //==null ?
-                                "Street name & number*",
+                            data["streetName"] == null ? "Street name & number*" : data["streetName"],
                             // : notesController.text
 
                             isDense: true,
@@ -93,7 +103,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             ),
                           ),
                           onChanged: (streetName) =>
-                              setState(() => this.streetName == streetName),
+                              setState(() =>  onChange(streetName , "streetName")),
                         ),
                       ),
                       SizedBox(
@@ -102,7 +112,6 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       Container(
                         width: 350,
                         child: TextFormField(
-                          controller: townController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your town';
@@ -113,7 +122,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             return null;
                           },
                           decoration: InputDecoration(
-                            labelText: "Town or City Area*",
+                            labelText: data["town"] == null ? "Street name & number*" : data["town"],
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderSide:
@@ -125,7 +134,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             ),
                           ),
                           onChanged: (town) =>
-                              setState(() => this.town == town),
+                              setState(() => onChange(town , "town")),
                         ),
                       ),
                       SizedBox(
@@ -134,7 +143,6 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       Container(
                         width: 350,
                         child: TextFormField(
-                          controller: postcodeController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter a number';
@@ -148,7 +156,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           },
                           decoration: InputDecoration(
                             labelText:
-                                "Postcode, Block,intercom where tp park*",
+                            data["postcode"] == null ? "Postcode, Block,intercom where tp park*" : data["postcode"] ,
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderSide:
@@ -160,9 +168,8 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             ),
                           ),
                           onChanged: (postcode) =>
-                              setState(() => this.postcode == postcode),
+                              setState(() => onChange(postcode , "postcode"))),
                         ),
-                      ),
                     ],
                   ),
                 ),
@@ -173,6 +180,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
               child: Button_Widget(
                   "Save", MediaQuery.of(context).size.width, 75, Colors.orange,
                   () {
+                context.read<UserData>().setUserAddressDataFunc(data);
                 if (_formKey.currentState!.validate()) {
                   return;
                 }

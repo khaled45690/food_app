@@ -11,11 +11,20 @@ import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
+import 'models/UserData.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UserData()),
+        ],
+        child: const MyApp(),
+      ),
+  );
 }
 
 class MyApp extends StatelessWidget {

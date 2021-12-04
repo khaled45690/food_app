@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/textfield_widget.dart';
+import 'package:food_app/models/UserData.dart';
+import 'package:provider/src/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -12,12 +14,27 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-@override
+  Map userData = {};
+  Map data = {
+    "firstName": null,
+    "lastName": null,
+    "email": null,
+    "telephone": null,
+  };
+  onChange(value , String variableName){
+    setState(() {
+      data[variableName] = value;
+    });
+
+  }
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    context.read<UserData>().getUserData();
+    userData =  context.read<UserData>().userData;
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,10 +70,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextField_Widget(
-                              "Fist Name*",
+                              userData["firstName"] == null ? "Fist Name*" : userData["firstName"],
                               Icons.person,
                               MediaQuery.of(context).size.width / 2.3,
                               (value) {
+                                onChange(value , "firstName");
                                 if (value!.isEmpty) {
                                   return 'please enter your name';
                                 }
@@ -71,6 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: MediaQuery.of(context).size.width / 2.3,
                               child: TextFormField(
                                 validator: (value) {
+                                  onChange(value , "lastName");
                                   if (value!.isEmpty) {
                                     return 'please enter your name';
                                   }
@@ -80,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                    labelText: "Last Name*",
+                                    labelText:userData["lastName"] == null ? "Last Name*" : userData["lastName"],
                                     isDense: true,
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -98,10 +117,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                          "E-mail*",
+                          userData["email"] == null ? "E-mail*" : userData["email"] ,
                           Icons.email,
                           MediaQuery.of(context).size.width / 1.15,
                           (value) {
+                            onChange(value , "email");
                             if (value!.isEmpty) {
                               return 'please enter your Email';
                             }
@@ -113,10 +133,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                          "Telephone*",
+                          userData["telephone"] == null ? "Telephone*" : userData["telephone"] ,
                           Icons.phone,
                           MediaQuery.of(context).size.width / 1.15,
                           (value) {
+                            onChange(value , "telephone");
                             if (value!.isEmpty) {
                               return 'please enter a number';
                             }
@@ -140,6 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (_formKey.currentState!.validate()) {
                     return;
                   }
+                  context.read<UserData>().setUserDataFunc(data);
                 }),
               ),
             ],
