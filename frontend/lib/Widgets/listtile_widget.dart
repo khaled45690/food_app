@@ -14,13 +14,6 @@ class Listtile_widet extends StatefulWidget {
 class _Listtile_widetState extends State<Listtile_widet> {
   bool value = false;
 
-  Widget buildChckbox() => Checkbox(
-      value: value,
-      onChanged: (value) {
-        setState(() {
-          this.value = value!;
-        });
-      });
 
   @override
   Widget build(BuildContext context) {
