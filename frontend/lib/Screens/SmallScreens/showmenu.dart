@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
+import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
 import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/divider.dart';
@@ -46,7 +47,14 @@ class _ShowMenuState extends State<ShowMenu> {
             Divider_widget(),
 
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                   Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                      builder: (context) => DeliveryScreen(),
+                    ),
+                  );
+              },
               icon: Icon(
                 Icons.info_outline,
                 size: 31,

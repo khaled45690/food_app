@@ -4,6 +4,7 @@ import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
 import 'package:food_app/Screens/SmallScreens/Languagesscreen.dart';
 import 'package:food_app/Screens/SmallScreens/addresses_screen.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
+import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
 import 'package:food_app/Screens/SmallScreens/mealsdetailsscree.dart';
 import 'package:food_app/Screens/SmallScreens/privacy_screen.dart';
 import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         LanguageScreen.roteName: (ctx) => LanguageScreen(),
         Cartshopscreen.roteName: (ctx) => Cartshopscreen(),
         SandwichScreen.roteName: (ctx) => SandwichScreen(),
+        DeliveryScreen.roteName:(ctx)=>DeliveryScreen()
       },
     );
   }
