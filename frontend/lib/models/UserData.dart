@@ -27,7 +27,7 @@ class UserData with ChangeNotifier {
   }
   void getUserData()async{
     final SharedPreferences prefs = await _prefs;
-    _userData = jsonDecode(prefs.getString("userData")!);
+    _userData = jsonDecode(prefs.getString("userData") == null ? jsonEncode(_userAddressData) : prefs.getString("userData")!);
     notifyListeners();
   }
   void setUserDataFunc(Map UserDataParameter) async{
@@ -47,7 +47,7 @@ class UserData with ChangeNotifier {
   getUserAddressData()async{
 
     final SharedPreferences prefs = await _prefs;
-    _userAddressData = jsonDecode(prefs.getString("userAddressData")!) ;
+    _userAddressData = jsonDecode(prefs.getString("userAddressData") == null ? jsonEncode(_userAddressData) : prefs.getString("userAddressData")!) ;
     notifyListeners();
   }
 }
