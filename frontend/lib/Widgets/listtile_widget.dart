@@ -31,7 +31,6 @@ class _Listtile_widetState extends State<Listtile_widet> {
           widget.nameOfFood,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        leading: buildChckbox(),
         trailing: Text(
           widget.price,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
