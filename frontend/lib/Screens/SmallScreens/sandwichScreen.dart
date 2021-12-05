@@ -204,22 +204,13 @@ class _SandwichScreenState extends State<SandwichScreen> {
                                   
                   Container(
                     height: MediaQuery.of(context).size.height / 11,
-                    width: 
-                    //188,
-                    MediaQuery.of(context).size.width / 1.92,
+                    width:  MediaQuery.of(context).size.width / 1.92,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       border: Border.all(color: Colors.black),
                     ),
                     child: Text(_quantity.toString(),style: TextStyle(fontSize: 42,fontWeight: FontWeight.bold),),
-                    // child: TextField(
-                    //     decoration: InputDecoration(
-                    //   isDense: true,
-                    //   hintText: _quantity.toString(),
-                    //   hintStyle:TextStyle(fontSize: 39, fontWeight: FontWeight.bold),
-                      
-                    // ),
-                    // ),
+           
                   ),
                   InkWell(
                     onTap: subtract,
