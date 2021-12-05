@@ -16,12 +16,14 @@ class Listtile_widget_language extends StatelessWidget {
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         onTap: () {
-          Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (context) => FirstPageScreen(),
-            ),
-          );
+
+          Scaffold.of(context).showSnackBar(SnackBar(content: Text("just available  in ENGLISH for now")));
+          // Navigator.push(
+          //   context,
+          //   new MaterialPageRoute(
+          //     builder: (context) => FirstPageScreen(),
+          //   ),
+         // );
         },
       ),
     );

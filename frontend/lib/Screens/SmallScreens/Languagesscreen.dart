@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
 import 'package:food_app/Widgets/listtile_widget_languages.dart';
 
-class LanguageScreen extends StatelessWidget {
+class LanguageScreen extends StatefulWidget {
   const LanguageScreen({Key? key}) : super(key: key);
   static const roteName = '/Languanges';
 
+  @override
+  State<LanguageScreen> createState() => _LanguageScreenState();
+}
+
+class _LanguageScreenState extends State<LanguageScreen> {
+    bool value = true;
+
+  Widget buildChckbox() => Checkbox(
+      value: value,
+      onChanged: (value) {
+          this.value = value!;
+        
+      });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +62,23 @@ class LanguageScreen extends StatelessWidget {
             thickness: .8,
             indent: 5,
           ),
-          Listtile_widget_language("English"),
-          Divider(
+InkWell(
+      child: ListTile(
+        leading: Text(
+          "English",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        trailing:buildChckbox() ,
+        onTap: () {
+          Navigator.push(
+            context,
+            new MaterialPageRoute(
+              builder: (context) => FirstPageScreen(),
+            ),
+          );
+        },
+      ),
+    ),          Divider(
             color: Colors.grey,
             height: 5,
             thickness: .8,
