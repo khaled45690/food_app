@@ -206,7 +206,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                     height: MediaQuery.of(context).size.height / 11,
                     width: 
                     //188,
-                    MediaQuery.of(context).size.width / 1.8,
+                    MediaQuery.of(context).size.width / 1.92,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       border: Border.all(color: Colors.black),
