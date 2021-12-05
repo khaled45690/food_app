@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 
-const port =5000;
+const port =4000;
 mongoose.connect('mongodb+srv://khwater:khwater@cluster0.bbitm.mongodb.net/khwaterDatabase?retryWrites=true&w=majority',
 
 {

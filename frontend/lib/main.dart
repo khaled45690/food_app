@@ -11,6 +11,7 @@ import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
+import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
@@ -21,6 +22,8 @@ void main() {
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => UserData()),
+                    ChangeNotifierProvider(create: (_) => CartItem()),
+
         ],
         child: const MyApp(),
       ),

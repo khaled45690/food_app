@@ -7,6 +7,7 @@ res.json({
     result: products.map(res=>{
        return{
         id:res.id,
+        price:res.price,
         name:res.name,
         desc:res.desc
        }
