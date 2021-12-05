@@ -9,7 +9,7 @@ class CartItem extends ChangeNotifier
   getProduct()async{
     var url =Uri.parse('http://localhost:4000/products');
     var res = await http.get(url);
-   if(res.statusCode ==200){
+   if(res.statusCode == 200){
      var jsonObj =json.decode(res.body);
      return jsonObj['result'];
    }

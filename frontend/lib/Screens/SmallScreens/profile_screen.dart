@@ -32,7 +32,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement initState
     super.initState();
     context.read<UserData>().getUserData();
-    userData =  context.read<UserData>().userData;
+
+  }
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    setState(() {
+      userData =  context.watch<UserData>().userData;
+    });
   }
 
   @override

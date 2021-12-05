@@ -30,7 +30,16 @@ onChange(value , VariableName){
     // TODO: implement initState
     super.initState();
     context.read<UserData>().getUserAddressData();
-    data =  context.read<UserData>().userAddressData;
+
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    setState(() {
+      data =  context.watch<UserData>().userAddressData;
+    });
   }
   @override
   Widget build(BuildContext context) {

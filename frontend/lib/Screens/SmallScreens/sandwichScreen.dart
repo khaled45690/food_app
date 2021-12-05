@@ -19,7 +19,7 @@ class SandwichScreen extends StatefulWidget {
 
 class _SandwichScreenState extends State<SandwichScreen> {
   int _quantity =0;
-  bool? _checked = false;
+  bool? _checked = true;
   bool? _checked1 = false;
     @override
         void initState() {
@@ -104,7 +104,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.white54,
+                      color: _checked1! ? Colors.green.shade100 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -117,7 +117,13 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       value: _checked1,
                       onChanged: (value) {
                           setState(() {
-                            _checked1 = value;
+
+                            if(value == true) {
+                              _checked1 = value;
+                             _checked = false ;
+                            }
+
+
                           });
                         
                       },
@@ -133,7 +139,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: Colors.white54,
+                      color:  _checked! ? Colors.green.shade100 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -146,7 +152,11 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       value: _checked,
                       onChanged: (value) {
                           setState(() {
-                            _checked = value;
+
+                            if(value == true) {
+                              _checked = value;
+                               _checked1 = false;
+                            }
                           });
                         
                       },
