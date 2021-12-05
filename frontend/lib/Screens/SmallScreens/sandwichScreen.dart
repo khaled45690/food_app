@@ -6,6 +6,8 @@ import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/largeOrxlage.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
+import 'package:food_app/models/CartItem.dart';
+import 'package:provider/provider.dart';
 
 class SandwichScreen extends StatefulWidget {
   const SandwichScreen({Key? key}) : super(key: key);
@@ -82,17 +84,9 @@ class _SandwichScreenState extends State<SandwichScreen> {
         children: [
           ListView(
             children: [
-              // Container(
-              //   height: MediaQuery.of(context).size.height / 3,
-              //   width: double.infinity,
-              //   decoration: BoxDecoration(
-              //       image: DecorationImage(
-              //     fit: BoxFit.fill,
-              //     image: AssetImage("assets/images/krs.jpg"),
-              //   )),
-              // ),
+      
               SizedBox(
-                height: 35,
+                height: 15,
               ),
           
               Row(
@@ -205,28 +199,32 @@ class _SandwichScreenState extends State<SandwichScreen> {
                 children: [Text("   Quantity",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                                   
                   Container(
-                    height: MediaQuery.of(context).size.height / 9,
-                    width: MediaQuery.of(context).size.width / 1.8,
+                    height: MediaQuery.of(context).size.height / 11,
+                    width: 
+                    //188,
+                    MediaQuery.of(context).size.width / 1.8,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       border: Border.all(color: Colors.black),
                     ),
-                    child: TextField(
-                        decoration: InputDecoration(
-                      isDense: true,
-                      hintText: _quantity.toString(),
-                      hintStyle:TextStyle(fontSize: 39, fontWeight: FontWeight.bold),
+                    child: Text(_quantity.toString(),style: TextStyle(fontSize: 42,fontWeight: FontWeight.bold),),
+                    // child: TextField(
+                    //     decoration: InputDecoration(
+                    //   isDense: true,
+                    //   hintText: _quantity.toString(),
+                    //   hintStyle:TextStyle(fontSize: 39, fontWeight: FontWeight.bold),
                       
-                    )),
+                    // ),
+                    // ),
                   ),
                   InkWell(
                     onTap: subtract,
                     child: Container(
-                        height: MediaQuery.of(context).size.height / 9,
+                        height: MediaQuery.of(context).size.height / 11,
                        width: MediaQuery.of(context).size.width /5,
                        decoration: BoxDecoration(
                         color: Colors.grey,
@@ -247,7 +245,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                     ),
                   ),
                   Container(
-                      height: MediaQuery.of(context).size.height / 9,
+                      height: MediaQuery.of(context).size.height / 11,
                      width: MediaQuery.of(context).size.width /5,
                      decoration: BoxDecoration(
                       color: Colors.grey,
@@ -274,7 +272,8 @@ class _SandwichScreenState extends State<SandwichScreen> {
                 bottom: 0,
                 child: Button_Widget("Add to cart", MediaQuery.of(context).size.width,
                     75, Colors.orange, () {
-               
+           CartItem cartItem = Provider.of<CartItem>(context,listen: false);
+                      cartItem.addProductsToCart([]);               
                 }),
               ),
         ],
