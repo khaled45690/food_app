@@ -5,10 +5,11 @@ const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const cors = require('cors');
 const ContactRouter = require('./route/contactsRouter');
+const ImageRouter = require('./route/ImageRouter');
 
 
 
-const port =4000;
+const port = 4000;
 mongoose.connect('mongodb+srv://khwater:khwater@cluster0.bbitm.mongodb.net/khwaterDatabase?retryWrites=true&w=majority',
 
 {
@@ -28,6 +29,12 @@ app.use(cors());
 app.use('/products',productRoute);
 
 app.use('/contacts', ContactRouter);
+
+app.use('/image', ImageRouter);
+app.use('/image', (req , res)=>{
+    console.log(req.url);
+    console.log("req.url");
+});
 
 
 app.listen(port,()=>{
