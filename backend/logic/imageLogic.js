@@ -1,7 +1,8 @@
 module.exports = {
-    imageResponse: async (req, res, next) => {
+    imageResponse:  (req, res, next) => {
         console.log(req.url); 
-        // var RD = fs.createReadStream(__dirname + '../images' + x +'.png');
+         console.log("req.url");
+
         res.end();
     },
 

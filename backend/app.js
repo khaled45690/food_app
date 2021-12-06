@@ -31,10 +31,10 @@ app.use('/products',productRoute);
 app.use('/contacts', ContactRouter);
 
 app.use('/image', ImageRouter);
-app.use('/image', (req , res)=>{
-    console.log(req.url);
-    console.log("req.url");
-});
+// app.use('/image', (req , res)=>{
+//     console.log(req.url);
+//     console.log("req.url");
+// });
 
 
 app.listen(port,()=>{
