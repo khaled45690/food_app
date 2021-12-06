@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 // ignore: file_names
+// ignore: file_names
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
@@ -31,39 +32,43 @@ class FirstPageSmallScreen extends StatelessWidget {
       body: Stack(children: [
         GoogleMap(
           initialCameraPosition:
-              const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 10),
+              const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 19),
           onMapCreated: (GoogleMapController googleMapController) =>
               onMapCreated(googleMapController),
           markers: myMarkers,
         ),
         Positioned(
           bottom: 0,
+          left: 0,
+          right: 0,
+        //  top: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 2.7,
-                width: MediaQuery.of(context).size.width / 1,
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 1.5,
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
+                  color: Colors.red,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage("assets/images/krs.jpg"),
+                   image: AssetImage("assets/images/krs.jpg"),
                   ),
                 ),
-                margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
+               margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
                 child: Stack(
                   children: [
                     Positioned(
-                      bottom: 0,
+                     bottom: 0,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Button_Widget(
                             "See Menu&Order",
-                            MediaQuery.of(context).size.width,
+                            MediaQuery.of(context).size.width/1.5,
                             40,
-                            Colors.grey,
+                            Colors.blueGrey,
                             () {
                               Navigator.push(
                                 context,
