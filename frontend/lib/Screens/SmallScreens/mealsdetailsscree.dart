@@ -94,7 +94,7 @@ class _MealScreenState extends State<MealScreen> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage("assets/images/di.jpg"),
+                  image: NetworkImage("http://192.168.1.6:4000/image?name=whiteFriday.jpg"),
                 )),
               ),
             ],

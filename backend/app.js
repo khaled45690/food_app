@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const cors = require('cors');
 const ContactRouter = require('./route/contactsRouter');
+const AddresseRouter = require('./route/addressesRouter');
+const OfferRouter = require('./route/offerRouter');
+
+
+
 const getImageRouter = require('./route/getImageRouter');
 
 
@@ -31,6 +36,8 @@ app.use('/products',productRoute);
 app.use('/contacts', ContactRouter);
 
 app.use('/image', getImageRouter);
+app.use('/address',AddresseRouter);
+app.use('/offer',OfferRouter);
 
 app.listen(port,()=>{
     console.log("it is working");
