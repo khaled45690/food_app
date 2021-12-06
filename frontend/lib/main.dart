@@ -20,14 +20,13 @@ import 'models/UserData.dart';
 
 void main() {
   runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => UserData()),
-                    ChangeNotifierProvider(create: (_) => CartItem()),
-
-        ],
-        child: const MyApp(),
-      ),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserData()),
+        ChangeNotifierProvider(create: (_) => CartItem()),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -54,7 +53,7 @@ class MyApp extends StatelessWidget {
         LanguageScreen.roteName: (ctx) => LanguageScreen(),
         Cartshopscreen.roteName: (ctx) => Cartshopscreen(),
         SandwichScreen.roteName: (ctx) => SandwichScreen(),
-        DeliveryScreen.roteName:(ctx)=>DeliveryScreen()
+        DeliveryScreen.roteName: (ctx) => DeliveryScreen()
       },
     );
   }

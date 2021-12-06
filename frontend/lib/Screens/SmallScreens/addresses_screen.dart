@@ -14,23 +14,22 @@ class Addresses_screen extends StatefulWidget {
 class _Addresses_screenState extends State<Addresses_screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Map data = {
-    "streetName":null,
-    "town":null,
-    "postcode":null,
+    "streetName": null,
+    "town": null,
+    "postcode": null,
   };
 
-onChange(value , VariableName){
-  setState(() {
-    data[VariableName] = value;
-  });
-}
+  onChange(value, VariableName) {
+    setState(() {
+      data[VariableName] = value;
+    });
+  }
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     context.read<UserData>().getUserAddressData();
-
   }
 
   @override
@@ -38,13 +37,12 @@ onChange(value , VariableName){
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     setState(() {
-      data =  context.watch<UserData>().userAddressData;
+      data = context.watch<UserData>().userAddressData;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
@@ -98,7 +96,9 @@ onChange(value , VariableName){
                             labelText:
                                 //streetNamme.text
                                 //==null ?
-                            data["streetName"] == null ? "Street name & number*" : data["streetName"],
+                                data["streetName"] == null
+                                    ? "Street name & number*"
+                                    : data["streetName"],
                             // : notesController.text
 
                             isDense: true,
@@ -111,8 +111,8 @@ onChange(value , VariableName){
                                   BorderSide(color: Colors.yellow, width: 5),
                             ),
                           ),
-                          onChanged: (streetName) =>
-                              setState(() =>  onChange(streetName , "streetName")),
+                          onChanged: (streetName) => setState(
+                              () => onChange(streetName, "streetName")),
                         ),
                       ),
                       SizedBox(
@@ -131,7 +131,9 @@ onChange(value , VariableName){
                             return null;
                           },
                           decoration: InputDecoration(
-                            labelText: data["town"] == null ? "Street name & number*" : data["town"],
+                            labelText: data["town"] == null
+                                ? "Street name & number*"
+                                : data["town"],
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderSide:
@@ -143,7 +145,7 @@ onChange(value , VariableName){
                             ),
                           ),
                           onChanged: (town) =>
-                              setState(() => onChange(town , "town")),
+                              setState(() => onChange(town, "town")),
                         ),
                       ),
                       SizedBox(
@@ -152,33 +154,34 @@ onChange(value , VariableName){
                       Container(
                         width: 350,
                         child: TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter a number';
-                            }
-                            if (double.tryParse(value) == null) {
-                              return 'please enter a valid number';
-                            }
-                            if (value.characters == 7) {
-                              return 'non valid';
-                            }
-                          },
-                          decoration: InputDecoration(
-                            labelText:
-                            data["postcode"] == null ? "Postcode, Block,intercom where tp park*" : data["postcode"] ,
-                            isDense: true,
-                            border: OutlineInputBorder(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'please enter a number';
+                              }
+                              if (double.tryParse(value) == null) {
+                                return 'please enter a valid number';
+                              }
+                              if (value.characters == 7) {
+                                return 'non valid';
+                              }
+                            },
+                            decoration: InputDecoration(
+                              labelText: data["postcode"] == null
+                                  ? "Postcode, Block,intercom where tp park*"
+                                  : data["postcode"],
+                              isDense: true,
+                              border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.grey, width: 5)),
+                              prefixIcon: Icon(Icons.info),
+                              disabledBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.grey, width: 5)),
-                            prefixIcon: Icon(Icons.info),
-                            disabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.yellow, width: 5),
+                                    BorderSide(color: Colors.yellow, width: 5),
+                              ),
                             ),
-                          ),
-                          onChanged: (postcode) =>
-                              setState(() => onChange(postcode , "postcode"))),
-                        ),
+                            onChanged: (postcode) =>
+                                setState(() => onChange(postcode, "postcode"))),
+                      ),
                     ],
                   ),
                 ),

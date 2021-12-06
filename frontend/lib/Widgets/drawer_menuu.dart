@@ -96,8 +96,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                       builder: (context) => LanguageScreen(),
                     ),
                   );
-                }
-                ),
+                }),
                 Inkwekk("Terms", 24, 24, Icons.border_inner_outlined, () {
                   Navigator.push(
                     context,

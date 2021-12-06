@@ -21,25 +21,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
     "email": null,
     "telephone": null,
   };
-  onChange(value , String variableName){
+  onChange(value, String variableName) {
     setState(() {
       data[variableName] = value;
     });
-
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     context.read<UserData>().getUserData();
-
   }
+
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     setState(() {
-      userData =  context.watch<UserData>().userData;
+      userData = context.watch<UserData>().userData;
     });
   }
 
@@ -78,11 +78,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextField_Widget(
-                              userData["firstName"] == null ? "Fist Name*" : userData["firstName"],
+                              userData["firstName"] == null
+                                  ? "Fist Name*"
+                                  : userData["firstName"],
                               Icons.person,
                               MediaQuery.of(context).size.width / 2.3,
                               (value) {
-                                onChange(value , "firstName");
+                                onChange(value, "firstName");
                                 if (value!.isEmpty) {
                                   return 'please enter your name';
                                 }
@@ -97,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: MediaQuery.of(context).size.width / 2.3,
                               child: TextFormField(
                                 validator: (value) {
-                                  onChange(value , "lastName");
+                                  onChange(value, "lastName");
                                   if (value!.isEmpty) {
                                     return 'please enter your name';
                                   }
@@ -107,7 +109,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                    labelText:userData["lastName"] == null ? "Last Name*" : userData["lastName"],
+                                    labelText: userData["lastName"] == null
+                                        ? "Last Name*"
+                                        : userData["lastName"],
                                     isDense: true,
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -125,11 +129,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                          userData["email"] == null ? "E-mail*" : userData["email"] ,
+                          userData["email"] == null
+                              ? "E-mail*"
+                              : userData["email"],
                           Icons.email,
                           MediaQuery.of(context).size.width / 1.15,
                           (value) {
-                            onChange(value , "email");
+                            onChange(value, "email");
                             if (value!.isEmpty) {
                               return 'please enter your Email';
                             }
@@ -141,11 +147,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                          userData["telephone"] == null ? "Telephone*" : userData["telephone"] ,
+                          userData["telephone"] == null
+                              ? "Telephone*"
+                              : userData["telephone"],
                           Icons.phone,
                           MediaQuery.of(context).size.width / 1.15,
                           (value) {
-                            onChange(value , "telephone");
+                            onChange(value, "telephone");
                             if (value!.isEmpty) {
                               return 'please enter a number';
                             }

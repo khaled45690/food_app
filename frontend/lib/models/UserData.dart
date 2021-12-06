@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -16,7 +15,6 @@ class UserData with ChangeNotifier {
     notifyListeners();
   }
 
-
   Map _userAddressData = {};
 
   Map get userAddressData => _userAddressData;
@@ -25,30 +23,35 @@ class UserData with ChangeNotifier {
     _userAddressData = userAddressDataParameter;
     notifyListeners();
   }
-  void getUserData()async{
+
+  void getUserData() async {
     final SharedPreferences prefs = await _prefs;
-    userData = jsonDecode(prefs.getString("userData") == null ? jsonEncode(_userAddressData) : prefs.getString("userData")!);
+    userData = jsonDecode(prefs.getString("userData") == null
+        ? jsonEncode(_userAddressData)
+        : prefs.getString("userData")!);
     notifyListeners();
   }
-  void setUserDataFunc(Map UserDataParameter) async{
+
+  void setUserDataFunc(Map UserDataParameter) async {
     userData = UserDataParameter;
     final SharedPreferences prefs = await _prefs;
     prefs.setString("userData", jsonEncode(UserDataParameter));
     notifyListeners();
   }
 
-  setUserAddressDataFunc(Map userAddressDataParameter) async{
+  setUserAddressDataFunc(Map userAddressDataParameter) async {
     userAddressData = userAddressDataParameter;
     final SharedPreferences prefs = await _prefs;
     prefs.setString("userAddressData", jsonEncode(userAddressDataParameter));
     notifyListeners();
   }
 
-  getUserAddressData()async{
-
+  getUserAddressData() async {
     final SharedPreferences prefs = await _prefs;
     print(prefs.getString("userAddressData"));
-    userAddressData = jsonDecode(prefs.getString("userAddressData") == null ? jsonEncode(_userAddressData) : prefs.getString("userAddressData")!) ;
+    userAddressData = jsonDecode(prefs.getString("userAddressData") == null
+        ? jsonEncode(_userAddressData)
+        : prefs.getString("userAddressData")!);
     notifyListeners();
   }
 }

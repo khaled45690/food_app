@@ -48,12 +48,12 @@ class _ShowMenuState extends State<ShowMenu> {
 
             IconButton(
               onPressed: () {
-                   Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                      builder: (context) => DeliveryScreen(),
-                    ),
-                  );
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => DeliveryScreen(),
+                  ),
+                );
               },
               icon: Icon(
                 Icons.info_outline,

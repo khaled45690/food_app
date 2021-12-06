@@ -18,17 +18,14 @@ class SandwichScreen extends StatefulWidget {
 }
 
 class _SandwichScreenState extends State<SandwichScreen> {
-  int _quantity =0;
+  int _quantity = 0;
   bool? _checked = true;
   bool? _checked1 = false;
-    @override
-        void initState() {
-
+  @override
+  void initState() {
     super.initState();
-    if (_checked== _checked1)
-
-    {
-      _checked !=_checked1;
+    if (_checked == _checked1) {
+      _checked != _checked1;
     }
   }
 
@@ -84,11 +81,9 @@ class _SandwichScreenState extends State<SandwichScreen> {
         children: [
           ListView(
             children: [
-      
               SizedBox(
                 height: 15,
               ),
-          
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -116,16 +111,12 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       dense: true,
                       value: _checked1,
                       onChanged: (value) {
-                          setState(() {
-
-                            if(value == true) {
-                              _checked1 = value;
-                             _checked = false ;
-                            }
-
-
-                          });
-                        
+                        setState(() {
+                          if (value == true) {
+                            _checked1 = value;
+                            _checked = false;
+                          }
+                        });
                       },
                       activeColor: Colors.green,
                       controlAffinity: ListTileControlAffinity.leading,
@@ -139,7 +130,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color:  _checked! ? Colors.green.shade100 : Colors.white,
+                      color: _checked! ? Colors.green.shade100 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -151,19 +142,15 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       dense: true,
                       value: _checked,
                       onChanged: (value) {
-                          setState(() {
-
-                            if(value == true) {
-                              _checked = value;
-                               _checked1 = false;
-                            }
-                          });
-                        
+                        setState(() {
+                          if (value == true) {
+                            _checked = value;
+                            _checked1 = false;
+                          }
+                        });
                       },
                       activeColor: Colors.green,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        
-
+                      controlAffinity: ListTileControlAffinity.leading,
                     ),
                   ),
                 ],
@@ -171,7 +158,6 @@ class _SandwichScreenState extends State<SandwichScreen> {
               SizedBox(
                 height: 30,
               ),
-
               Row(
                 children: [
                   Text(
@@ -206,92 +192,96 @@ class _SandwichScreenState extends State<SandwichScreen> {
                 height: 35,
               ),
               Row(
-                children: [Text("   Quantity",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)],
+                children: [
+                  Text(
+                    "   Quantity",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  )
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                                  
                   Container(
                     height: MediaQuery.of(context).size.height / 11,
-                    width:  MediaQuery.of(context).size.width / 1.92,
+                    width: MediaQuery.of(context).size.width / 1.92,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Text(_quantity.toString(),style: TextStyle(fontSize: 42,fontWeight: FontWeight.bold),),
-           
+                    child: Text(
+                      _quantity.toString(),
+                      style:
+                          TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   InkWell(
                     onTap: subtract,
                     child: Container(
-                        height: MediaQuery.of(context).size.height / 11,
-                       width: MediaQuery.of(context).size.width /5,
-                       decoration: BoxDecoration(
+                      height: MediaQuery.of(context).size.height / 11,
+                      width: MediaQuery.of(context).size.width / 5,
+                      decoration: BoxDecoration(
                         color: Colors.grey,
                         border: Border.all(color: Colors.black),
                       ),
                       child: GestureDetector(
-                        onTap: subtract,
-                        child: SizedBox(
-                          child: Icon(Icons.remove,size: 30,color: Colors.white,),
-                          height: 28,
-                          
-                        )
-                        
-                      ),
-                      
-                  
-                  
+                          onTap: subtract,
+                          child: SizedBox(
+                            child: Icon(
+                              Icons.remove,
+                              size: 30,
+                              color: Colors.white,
+                            ),
+                            height: 28,
+                          )),
                     ),
                   ),
                   Container(
-                      height: MediaQuery.of(context).size.height / 11,
-                     width: MediaQuery.of(context).size.width /5,
-                     decoration: BoxDecoration(
+                    height: MediaQuery.of(context).size.height / 11,
+                    width: MediaQuery.of(context).size.width / 5,
+                    decoration: BoxDecoration(
                       color: Colors.grey,
                       border: Border.all(color: Colors.black),
                     ),
-
                     child: GestureDetector(
-                      onTap: add,
-                      child: SizedBox(
-                        child: Icon(Icons.add,size: 30,color: Colors.white,),
-                        height: 28,
-                        
-                      )
-                      
-                    ),
-
+                        onTap: add,
+                        child: SizedBox(
+                          child: Icon(
+                            Icons.add,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                          height: 28,
+                        )),
                   ),
-              
                 ],
               )
             ],
           ),
-                 Positioned(
-                bottom: 0,
-                child: Button_Widget("Add to cart", MediaQuery.of(context).size.width,
-                    75, Colors.orange, () {
-           CartItem cartItem = Provider.of<CartItem>(context,listen: false);
-                      cartItem.addProductsToCart([]);               
-                }),
-              ),
+          Positioned(
+            bottom: 0,
+            child: Button_Widget("Add to cart",
+                MediaQuery.of(context).size.width, 75, Colors.orange, () {
+              CartItem cartItem = Provider.of<CartItem>(context, listen: false);
+              cartItem.addProductsToCart([]);
+            }),
+          ),
         ],
       ),
     );
   }
-  subtract(){
-  setState(() {
-    if(_quantity>0){
-    _quantity --;
-  }
-  });
-}
-add(){
-  setState(() {
-    _quantity++;
-  });
-}
-}
 
+  subtract() {
+    setState(() {
+      if (_quantity > 0) {
+        _quantity--;
+      }
+    });
+  }
+
+  add() {
+    setState(() {
+      _quantity++;
+    });
+  }
+}

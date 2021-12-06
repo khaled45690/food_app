@@ -11,13 +11,12 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-    bool value = true;
+  bool value = true;
 
   Widget buildChckbox() => Checkbox(
       value: value,
       onChanged: (value) {
-          this.value = value!;
-        
+        this.value = value!;
       });
   @override
   Widget build(BuildContext context) {
@@ -62,23 +61,24 @@ class _LanguageScreenState extends State<LanguageScreen> {
             thickness: .8,
             indent: 5,
           ),
-InkWell(
-      child: ListTile(
-        leading: Text(
-          "English",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-        trailing:buildChckbox() ,
-        onTap: () {
-          Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (context) => FirstPageScreen(),
+          InkWell(
+            child: ListTile(
+              leading: Text(
+                "English",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              trailing: buildChckbox(),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => FirstPageScreen(),
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
-    ),          Divider(
+          ),
+          Divider(
             color: Colors.grey,
             height: 5,
             thickness: .8,
@@ -98,7 +98,7 @@ InkWell(
             thickness: .8,
             indent: 5,
           ),
-          Listtile_widget_language("herbrew"),
+          Listtile_widget_language("hebrew"),
           Divider(
             color: Colors.grey,
             height: 5,
