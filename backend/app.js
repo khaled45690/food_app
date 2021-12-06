@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 const cors = require('cors');
+const ContactRouter = require('./route/contactsRouter');
 
 
 
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use('/products',productRoute);
 
+app.use('/contacts', ContactRouter);
 
 
 app.listen(port,()=>{
