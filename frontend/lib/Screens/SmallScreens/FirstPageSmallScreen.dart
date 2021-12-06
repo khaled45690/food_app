@@ -21,9 +21,11 @@ class FirstPageSmallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.grey,size: 40),
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         centerTitle: true,
