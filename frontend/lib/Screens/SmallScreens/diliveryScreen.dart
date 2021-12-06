@@ -1,6 +1,9 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Widgets/vdivider.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DeliveryScreen extends StatefulWidget {
   static const roteName = '/DeliveryScreen';
@@ -10,6 +13,23 @@ class DeliveryScreen extends StatefulWidget {
 }
 
 class _DeliveryScreenState extends State<DeliveryScreen> {
+  var myMarkers = HashSet<Marker>(); //collection
+  onMapCreated(GoogleMapController googleMapController) {
+    setState(() {
+      myMarkers.add(
+        Marker(
+          markerId: const MarkerId('1'),
+          position: const LatLng(31.2001, 29.9187),
+          visible: true,
+          infoWindow: InfoWindow(
+            title: 'خواطر دمشقيه',
+            onTap: () {},
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +55,13 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                 height: MediaQuery.of(context).size.height / 2.7,
                 width: MediaQuery.of(context).size.width / 1.1,
                 color: Colors.red,
+                child:  GoogleMap(
+                  initialCameraPosition:
+                  const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 10),
+                  onMapCreated: (GoogleMapController googleMapController) =>
+                      onMapCreated(googleMapController),
+                  markers: myMarkers,
+                ),
               ),
             ],
           ),
@@ -253,7 +280,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
           ),
           SizedBox(
             height: 20,
-          )
+          ),
         ],
       ),
     );
