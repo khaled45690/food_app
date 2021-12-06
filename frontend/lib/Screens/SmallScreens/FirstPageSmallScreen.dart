@@ -34,7 +34,7 @@ class FirstPageSmallScreen extends StatelessWidget {
       body: Stack(children: [
         GoogleMap(
           initialCameraPosition:
-              const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 19),
+              const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 10),
           onMapCreated: (GoogleMapController googleMapController) =>
               onMapCreated(googleMapController),
           markers: myMarkers,

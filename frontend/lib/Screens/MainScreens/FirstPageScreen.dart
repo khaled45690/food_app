@@ -28,6 +28,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
           infoWindow: InfoWindow(
             title: 'خواطر دمشقيه',
             onTap: () {},
+            
           ),
         ),
       );

@@ -99,7 +99,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: _checked1! ? Colors.green.shade100 : Colors.white,
+                      color: _checked1! ? Colors.blue.shade50 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -118,7 +118,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                           }
                         });
                       },
-                      activeColor: Colors.green,
+                      activeColor: Colors.blueGrey,
                       controlAffinity: ListTileControlAffinity.leading,
                     ),
                   ),
@@ -130,7 +130,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: _checked! ? Colors.green.shade100 : Colors.white,
+                      color: _checked! ? Colors.blue.shade50 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -149,7 +149,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                           }
                         });
                       },
-                      activeColor: Colors.green,
+                      activeColor: Colors.blueGrey,
                       controlAffinity: ListTileControlAffinity.leading,
                     ),
                   ),
