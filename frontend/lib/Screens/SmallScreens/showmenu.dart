@@ -36,6 +36,7 @@ class _ShowMenuState extends State<ShowMenu> {
       });
     }
   }
+  
 
    getOffers() async {
      var url = Uri.parse('${serverURL}offer');
@@ -58,6 +59,7 @@ class _ShowMenuState extends State<ShowMenu> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar_ShowMenu(),
       body: ListView(

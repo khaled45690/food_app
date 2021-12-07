@@ -8,7 +8,7 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.grey,size: 30),
       backgroundColor: Colors.white54,
       shadowColor: Colors.white54,
       actions: <Widget>[

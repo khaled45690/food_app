@@ -1,12 +1,35 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/mealsdetailsscree.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:food_app/contant/constant.dart';
+import 'package:http/http.dart' as http;
 
-class MealWidget extends StatelessWidget {
+
+class MealWidget extends StatefulWidget {
   final String imagee;
 
   MealWidget(this.imagee);
 
+  @override
+  State<MealWidget> createState() => _MealWidgetState();
+}
+
+class _MealWidgetState extends State<MealWidget> {
+     List offersList = [];
+
+   getOffers() async {
+     var url = Uri.parse('${serverURL}offer');
+     var res = await http.get(url);
+     if (res.statusCode == 200) {
+       var jsonObj = json.decode(res.body);
+       setState(() {
+         offersList = jsonObj['result'];
+         print(offersList);
+       });
+     }
+   }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +39,7 @@ class MealWidget extends StatelessWidget {
         shape: BoxShape.rectangle,
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: Image.network(imagee).image,
+          image: Image.network(widget.imagee).image,
         ),
       ),
       margin: EdgeInsets.fromLTRB(20, 8, 20, 8),
@@ -129,11 +152,11 @@ class MealWidget extends StatelessWidget {
                   MediaQuery.of(context).size.width / 2.25,
                   MediaQuery.of(context).size.height / 13,
                   Colors.orange, () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (context) => MealScreen(),
-                  ),
+  
+                for(int i = 0; i < offersList.length; i++)
+                
+                Navigator.pushNamed(context, MealScreen.roteName,
+                arguments: {offersList[i]["id"] }
                 );
               })
             ],
