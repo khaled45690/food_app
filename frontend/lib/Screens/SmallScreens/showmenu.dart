@@ -1,16 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
-import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
-import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Widgets/AppBar_ShowMenu.dart';
 import 'package:food_app/Widgets/OfferDetailsWidget.dart';
-import 'package:food_app/Widgets/button_widget.dart';
-import 'package:food_app/Widgets/divider.dart';
-import 'package:food_app/Widgets/listtile_widget.dart';
 import 'package:food_app/Widgets/meal_widget.dart';
-import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/contant/constant.dart';
 import 'package:http/http.dart' as http;
 
@@ -77,7 +70,7 @@ class _ShowMenuState extends State<ShowMenu> {
             height: 20,
           ),
           for(int i = 0; i < offersList.length; i++)
-            MealWidget("${serverURL}image?name=${offersList[i]["imagename"]}"),
+            MealWidget(offersList[i]),
           for (int i = 0; i < productsList.length; i++)
             OfferDetailsWidget(productsList[i]),
         ],

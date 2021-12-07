@@ -3,7 +3,10 @@ import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
 import 'package:food_app/Widgets/vdivider.dart';
 class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
-  const AppBar_ShowMenu({Key? key}) : super(key: key);
+  final String? imageName;
+
+  const AppBar_ShowMenu({this.imageName});
+  // const AppBar_ShowMenu({imageName : this.imageName});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
                   left: 25,
                 ),
                 child: Text(
-                  "خواطر دمشقيه",
+                  imageName != null ? imageName! :"خواطر دمشقيه",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

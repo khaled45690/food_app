@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
-import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
-import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
