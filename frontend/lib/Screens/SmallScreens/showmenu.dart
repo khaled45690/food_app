@@ -16,9 +16,8 @@ class ShowMenu extends StatefulWidget {
 }
 
 class _ShowMenuState extends State<ShowMenu> {
-   List productsList = [];
+   List productsList = ["da" , "sad" , "Da"];
    List offersList = [];
-
   getProduct() async {
     var url = Uri.parse('${serverURL}products');
     var res = await http.get(url);
