@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Appbarr_widget extends StatelessWidget {
+class Appbar_widget extends StatelessWidget with PreferredSizeWidget {
 //   final String name ;
 //  const Appbarr_widget(this.name);
 
@@ -17,4 +17,8 @@ class Appbarr_widget extends StatelessWidget {
       backgroundColor: Colors.white,
     );
   }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
 }

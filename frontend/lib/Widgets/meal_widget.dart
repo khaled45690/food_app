@@ -16,16 +16,16 @@ class MealWidget extends StatelessWidget {
         shape: BoxShape.rectangle,
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(imagee),
+          image: Image.network(imagee).image,
         ),
       ),
       margin: EdgeInsets.fromLTRB(20, 8, 20, 8),
       child: Column(
         children: [
           Text(
-            "عرض الزياده ب100 جنيه                             ",
+            "عرض الزياده ب100 جنيه",
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25 ,),
           ),
           Spacer(),
           Spacer(),

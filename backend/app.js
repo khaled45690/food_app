@@ -32,9 +32,7 @@ app.use(cors());
 
 
 app.use('/products',productRoute);
-
 app.use('/contacts', ContactRouter);
-
 app.use('/image', getImageRouter);
 app.use('/address',AddresseRouter);
 app.use('/offer',OfferRouter);

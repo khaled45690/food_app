@@ -13,8 +13,6 @@ module.exports = {
             id: offers.id,
             imagename: offers.imagename,
             description: offers.description,
-            
-
         });
     },
     getOffers: async (req, res) => {
