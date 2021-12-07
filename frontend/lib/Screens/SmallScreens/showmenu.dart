@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
@@ -7,6 +9,7 @@ import 'package:food_app/Widgets/divider.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
 import 'package:food_app/Widgets/meal_widget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
+import 'package:http/http.dart' as http;
 
 class ShowMenu extends StatefulWidget {
   const ShowMenu({Key? key}) : super(key: key);
@@ -17,8 +20,27 @@ class ShowMenu extends StatefulWidget {
 }
 
 class _ShowMenuState extends State<ShowMenu> {
+
+
+
+  @override
+  void initState() {
+    super.initState();
+      getProduct() async {
+    var url = Uri.parse('http://192.168.1.6:4000/products');
+    var res = await http.get(url);
+    if (res.statusCode == 200) {
+      var jsonObj = json.decode(res.body);
+      print(jsonObj['result']);
+      return jsonObj['result'];
+    }
+  }
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
@@ -96,9 +118,16 @@ class _ShowMenuState extends State<ShowMenu> {
             height: 20,
           ),
           MealWidget("assets/images/zz.jpg"),
-          MealWidget("assets/images/zzz.jpg"),
-          MealWidget("assets/images/zzz.jpg"),
-          Listtile_widet("شاورما فراخ", "32", () {}),
+        //  MealWidget("assets/images/zzz.jpg"),
+        //  MealWidget("assets/images/zzz.jpg"),
+          Listtile_widet("شاورما فراخ", "32", () {
+               Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (context) => SandwichScreen(),
+              ),
+            );
+          }),
           Divider(
             color: Colors.grey,
           ),

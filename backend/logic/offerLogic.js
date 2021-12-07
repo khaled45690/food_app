@@ -29,5 +29,10 @@ module.exports = {
                 }
             })
         });
+    },
+    deleteoffer:async(req, res)=>{
+        const id = req.params.id;
+        const del = await OFFERS.findByIdAndRemove(id);
+        res.json({"delete" : del});
     }
 }

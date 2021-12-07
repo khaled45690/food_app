@@ -30,5 +30,10 @@ module.exports = {
                 }
             })
         });
+    },
+    deleteAddresse:async(req, res)=>{
+        const id = req.params.id;
+        const del = await ADDRESSES.findByIdAndRemove(id);
+        res.json({"delete" : del});
     }
 }

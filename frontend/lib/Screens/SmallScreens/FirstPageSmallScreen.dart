@@ -87,7 +87,7 @@ class FirstPageSmallScreen extends StatelessWidget {
             ],
           ),
         ),
-         Image.network("http://192.168.1.6:4000/image?name=whiteFriday.jpg"),
+   //      Image.network("http://192.168.1.6:4000/image?name=whiteFriday.jpg"),
       ]),
     );
   }

@@ -91,11 +91,11 @@ class _MealScreenState extends State<MealScreen> {
               Container(
                 height: MediaQuery.of(context).size.height / 4,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage("http://192.168.1.6:4000/image?name=whiteFriday.jpg"),
-                )),
+                // decoration: BoxDecoration(
+                //     image: DecorationImage(
+                //   fit: BoxFit.fill,
+                //   image: NetworkImage("http://192.168.1.6:4000/image?name=whiteFriday.jpg"),
+                // )),
               ),
             ],
           )
