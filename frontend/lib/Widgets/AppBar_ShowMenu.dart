@@ -16,7 +16,6 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
       shadowColor: Colors.white54,
       actions: <Widget>[
         Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          //   Divider_widget(),
           Stack(
             children: [
               Padding(

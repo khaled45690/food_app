@@ -29,7 +29,7 @@ class _MealScreenState extends State<MealScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar_ShowMenu(imageName: offerInfo["imagename"],),
+      appBar: AppBar_ShowMenu(imageName: offerInfo["description"],),
       body: ListView(
         children: [
           Container(
@@ -46,7 +46,7 @@ class _MealScreenState extends State<MealScreen> {
               Row(
                 children: [
                   Text(
-                    "       العروض اليوميه",
+                    "العروض اليوميه",
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -54,7 +54,7 @@ class _MealScreenState extends State<MealScreen> {
               Row(
                 children: [
                   Text(
-                    "        اقوي العروض و الخصومات لايام محدوده",
+                    "اقوي العروض و الخصومات لايام محدوده",
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ],
