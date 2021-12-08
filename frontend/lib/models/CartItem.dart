@@ -11,9 +11,15 @@ class CartItem extends ChangeNotifier {
    }
 
   addCartItem(Map productInfo){
-    _cartList.add(productInfo);
-          //notifyListeners();
-
+     print(_cartList.any((element) => element["id"] == productInfo["id"]));
+     if( _cartList.any((element) => element["id"] == productInfo["id"])){
+       removeCartItem(productInfo);
+       addCartItem(productInfo);
+     }else{
+       _cartList.add(productInfo);
+     }
+    notifyListeners();
+    print(_cartList);
   }
 
   removeCartItem(Map productInfo){

@@ -235,12 +235,12 @@ class _SandwichScreenState extends State<SandwichScreen> {
             bottom: 0,
             child: Button_Widget("Add to cart",
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
-              CartItem cartItem = Provider.of<CartItem>(context, listen: false);
+              CartItem cartItem = Provider.of<CartItem>(context , listen: false);
                print(ProductInfo);
                cartItem.addCartItem(ProductInfo);
-              cartItem.cartList.add(ProductInfo);
+              // cartItem.cartList.add(ProductInfo);
                      print("object");
-                    print(cartItem.cartList);
+                    print(cartItem.addCartItem(ProductInfo));
               
 
            //   cartItem.addCartItem(ProductInfo);
