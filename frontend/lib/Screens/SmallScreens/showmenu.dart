@@ -16,7 +16,7 @@ class ShowMenu extends StatefulWidget {
 }
 
 class _ShowMenuState extends State<ShowMenu> {
-   List productsList = ["da" , "sad" , "Da"];
+   List productsList = [];
    List offersList = [];
   getProduct() async {
     var url = Uri.parse('${serverURL}products');
@@ -37,7 +37,7 @@ class _ShowMenuState extends State<ShowMenu> {
        var jsonObj = json.decode(res.body);
        setState(() {
          offersList = jsonObj['result'];
-         print(offersList);
+     //    print(offersList);
        });
      }
    }
@@ -70,8 +70,8 @@ class _ShowMenuState extends State<ShowMenu> {
           ),
           for(int i = 0; i < offersList.length; i++)
             MealWidget(offersList[i]),
-          for (int i = 0; i < productsList.length; i++)
-            OfferDetailsWidget(productsList[i]),
+           for (int i = 0; i < productsList.length; i++)
+             OfferDetailsWidget(productsList[i]),
         ],
       ),
     );

@@ -6,12 +6,14 @@ class CartItem extends ChangeNotifier {
 
   List get cartList => _cartList;
    set cartList(List cartListParameter){
-     _cartList = cartListParameter;
+    _cartList = cartListParameter;
      notifyListeners();
    }
 
   addCartItem(Map productInfo){
     _cartList.add(productInfo);
+          //notifyListeners();
+
   }
 
   removeCartItem(Map productInfo){
@@ -22,8 +24,11 @@ class CartItem extends ChangeNotifier {
 
 
       }else{
-        filter.add(productInfo)
+        filter.add(productInfo),
+             notifyListeners()
+
       }
+      
     });
     cartList = filter;
   }
