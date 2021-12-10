@@ -9,7 +9,10 @@ res.json({
         id:res.id,
         price:res.price,
         name:res.name,
-        desc:res.desc
+        desc:res.desc,
+        quantity:res.quantity,
+        large:res.large,
+        xlarge:res.xlarge
        }
     })
 })

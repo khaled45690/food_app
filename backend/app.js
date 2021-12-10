@@ -14,7 +14,7 @@ const getImageRouter = require('./route/getImageRouter');
 
 
 
-const port = 4000;
+//const port = 4000;
 mongoose.connect('mongodb+srv://khwater:khwater@cluster0.bbitm.mongodb.net/khwaterDatabase?retryWrites=true&w=majority',
 
 {
@@ -36,8 +36,8 @@ app.use('/contacts', ContactRouter);
 app.use('/image', getImageRouter);
 app.use('/address',AddresseRouter);
 app.use('/offer',OfferRouter);
-
-app.listen(port,()=>{
+var Port = process.env.Port || 8080
+app.listen(Port,()=>{
     console.log("it is working");
 })
 
