@@ -66,18 +66,18 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               SizedBox(
                 height: 35,
               ),
+              context.watch<CartItem>().cartList.length == 0  ? Text("Cart is empty",style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)
+                  :
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for(int i = 0; i  < productList.length ; i++)
-                  productList.length == 0  ? Text("Cart is empty",style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)
-                   :
+                  for(int i = 0; i  < context.read<CartItem>().cartList.length ; i++)
                    Row(             
                      mainAxisAlignment: MainAxisAlignment.start,
                      children: [
 
-                     Text(' ${productList[i]["quantity"]}\*'.toString() ,style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
-                     Text(productList[i]["name"]??'..',style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
+                     Text(' ${context.watch<CartItem>().cartList[i]["quantity"]}\*'.toString() ,style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
+                     Text(context.watch<CartItem>().cartList[i]["name"]??'..',style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
                       
                        
                        
@@ -87,11 +87,11 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                          children: [
                            Row(
                              children: [
-                         Text("\$ ${productList[i]['price']*productList[i]["quantity"]}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                         Text("\$ ${context.watch<CartItem>().cartList[i]['price']*context.watch<CartItem>().cartList[i]["quantity"]}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
 
                                IconButton(onPressed: (){
                             CartItem cartItem = Provider.of<CartItem>(context , listen: false);
-                            cartItem.removeCartItem(productInfo);
+                            cartItem.removeCartItem(context.read<CartItem>().cartList[i]);
 
                                }, icon: Icon(Icons.close,color: Colors.red,)),
                              ],
