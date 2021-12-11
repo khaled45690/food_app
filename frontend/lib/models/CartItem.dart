@@ -24,19 +24,20 @@ class CartItem extends ChangeNotifier {
 
   removeCartItem(Map productInfo){
     List filter = [];
-    _cartList.map((e) => {
+   cartList.map((e) => {
       if(e["id"] == productInfo["id"]){
 
 
 
       }else{
-        filter.add(productInfo),
-             notifyListeners()
+        filter.add(e),
 
       }
       
     });
     cartList = filter;
+                 notifyListeners();
+
   }
 
 
