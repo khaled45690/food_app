@@ -11,7 +11,6 @@ class CartItem extends ChangeNotifier {
    }
 
   addCartItem(Map productInfo){
-     print(_cartList.any((element) => element["id"] == productInfo["id"]));
      if( _cartList.any((element) => element["id"] == productInfo["id"])){
        removeCartItem(productInfo);
        addCartItem(productInfo);
@@ -24,19 +23,15 @@ class CartItem extends ChangeNotifier {
 
   removeCartItem(Map productInfo){
     List filter = [];
-    _cartList.map((e) => {
+    cartList.forEach((e) {
       if(e["id"] == productInfo["id"]){
-
-
-
       }else{
-        filter.add(productInfo),
-             notifyListeners()
-
-      }
-      
+        filter.add(e);
+    }
     });
+
     cartList = filter;
+    notifyListeners();
   }
 
 
