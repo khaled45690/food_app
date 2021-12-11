@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/textfield_widget.dart';
@@ -24,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     "email": null,
     "telephone": null,
   };
-  onChange(value, String variableName) {
+  onChange(value,  variableName) {
     setState(() {
       data[variableName] = value;
     });

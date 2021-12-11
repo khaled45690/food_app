@@ -22,15 +22,17 @@ class CartItem extends ChangeNotifier {
   }
 
   removeCartItem(Map productInfo){
-    List filter = [];
+    var toRemove =[];
     cartList.forEach((e) {
       if(e["id"] == productInfo["id"]){
+        toRemove.remove(e);
+        
       }else{
-        filter.add(e);
+        toRemove.add(e);
     }
     });
 
-    cartList = filter;
+    cartList.removeWhere((e) => toRemove.contains(e));
     notifyListeners();
   }
 

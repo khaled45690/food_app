@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:core';
+import 'dart:core';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -246,15 +248,16 @@ class _SandwichScreenState extends State<SandwichScreen> {
             child: Button_Widget("Add to cart",
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
               CartItem cartItem = Provider.of<CartItem>(context , listen: false);
+
        
              
 
                print(ProductInfo);
                cartItem.addCartItem(ProductInfo);
-          //            Navigator.pushNamed(context, Cartshopscreen.roteName,
-          //  arguments:  ProductInfo
+                     Navigator.pushNamed(context, Cartshopscreen.roteName,
+           arguments: ProductInfo
                 
-          //       );
+                );
               
 
 
