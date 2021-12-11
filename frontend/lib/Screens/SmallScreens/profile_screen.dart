@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/textfield_widget.dart';
+import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
+import 'package:http/http.dart' as http;
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -42,6 +45,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
       userData = context.watch<UserData>().userData;
     });
   }
+  postDateProfile()async{
+  var response = await http.post(Uri.parse('${serverURL}contacts'),
+  body: {
+  "firstname":firstnameController.text,
+    "lastname": lastnameController.text,
+    "phone": phoneController.text,
+    "email" : emailController.text
+
+  }
+  );
+  print(response.body);
+
+}
+  TextEditingController firstnameController =TextEditingController();
+TextEditingController lastnameController = TextEditingController();
+TextEditingController phoneController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextField_Widget(
+                              
                               userData["firstName"] == null
                                   ? "Fist Name*"
                                   : userData["firstName"],
@@ -93,11 +115,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 }
                                 return null;
                               },
+                              firstnameController
                             ),
                             Container(
                               // color: Colors.amber,
                               width: MediaQuery.of(context).size.width / 2.3,
                               child: TextFormField(
+                                controller: lastnameController,
                                 validator: (value) {
                                   onChange(value, "lastName");
                                   if (value!.isEmpty) {
@@ -142,6 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                             return null;
                           },
+                          emailController
                         ),
                         SizedBox(
                           height: 15,
@@ -164,6 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               return 'non valid';
                             }
                           },
+                          phoneController
                         ),
                       ],
                     ),
@@ -174,10 +200,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: 0,
                 child: Button_Widget("Save", MediaQuery.of(context).size.width,
                     75, Colors.orange, () {
-                  if (_formKey.currentState!.validate()) {
-                    return;
-                  }
+                  
                   context.read<UserData>().setUserDataFunc(data);
+                  postDateProfile();
                 }),
               ),
             ],

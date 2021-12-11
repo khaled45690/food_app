@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+
 
 class Addresses_screen extends StatefulWidget {
   static const roteName = '/AddressScreen';
@@ -22,6 +25,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
   onChange(value, VariableName) {
     setState(() {
       data[VariableName] = value;
+
     });
   }
 
@@ -40,7 +44,20 @@ class _Addresses_screenState extends State<Addresses_screen> {
       data = context.watch<UserData>().userAddressData;
     });
   }
+postDateaddresses()async{
+  var response = await http.post(Uri.parse('${serverURL}address'),
+  body: {
+  "streetName":streetnameController.text,
+    "town": townController.text,
+    "postcode": postcodeController.text,
+  }
+  );
+  print(response.body);
 
+}
+TextEditingController streetnameController =TextEditingController();
+TextEditingController townController = TextEditingController();
+TextEditingController postcodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +100,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         // color: Colors.amber,
                         width: 350,
                         child: TextFormField(
+                          controller: streetnameController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your name';
@@ -93,6 +111,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                             return null;
                           },
                           decoration: InputDecoration(
+                            
                             labelText:
                                 //streetNamme.text
                                 //==null ?
@@ -121,6 +140,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       Container(
                         width: 350,
                         child: TextFormField(
+                          controller: townController,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your town';
@@ -132,7 +152,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           },
                           decoration: InputDecoration(
                             labelText: data["town"] == null
-                                ? "Street name & number*"
+                                ? "Town or City Area*"
                                 : data["town"],
                             isDense: true,
                             border: OutlineInputBorder(
@@ -154,6 +174,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       Container(
                         width: 350,
                         child: TextFormField(
+                          controller:postcodeController ,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter a number';
@@ -193,9 +214,10 @@ class _Addresses_screenState extends State<Addresses_screen> {
                   "Save", MediaQuery.of(context).size.width, 75, Colors.orange,
                   () {
                 context.read<UserData>().setUserAddressDataFunc(data);
-                if (_formKey.currentState!.validate()) {
-                  return;
-                }
+                postDateaddresses();
+                  
+                
+               
               }),
             ),
           ],

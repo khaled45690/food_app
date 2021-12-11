@@ -14,12 +14,11 @@ const getImageRouter = require('./route/getImageRouter');
 
 
 
-//const port = 4000;
+const port = 4000;
 mongoose.connect('mongodb+srv://khwater:khwater@cluster0.bbitm.mongodb.net/khwaterDatabase?retryWrites=true&w=majority',
 
 {
-    useNewUrlParser: true, 
-
+useNewUrlParser: true, 
 useUnifiedTopology: true 
 }
 );
@@ -36,8 +35,8 @@ app.use('/contacts', ContactRouter);
 app.use('/image', getImageRouter);
 app.use('/address',AddresseRouter);
 app.use('/offer',OfferRouter);
-var Port = process.env.Port || 8080
-app.listen(Port,()=>{
+
+app.listen(port,()=>{
     console.log("it is working");
 })
 
