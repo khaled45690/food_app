@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:food_app/Widgets/OfferDetailsWidget.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/models/CartItem.dart';
@@ -15,6 +16,18 @@ class Cartshopscreen extends StatefulWidget {
 
 class _CartshopscreenState extends State<Cartshopscreen> {
   List productList = [];
+  Map productInfo = {};
+
+    @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    String offerInfoString =
+        jsonEncode(ModalRoute.of(context)!.settings.arguments);
+    setState(() {
+      productInfo = jsonDecode(offerInfoString);
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +39,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
     });
     print(productList);
   }
+  
   @override
   Widget build(BuildContext context) {
 
@@ -36,7 +50,6 @@ class _CartshopscreenState extends State<Cartshopscreen> {
 
         title: Text(
           "خواطر دمشقيه",
-       // ProductInfo['name'],
           style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 19),
         ),
@@ -53,16 +66,50 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               SizedBox(
                 height: 35,
               ),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for(int i = 0; i < productList.length ; i++)
-                  Text(
-                    productList.length == 0 ? "Cart is empty" : productList[i]["name"],
-                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
+                  for(int i = 0; i  < productList.length ; i++)
+                  productList.length == 0  ? Text("Cart is empty",style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)
+                   :
+                   Row(             
+                     mainAxisAlignment: MainAxisAlignment.start,
+                     children: [
+
+                     Text(' ${productList[i]["quantity"]}\*'.toString() ,style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
+                     Text(productList[i]["name"]??'..',style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
+                      
+                       
+                       
+                    //   Text("data"),
+                    Spacer(),
+                       Column(
+                         children: [
+                           Row(
+                             children: [
+                         Text("\$ ${productList[i]['price']*productList[i]["quantity"]}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+
+                               IconButton(onPressed: (){
+                            CartItem cartItem = Provider.of<CartItem>(context , listen: false);
+                            cartItem.removeCartItem(productInfo);
+
+                               }, icon: Icon(Icons.close,color: Colors.red,)),
+                             ],
+                           ),
+                         ],
+                       )
+                     
+                     ]
+                     ,
+
+                   )
+
+                     
+
+
                 ],
               ),
+
               SizedBox(
                 height: 35,
               ),
@@ -77,6 +124,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                   "Sub-Total",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
+                
                 trailing: Text("0.00",
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
@@ -94,7 +142,18 @@ class _CartshopscreenState extends State<Cartshopscreen> {
           ),
           Positioned(
             bottom: 0,
-            child: Button_Widget("BUY NOW", 392, 75, Colors.orange, () {}),
+
+            child:
+            
+             Row(
+               children: [
+                  for(int i = 0; i <= productList.length ; i++)
+                 Button_Widget(
+                  
+productList.length == 0 ?  "Go to Checkout" :
+                  "BUY NOW", 392, 75, Colors.orange, () {}),
+               ],
+             ),
           ),
         ],
       ),
@@ -103,4 +162,6 @@ class _CartshopscreenState extends State<Cartshopscreen> {
      
 
   }
+  
+
 }

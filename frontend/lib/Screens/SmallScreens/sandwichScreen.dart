@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:core';
+import 'dart:core';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -8,8 +10,10 @@ import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/largeOrxlage.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
+import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class SandwichScreen extends StatefulWidget {
   const SandwichScreen({Key? key}) : super(key: key);
@@ -25,23 +29,26 @@ class _SandwichScreenState extends State<SandwichScreen> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    String offerInfoString =
+    var offerInfoString =
         jsonEncode(ModalRoute.of(context)!.settings.arguments);
     setState(() {
       ProductInfo = jsonDecode(offerInfoString);
     });
   }
 
-  int _quantity = 0;
-  bool? _checked = true;
-  bool? _checked1 = false;
+  // int _quantity = 0;
+  // bool? _checked = true;
+  // bool? _checked1 = false;
   @override
   void initState() {
     super.initState();
-    if (_checked == _checked1) {
-      _checked != _checked1;
+    if (ProductInfo['large'] == ProductInfo['xlarge'] ) {
+      ProductInfo['large']!= ProductInfo['xlarge'];
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,24 +79,28 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: _checked1! ? Colors.blue.shade50 : Colors.white,
+                      color: ProductInfo['xlarge']! ? Colors.blue.shade50 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
                       title: Text(
-                        "لارج",
+                        "+2.00    اكس لارج",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
+                      
                       dense: true,
-                      value: _checked1,
+                      value: ProductInfo['xlarge'],
                       onChanged: (value) {
+
                         setState(() {
                           if (value == true) {
-                            _checked1 = value;
-                            _checked = false;
+                            ProductInfo['xlarge'] = value;
+                            ProductInfo['large']  = false;
                           }
-                        });
+                        }
+                        ,
+                        );
                       },
                       activeColor: Colors.blueGrey,
                       controlAffinity: ListTileControlAffinity.leading,
@@ -103,22 +114,23 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: _checked! ? Colors.blue.shade50 : Colors.white,
+                      color: ProductInfo['large'] ! ? Colors.blue.shade50 : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
                       title: Text(
-                        "اكس لارج",
+                        " لارج",
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       dense: true,
-                      value: _checked,
+                      value: ProductInfo['large'] ,
                       onChanged: (value) {
+
                         setState(() {
                           if (value == true) {
-                            _checked = value;
-                            _checked1 = false;
+                            ProductInfo['large']  = value;
+                            ProductInfo['xlarge'] = false;
                           }
                         });
                       },
@@ -183,7 +195,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       border: Border.all(color: Colors.black),
                     ),
                     child: Text(
-                      _quantity.toString(),
+                      ProductInfo['quantity'].toString(),
                       style:
                           TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                     ),
@@ -236,28 +248,21 @@ class _SandwichScreenState extends State<SandwichScreen> {
             child: Button_Widget("Add to cart",
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
               CartItem cartItem = Provider.of<CartItem>(context , listen: false);
-               // print(ProductInfo);
+
+       
+             
+
+               print(ProductInfo);
                cartItem.addCartItem(ProductInfo);
-              // cartItem.cartList.add(ProductInfo);
+          //            Navigator.pushNamed(context, Cartshopscreen.roteName,
+          //  arguments:  ProductInfo
+                
+          //       );
               
 
-           //   cartItem.addCartItem(ProductInfo);
-             //
-              // print(cartItem.cartList);
-              // List list = [];
-            //   list.add(ProductInfo,);
-            // //  print(list);
-            //   list.add("value");
-            //                 print(list);
 
-                //  Navigator.pushNamed(context, Cartshopscreen.roteName,
-                //  arguments:  ProductInfo
-                
-                // );
 
-              // Scaffold.of(context).showSnackBar(SnackBar(
-              //   content: Text("Added to cart"),
-              // ));
+          
             }),
           ),
         ],
@@ -267,15 +272,17 @@ class _SandwichScreenState extends State<SandwichScreen> {
 
   subtract() {
     setState(() {
-      if (_quantity > 0) {
-        _quantity--;
+      if (ProductInfo['quantity'] > 0) {
+
+        ProductInfo['quantity']--;
       }
     });
   }
 
   add() {
     setState(() {
-      _quantity++;
+      ProductInfo['quantity']++;
     });
   }
+ 
 }
