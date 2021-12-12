@@ -254,10 +254,10 @@ class _SandwichScreenState extends State<SandwichScreen> {
 
                print(ProductInfo);
                cartItem.addCartItem(ProductInfo);
-                     Navigator.pushNamed(context, Cartshopscreen.roteName,
-           arguments: ProductInfo
+          //            Navigator.pushNamed(context, Cartshopscreen.roteName,
+          //  arguments: ProductInfo
                 
-                );
+          //       );
               
 
 

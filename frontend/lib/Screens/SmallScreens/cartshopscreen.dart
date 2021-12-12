@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/OfferDetailsWidget.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:food_app/Widgets/buttonwidgettotal%20price.dart';
+import 'package:food_app/Widgets/cartisemptywidget.dart';
+import 'package:food_app/Widgets/cartshopwidget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
@@ -66,49 +69,10 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               SizedBox(
                 height: 35,
               ),
-              context.watch<CartItem>().cartList.length == 0  ? Text("Cart is empty",style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),)
+              context.watch<CartItem>().cartList.length == 0  ? 
+              CartIsempty()
                   :
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for(int i = 0; i  < context.read<CartItem>().cartList.length ; i++)
-                   Row(             
-                     mainAxisAlignment: MainAxisAlignment.start,
-                     children: [
-
-                     Text(' ${context.watch<CartItem>().cartList[i]["quantity"]}\*'.toString() ,style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
-                     Text(context.watch<CartItem>().cartList[i]["name"]??'..',style: TextStyle(fontSize:22,fontWeight: FontWeight.bold ),),
-                      
-                       
-                       
-                    //   Text("data"),
-                    Spacer(),
-                       Column(
-                         children: [
-                           Row(
-                             children: [
-                         Text("\$ ${context.watch<CartItem>().cartList[i]['price']*context.watch<CartItem>().cartList[i]["quantity"]}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-
-                               IconButton(onPressed: (){
-                            CartItem cartItem = Provider.of<CartItem>(context , listen: false);
-                            cartItem.removeCartItem(context.read<CartItem>().cartList[i]);
-
-                               }, icon: Icon(Icons.close,color: Colors.red,)),
-                             ],
-                           ),
-                         ],
-                       )
-                     
-                     ]
-                     ,
-
-                   )
-
-                     
-
-
-                ],
-              ),
+            CartshopWidget(),
 
               SizedBox(
                 height: 35,
@@ -119,15 +83,32 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               SizedBox(
                 height: 35,
               ),
-              ListTile(
-                leading: Text(
-                  "Sub-Total",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-                
-                trailing: Text("0.00",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+              Column(
+                children: [
+                     context.watch<CartItem>().cartList.length == 0 ?
+                  ListTile(
+                    leading: Text(
+                      "Sub-Total",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                    
+                    trailing: Text("0.00",
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                  ) :        Column(
+                    children: [
+                     for(int i = 0; i  < 1 ; i++)
+                      ListTile(
+                        trailing:Text("\$ ${context.watch<CartItem>().total}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+
+                     leading: Text(
+                      "Sub-Total",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                    ),
+                        ),
+                    ],
+                  )
+                ],
               ),
               ListTile(
                 leading: Text(
@@ -147,11 +128,11 @@ class _CartshopscreenState extends State<Cartshopscreen> {
             
              Row(
                children: [
-                  for(int i = 0; i <= productList.length ; i++)
-                 Button_Widget(
+                  for(int i = 0; i <= context.read<CartItem>().cartList.length ; i++)
+                 Button_Widget_totaol(
                   
-productList.length == 0 ?  "Go to Checkout" :
-                  "BUY NOW", 392, 75, Colors.orange, () {}),
+context.read<CartItem>().cartList.length == 0 ?  "Go to Checkout" :
+                  "BUY NOW", 392, 75, Colors.orange, () {},"total"),
                ],
              ),
           ),

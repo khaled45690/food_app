@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Widgets/button_widget.dart';
+import 'package:food_app/Widgets/textfieldaddresswidget.dart';
 import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
@@ -13,7 +14,6 @@ class Addresses_screen extends StatefulWidget {
   @override
   _Addresses_screenState createState() => _Addresses_screenState();
 }
-
 class _Addresses_screenState extends State<Addresses_screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Map data = {
@@ -91,118 +91,33 @@ TextEditingController postcodeController = TextEditingController();
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Column(
-                    // padding: EdgeInsets.fromLTRB(25, 35, 25, 35),
                     children: <Widget>[
                       SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        // color: Colors.amber,
-                        width: 350,
-                        child: TextFormField(
-                          controller: streetnameController,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter your name';
-                            }
-                            if (value.length < 10) {
-                              return 'Should be at  least 10 characters long';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            
-                            labelText:
-                                //streetNamme.text
-                                //==null ?
-                                data["streetName"] == null
+                      Textfieldaddres(streetnameController,data["streetName"] == null
                                     ? "Street name & number*"
-                                    : data["streetName"],
-                            // : notesController.text
-
-                            isDense: true,
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey, width: 5)),
-                            prefixIcon: Icon(Icons.streetview_sharp),
-                            disabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.yellow, width: 5),
-                            ),
-                          ),
-                          onChanged: (streetName) => setState(
-                              () => onChange(streetName, "streetName")),
-                        ),
+                                    : data["streetName"],(streetName) => setState(
+                              () => onChange(streetName, "streetName")
+                              ),),
+                            SizedBox(
+                        height: 15,
                       ),
+                           Textfieldaddres(townController,
+                           data["town"] == null ? "Town or City Area*" : data["town"],
+                          (town) =>setState(() => onChange(town, "town")),
+                              ),
+                      
                       SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        width: 350,
-                        child: TextFormField(
-                          controller: townController,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'please enter your town';
-                            }
-                            if (value.length < 10) {
-                              return 'Should be at  least 10 characters long';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            labelText: data["town"] == null
-                                ? "Town or City Area*"
-                                : data["town"],
-                            isDense: true,
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey, width: 5)),
-                            prefixIcon: Icon(Icons.location_on_outlined),
-                            disabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.yellow, width: 5),
-                            ),
-                          ),
-                          onChanged: (town) =>
-                              setState(() => onChange(town, "town")),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        width: 350,
-                        child: TextFormField(
-                          controller:postcodeController ,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'please enter a number';
-                              }
-                              if (double.tryParse(value) == null) {
-                                return 'please enter a valid number';
-                              }
-                              if (value.characters == 7) {
-                                return 'non valid';
-                              }
-                            },
-                            decoration: InputDecoration(
-                              labelText: data["postcode"] == null
+                       Textfieldaddres(postcodeController,
+                           data["postcode"] == null
                                   ? "Postcode, Block,intercom where tp park*"
                                   : data["postcode"],
-                              isDense: true,
-                              border: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.grey, width: 5)),
-                              prefixIcon: Icon(Icons.info),
-                              disabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.yellow, width: 5),
+                            (postcode) => setState(() => onChange(postcode, "postcode"))
                               ),
-                            ),
-                            onChanged: (postcode) =>
-                                setState(() => onChange(postcode, "postcode"))),
-                      ),
+                     
                     ],
                   ),
                 ),
