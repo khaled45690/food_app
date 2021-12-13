@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DiliveryWidget extends StatelessWidget {
   const DiliveryWidget({ Key? key }) : super(key: key);
@@ -17,7 +18,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Delivery Fees",
+                "Delivery Fees".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -49,7 +50,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Opening Hours",
+                "Opening Hours".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -85,7 +86,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Pickup",
+                "Pickup".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -121,7 +122,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Payment Method",
+                "Payment Method".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -157,7 +158,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Address",
+                "Address".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -190,7 +191,7 @@ class DiliveryWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                "Phone",
+                "Phone".tr,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],

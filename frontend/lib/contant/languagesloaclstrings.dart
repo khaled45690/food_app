@@ -34,7 +34,13 @@ class LanguagesLocalString extends Translations{
       "    Size":"    Size",
       "   Special Instructions":"   Special Instructions",
       "   Quantity":"   Quantity",
-      "Add to cart":"Add to cart"
+      "Add to cart":"Add to cart",
+      "Delivery Fees":"Delivery Fees",
+      "Opening Hours":"Opening Hours",
+      "Pickup":"Pickup",
+      "Payment Method":"Payment Method",
+      "Address":"Address",
+      "Phone":"Phone"
     
     },
     'ar_AR':{
@@ -64,7 +70,13 @@ class LanguagesLocalString extends Translations{
       "    Size":"    الحجم",
       "   Special Instructions":"   تعليمات خاصه",
       "   Quantity":"   الكميه",
-      "Add to cart":"اضف الي البطاقه"
+      "Add to cart":"اضف الي البطاقه",
+      "Delivery Fees":"رسوم التوصيل",
+      "Opening Hours":"ساعات العمل",
+      "Pickup":"الاستلام من مقر المطعم",
+      "Payment Method":"طريقه الدفع",
+      "Address":"العنوان",
+      "Phone":"الهاتف المحمول"
 
    
     }
