@@ -21,17 +21,6 @@ class Cartshopscreen extends StatefulWidget {
 class _CartshopscreenState extends State<Cartshopscreen> {
   List productList = [];
   Map productInfo = {};
-
-    @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-    String offerInfoString =
-        jsonEncode(ModalRoute.of(context)!.settings.arguments);
-    setState(() {
-      productInfo = jsonDecode(offerInfoString);
-    });
-  }
   @override
   void initState() {
     // TODO: implement initState
@@ -43,15 +32,11 @@ class _CartshopscreenState extends State<Cartshopscreen> {
     });
     print(productList);
   }
-  
+
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(
           "خواطر دمشقيه",
           style: TextStyle(
@@ -61,8 +46,6 @@ class _CartshopscreenState extends State<Cartshopscreen> {
         backgroundColor: Colors.white54,
         shadowColor: Colors.white54,
       ),
-   
-            
       body: Stack(
         children: [
           Column(
@@ -70,11 +53,9 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               SizedBox(
                 height: 35,
               ),
-              context.watch<CartItem>().cartList.length == 0  ? 
-              CartIsempty()
-                  :
-            CartshopWidget(),
-
+              context.watch<CartItem>().cartList.length == 0
+                  ? CartIsempty()
+                  : CartshopWidget(),
               SizedBox(
                 height: 35,
               ),
@@ -86,56 +67,62 @@ class _CartshopscreenState extends State<Cartshopscreen> {
               ),
               Column(
                 children: [
-                     context.watch<CartItem>().cartList.length == 0 ?
-                  ListTile(
-                    leading: Text(
-                      "Total",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    
-                    trailing: Text("0.00",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-                  ) :        Column(
-                    children: [
-                     for(int i = 0; i  < 1 ; i++)
-                      ListTile(
-                        trailing:Text("\$ ${context.watch<CartItem>().total}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-
-                     leading: Text(
-                      "Total".tr,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                        ),
-                    ],
-                  )
+                  context.watch<CartItem>().cartList.length == 0
+                      ? ListTile(
+                          leading: Text(
+                            "Total",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25),
+                          ),
+                          trailing: Text("0.00",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25)),
+                        )
+                      : Column(
+                          children: [
+                            for (int i = 0; i < 1; i++)
+                              ListTile(
+                                trailing: Text(
+                                  "\$ ${context.watch<CartItem>().total}"
+                                      .toString(),
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                leading: Text(
+                                  "Total".tr,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25),
+                                ),
+                              ),
+                          ],
+                        )
                 ],
               ),
-     
             ],
           ),
           Positioned(
             bottom: 0,
-
-            child:
-            
-             Row(
-               children: [
-                  for(int i = 0; i <= context.read<CartItem>().cartList.length ; i++)
-                 Button_Widget_totaol(
-                  
-context.read<CartItem>().cartList.length == 0 ?  "Go to Checkout".tr :
-                  "BUY NOW".tr, MediaQuery.of(context).size.width, 75, Colors.orange, () {},"total"),
-               ],
-             ),
+            child: Row(
+              children: [
+                for (int i = 0;
+                    i <= context.read<CartItem>().cartList.length;
+                    i++)
+                  Button_Widget_totaol(
+                      context.read<CartItem>().cartList.length == 0
+                          ? "Go to Checkout".tr
+                          : "BUY NOW".tr,
+                      MediaQuery.of(context).size.width,
+                      75,
+                      Colors.orange,
+                      () {},
+                      "total"),
+              ],
+            ),
           ),
         ],
       ),
     );
-      
-     
-
   }
-  
-
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Widgets/AppBar_ShowMenu.dart';
@@ -22,16 +21,19 @@ class _MealScreenState extends State<MealScreen> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    String offerInfoString = jsonEncode(ModalRoute.of(context)!.settings.arguments);
+    String offerInfoString =
+        jsonEncode(ModalRoute.of(context)!.settings.arguments);
     setState(() {
       offerInfo = jsonDecode(offerInfoString);
     });
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar_ShowMenu(imageName: offerInfo["description"],),
+      appBar: AppBar_ShowMenu(
+        imageName: offerInfo["description"],
+      ),
       body: Stack(
         children: [
           ListView(
@@ -42,7 +44,9 @@ class _MealScreenState extends State<MealScreen> {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: Image.network("${serverURL}image?name=${offerInfo["imagename"]}").image,
+                  image: Image.network(
+                          "${serverURL}image?name=${offerInfo["imagename"]}")
+                      .image,
                 )),
               ),
               Column(
@@ -51,7 +55,8 @@ class _MealScreenState extends State<MealScreen> {
                     children: [
                       Text(
                         "العروض اليوميه",
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -59,7 +64,8 @@ class _MealScreenState extends State<MealScreen> {
                     children: [
                       Text(
                         "اقوي العروض و الخصومات لايام محدوده",
-                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -69,21 +75,19 @@ class _MealScreenState extends State<MealScreen> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: NetworkImage("${serverURL}image?name=whiteFriday.jpg"),
+                      image: NetworkImage(
+                          "${serverURL}image?name=whiteFriday.jpg"),
                     )),
                   ),
                 ],
               )
             ],
-            
           ),
           Positioned(
-                bottom: 0,
-                child: Button_Widget("Order now", MediaQuery.of(context).size.width,
-                    75, Colors.orange, () {
-                  
-                }),
-              ),
+            bottom: 0,
+            child: Button_Widget("Order now", MediaQuery.of(context).size.width,
+                75, Colors.orange, () {}),
+          ),
         ],
       ),
     );
