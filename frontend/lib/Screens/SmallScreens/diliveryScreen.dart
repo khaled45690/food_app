@@ -56,9 +56,9 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                 height: MediaQuery.of(context).size.height / 2.7,
                 width: MediaQuery.of(context).size.width / 1.1,
                 color: Colors.red,
-                child:  GoogleMap(
-                  initialCameraPosition:
-                  const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 10),
+                child: GoogleMap(
+                  initialCameraPosition: const CameraPosition(
+                      target: LatLng(31.2001, 29.9187), zoom: 10),
                   onMapCreated: (GoogleMapController googleMapController) =>
                       onMapCreated(googleMapController),
                   markers: myMarkers,
@@ -69,8 +69,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
           SizedBox(
             height: 30,
           ),
-         
-         DiliveryWidget(),
+          DiliveryWidget(),
           SizedBox(
             height: 20,
           ),

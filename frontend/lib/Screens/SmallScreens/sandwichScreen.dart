@@ -43,13 +43,10 @@ class _SandwichScreenState extends State<SandwichScreen> {
   @override
   void initState() {
     super.initState();
-    if (ProductInfo['large'] == ProductInfo['xlarge'] ) {
-      ProductInfo['large']!= ProductInfo['xlarge'];
+    if (ProductInfo['large'] == ProductInfo['xlarge']) {
+      ProductInfo['large'] != ProductInfo['xlarge'];
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +77,9 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: ProductInfo['xlarge']! ? Colors.blue.shade50 : Colors.white,
+                      color: ProductInfo['xlarge']!
+                          ? Colors.blue.shade50
+                          : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -89,18 +88,16 @@ class _SandwichScreenState extends State<SandwichScreen> {
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      
                       dense: true,
                       value: ProductInfo['xlarge'],
                       onChanged: (value) {
-
-                        setState(() {
-                          if (value == true) {
-                            ProductInfo['xlarge'] = value;
-                            ProductInfo['large']  = false;
-                          }
-                        }
-                        ,
+                        setState(
+                          () {
+                            if (value == true) {
+                              ProductInfo['xlarge'] = value;
+                              ProductInfo['large'] = false;
+                            }
+                          },
                         );
                       },
                       activeColor: Colors.blueGrey,
@@ -115,7 +112,9 @@ class _SandwichScreenState extends State<SandwichScreen> {
                   Container(
                     width: MediaQuery.of(context).size.width / 1.1,
                     decoration: BoxDecoration(
-                      color: ProductInfo['large'] ! ? Colors.blue.shade50 : Colors.white,
+                      color: ProductInfo['large']!
+                          ? Colors.blue.shade50
+                          : Colors.white,
                       border: Border.all(color: Colors.black),
                     ),
                     child: CheckboxListTile(
@@ -125,12 +124,11 @@ class _SandwichScreenState extends State<SandwichScreen> {
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       dense: true,
-                      value: ProductInfo['large'] ,
+                      value: ProductInfo['large'],
                       onChanged: (value) {
-
                         setState(() {
                           if (value == true) {
-                            ProductInfo['large']  = value;
+                            ProductInfo['large'] = value;
                             ProductInfo['xlarge'] = false;
                           }
                         });
@@ -248,22 +246,14 @@ class _SandwichScreenState extends State<SandwichScreen> {
             bottom: 0,
             child: Button_Widget("Add to cart".tr,
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
-              CartItem cartItem = Provider.of<CartItem>(context , listen: false);
+              CartItem cartItem = Provider.of<CartItem>(context, listen: false);
 
-       
-             
+              print(ProductInfo);
+              cartItem.addCartItem(ProductInfo);
+              //            Navigator.pushNamed(context, Cartshopscreen.roteName,
+              //  arguments: ProductInfo
 
-               print(ProductInfo);
-               cartItem.addCartItem(ProductInfo);
-          //            Navigator.pushNamed(context, Cartshopscreen.roteName,
-          //  arguments: ProductInfo
-                
-          //       );
-              
-
-
-
-          
+              //       );
             }),
           ),
         ],
@@ -274,7 +264,6 @@ class _SandwichScreenState extends State<SandwichScreen> {
   subtract() {
     setState(() {
       if (ProductInfo['quantity'] > 0) {
-
         ProductInfo['quantity']--;
       }
     });
@@ -285,5 +274,4 @@ class _SandwichScreenState extends State<SandwichScreen> {
       ProductInfo['quantity']++;
     });
   }
- 
 }

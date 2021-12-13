@@ -16,8 +16,8 @@ class ShowMenu extends StatefulWidget {
 }
 
 class _ShowMenuState extends State<ShowMenu> {
-   List productsList = [];
-   List offersList = [];
+  List productsList = [];
+  List offersList = [];
   getProduct() async {
     var url = Uri.parse('${serverURL}products');
     var res = await http.get(url);
@@ -28,19 +28,18 @@ class _ShowMenuState extends State<ShowMenu> {
       });
     }
   }
-  
 
-   getOffers() async {
-     var url = Uri.parse('${serverURL}offer');
-     var res = await http.get(url);
-     if (res.statusCode == 200) {
-       var jsonObj = json.decode(res.body);
-       setState(() {
-         offersList = jsonObj['result'];
-     //    print(offersList);
-       });
-     }
-   }
+  getOffers() async {
+    var url = Uri.parse('${serverURL}offer');
+    var res = await http.get(url);
+    if (res.statusCode == 200) {
+      var jsonObj = json.decode(res.body);
+      setState(() {
+        offersList = jsonObj['result'];
+        //    print(offersList);
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -52,7 +51,7 @@ class _ShowMenuState extends State<ShowMenu> {
   @override
   Widget build(BuildContext context) {
     print(productsList);
-    
+
     return Scaffold(
       appBar: AppBar_ShowMenu(),
       body: ListView(
@@ -69,10 +68,9 @@ class _ShowMenuState extends State<ShowMenu> {
           SizedBox(
             height: 20,
           ),
-          for(int i = 0; i < offersList.length; i++)
-            MealWidget(offersList[i]),
-           for (int i = 0; i < productsList.length; i++)
-             OfferDetailsWidget(productsList[i]),
+          for (int i = 0; i < offersList.length; i++) MealWidget(offersList[i]),
+          for (int i = 0; i < productsList.length; i++)
+            OfferDetailsWidget(productsList[i]),
         ],
       ),
     );

@@ -8,13 +8,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
-
 class Addresses_screen extends StatefulWidget {
   static const roteName = '/AddressScreen';
 
   @override
   _Addresses_screenState createState() => _Addresses_screenState();
 }
+
 class _Addresses_screenState extends State<Addresses_screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Map data = {
@@ -26,7 +26,6 @@ class _Addresses_screenState extends State<Addresses_screen> {
   onChange(value, VariableName) {
     setState(() {
       data[VariableName] = value;
-
     });
   }
 
@@ -45,20 +44,19 @@ class _Addresses_screenState extends State<Addresses_screen> {
       data = context.watch<UserData>().userAddressData;
     });
   }
-postDateaddresses()async{
-  var response = await http.post(Uri.parse('${serverURL}address'),
-  body: {
-  "streetName":streetnameController.text,
-    "town": townController.text,
-    "postcode": postcodeController.text,
-  }
-  );
-  print(response.body);
 
-}
-TextEditingController streetnameController =TextEditingController();
-TextEditingController townController = TextEditingController();
-TextEditingController postcodeController = TextEditingController();
+  postDateaddresses() async {
+    var response = await http.post(Uri.parse('${serverURL}address'), body: {
+      "streetName": streetnameController.text,
+      "town": townController.text,
+      "postcode": postcodeController.text,
+    });
+    print(response.body);
+  }
+
+  TextEditingController streetnameController = TextEditingController();
+  TextEditingController townController = TextEditingController();
+  TextEditingController postcodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,29 +94,34 @@ TextEditingController postcodeController = TextEditingController();
                       SizedBox(
                         height: 20,
                       ),
-                      Textfieldaddres(streetnameController,data["streetName"] == null
-                                    ? "Street name & number*".tr
-                                    : data["streetName"],(streetName) => setState(
-                              () => onChange(streetName, "streetName")
-                              ),),
-                            SizedBox(
-                        height: 15,
+                      Textfieldaddres(
+                        streetnameController,
+                        data["streetName"] == null
+                            ? "Street name & number*".tr
+                            : data["streetName"],
+                        (streetName) =>
+                            setState(() => onChange(streetName, "streetName")),
                       ),
-                           Textfieldaddres(townController,
-                           data["town"] == null ? "Town or City Area*".tr : data["town"],
-                          (town) =>setState(() => onChange(town, "town")),
-                              ),
-                      
                       SizedBox(
                         height: 15,
                       ),
-                       Textfieldaddres(postcodeController,
-                           data["postcode"] == null
-                                  ? "Postcode, Block,intercom where tp park*".tr
-                                  : data["postcode"],
-                            (postcode) => setState(() => onChange(postcode, "postcode"))
-                              ),
-                     
+                      Textfieldaddres(
+                        townController,
+                        data["town"] == null
+                            ? "Town or City Area*".tr
+                            : data["town"],
+                        (town) => setState(() => onChange(town, "town")),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Textfieldaddres(
+                          postcodeController,
+                          data["postcode"] == null
+                              ? "Postcode, Block,intercom where tp park*".tr
+                              : data["postcode"],
+                          (postcode) =>
+                              setState(() => onChange(postcode, "postcode"))),
                     ],
                   ),
                 ),
@@ -126,14 +129,10 @@ TextEditingController postcodeController = TextEditingController();
             ),
             Positioned(
               bottom: 0,
-              child: Button_Widget(
-                  "Save".tr, MediaQuery.of(context).size.width, 75, Colors.orange,
-                  () {
+              child: Button_Widget("Save".tr, MediaQuery.of(context).size.width,
+                  75, Colors.orange, () {
                 context.read<UserData>().setUserAddressDataFunc(data);
                 postDateaddresses();
-                  
-                
-               
               }),
             ),
           ],

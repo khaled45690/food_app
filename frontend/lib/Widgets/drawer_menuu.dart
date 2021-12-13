@@ -81,7 +81,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             color: Color(0xff2d343e),
             child: Column(
               children: [
-                 ListTile(
+                ListTile(
                   title: Text(
                     "OTHER".tr,
                     style: TextStyle(

@@ -6,12 +6,10 @@ import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/contant/constant.dart';
 import 'package:http/http.dart' as http;
 
-
-
 class MealWidget extends StatelessWidget {
-     final Map offerInfo;
+  final Map offerInfo;
 
-     MealWidget(this.offerInfo);
+  MealWidget(this.offerInfo);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +19,9 @@ class MealWidget extends StatelessWidget {
         shape: BoxShape.rectangle,
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: Image.network("${serverURL}image?name=${offerInfo["imagename"]}").image,
+          image:
+              Image.network("${serverURL}image?name=${offerInfo["imagename"]}")
+                  .image,
         ),
       ),
       margin: EdgeInsets.fromLTRB(20, 8, 20, 8),
@@ -30,7 +30,10 @@ class MealWidget extends StatelessWidget {
           Text(
             "عرض الزياده ب100 جنيه",
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25 ,),
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+            ),
           ),
           Spacer(),
           Spacer(),
@@ -135,8 +138,7 @@ class MealWidget extends StatelessWidget {
                   MediaQuery.of(context).size.height / 13,
                   Colors.orange, () {
                 Navigator.pushNamed(context, MealScreen.roteName,
-                arguments: offerInfo
-                );
+                    arguments: offerInfo);
               })
             ],
           ),

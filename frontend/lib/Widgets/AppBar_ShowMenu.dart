@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
 import 'package:food_app/Widgets/vdivider.dart';
-class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
+
+class AppBar_ShowMenu extends StatelessWidget with PreferredSizeWidget {
   final String? imageName;
 
   const AppBar_ShowMenu({this.imageName});
@@ -11,7 +12,7 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color: Colors.grey,size: 30),
+      iconTheme: IconThemeData(color: Colors.grey, size: 30),
       backgroundColor: Colors.white54,
       shadowColor: Colors.white54,
       actions: <Widget>[
@@ -23,7 +24,7 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
                   left: 25,
                 ),
                 child: Text(
-                  imageName != null ? imageName! :"خواطر دمشقيه",
+                  imageName != null ? imageName! : "خواطر دمشقيه",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -33,7 +34,6 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
             ],
           ),
           Divider_widget(),
-
           IconButton(
             onPressed: () {
               Navigator.push(
@@ -50,7 +50,6 @@ class AppBar_ShowMenu extends StatelessWidget  with PreferredSizeWidget {
             ),
           ),
           Divider_widget(),
-
           IconButton(
             onPressed: () {
               Navigator.push(

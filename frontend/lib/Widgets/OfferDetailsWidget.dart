@@ -11,13 +11,10 @@ class OfferDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Listtile_widet(
-          productInfo["name"], productInfo["price"].toString(),
-           () {
-           Navigator.pushNamed(context, SandwichScreen.roteName,
-           arguments:  productInfo
-                
-                );
+        Listtile_widet(productInfo["name"], productInfo["price"].toString(),
+            () {
+          Navigator.pushNamed(context, SandwichScreen.roteName,
+              arguments: productInfo);
         }),
         Divider(
           color: Colors.grey,

@@ -1,4 +1,3 @@
-
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
@@ -8,7 +7,6 @@ import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/drawer_menuu.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
-
 
 // var myMarkers = HashSet<Marker>(); //collection
 class FirstPageSmallScreen extends StatelessWidget {
@@ -21,11 +19,10 @@ class FirstPageSmallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-                iconTheme: IconThemeData(color: Colors.grey,size: 40),
+        iconTheme: IconThemeData(color: Colors.grey, size: 40),
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         centerTitle: true,
@@ -43,7 +40,7 @@ class FirstPageSmallScreen extends StatelessWidget {
           bottom: 0,
           left: 0,
           right: 0,
-        //  top: 0,
+          //  top: 0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -55,20 +52,20 @@ class FirstPageSmallScreen extends StatelessWidget {
                   color: Colors.red,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                   image: AssetImage("assets/images/krs.jpg"),
+                    image: AssetImage("assets/images/krs.jpg"),
                   ),
                 ),
-               margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
+                margin: EdgeInsets.fromLTRB(3, 8, 3, 8),
                 child: Stack(
                   children: [
                     Positioned(
-                     bottom: 0,
+                      bottom: 0,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Button_Widget(
                             "See Menu&Order".tr,
-                            MediaQuery.of(context).size.width/1.5,
+                            MediaQuery.of(context).size.width / 1.5,
                             40,
                             Colors.blueGrey,
                             () {
