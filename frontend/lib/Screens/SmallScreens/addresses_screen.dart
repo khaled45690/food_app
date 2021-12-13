@@ -6,6 +6,7 @@ import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 
 class Addresses_screen extends StatefulWidget {
@@ -83,7 +84,7 @@ TextEditingController postcodeController = TextEditingController();
                 Container(
                   margin: EdgeInsets.only(left: 20),
                   child: Text(
-                    "Add an addresse",
+                    "Add an addresse".tr,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   ),
@@ -96,7 +97,7 @@ TextEditingController postcodeController = TextEditingController();
                         height: 20,
                       ),
                       Textfieldaddres(streetnameController,data["streetName"] == null
-                                    ? "Street name & number*"
+                                    ? "Street name & number*".tr
                                     : data["streetName"],(streetName) => setState(
                               () => onChange(streetName, "streetName")
                               ),),
@@ -104,7 +105,7 @@ TextEditingController postcodeController = TextEditingController();
                         height: 15,
                       ),
                            Textfieldaddres(townController,
-                           data["town"] == null ? "Town or City Area*" : data["town"],
+                           data["town"] == null ? "Town or City Area*".tr : data["town"],
                           (town) =>setState(() => onChange(town, "town")),
                               ),
                       
@@ -113,7 +114,7 @@ TextEditingController postcodeController = TextEditingController();
                       ),
                        Textfieldaddres(postcodeController,
                            data["postcode"] == null
-                                  ? "Postcode, Block,intercom where tp park*"
+                                  ? "Postcode, Block,intercom where tp park*".tr
                                   : data["postcode"],
                             (postcode) => setState(() => onChange(postcode, "postcode"))
                               ),
@@ -126,7 +127,7 @@ TextEditingController postcodeController = TextEditingController();
             Positioned(
               bottom: 0,
               child: Button_Widget(
-                  "Save", MediaQuery.of(context).size.width, 75, Colors.orange,
+                  "Save".tr, MediaQuery.of(context).size.width, 75, Colors.orange,
                   () {
                 context.read<UserData>().setUserAddressDataFunc(data);
                 postDateaddresses();

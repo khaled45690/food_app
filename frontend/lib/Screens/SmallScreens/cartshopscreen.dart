@@ -9,6 +9,7 @@ import 'package:food_app/Widgets/cartshopwidget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class Cartshopscreen extends StatefulWidget {
   static const roteName = '/CartShop';
@@ -88,13 +89,13 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                      context.watch<CartItem>().cartList.length == 0 ?
                   ListTile(
                     leading: Text(
-                      "Sub-Total",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      "Total",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     
                     trailing: Text("0.00",
                         style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
                   ) :        Column(
                     children: [
                      for(int i = 0; i  < 1 ; i++)
@@ -102,23 +103,15 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                         trailing:Text("\$ ${context.watch<CartItem>().total}".toString()   ,style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
 
                      leading: Text(
-                      "Sub-Total",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      "Total".tr,
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                         ),
                     ],
                   )
                 ],
               ),
-              ListTile(
-                leading: Text(
-                  "Total",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
-                trailing: Text("0.00",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
-              ),
+     
             ],
           ),
           Positioned(
@@ -131,8 +124,8 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                   for(int i = 0; i <= context.read<CartItem>().cartList.length ; i++)
                  Button_Widget_totaol(
                   
-context.read<CartItem>().cartList.length == 0 ?  "Go to Checkout" :
-                  "BUY NOW", 392, 75, Colors.orange, () {},"total"),
+context.read<CartItem>().cartList.length == 0 ?  "Go to Checkout".tr :
+                  "BUY NOW".tr, MediaQuery.of(context).size.width, 75, Colors.orange, () {},"total"),
                ],
              ),
           ),

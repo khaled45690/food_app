@@ -7,6 +7,7 @@ import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -103,7 +104,7 @@ TextEditingController emailController = TextEditingController();
                             TextField_Widget(
                               
                               userData["firstName"] == null
-                                  ? "Fist Name*"
+                                  ? "Fist Name*".tr
                                   : userData["firstName"],
                               Icons.person,
                               MediaQuery.of(context).size.width / 2.3,
@@ -136,7 +137,7 @@ TextEditingController emailController = TextEditingController();
                                 },
                                 decoration: InputDecoration(
                                     labelText: userData["lastName"] == null
-                                        ? "Last Name*"
+                                        ? "Last Name*".tr
                                         : userData["lastName"],
                                     isDense: true,
                                     border: OutlineInputBorder(
@@ -156,7 +157,7 @@ TextEditingController emailController = TextEditingController();
                         ),
                         TextField_Widget(
                           userData["email"] == null
-                              ? "E-mail*"
+                              ? "E-mail*".tr
                               : userData["email"],
                           Icons.email,
                           MediaQuery.of(context).size.width / 1.15,
@@ -175,7 +176,7 @@ TextEditingController emailController = TextEditingController();
                         ),
                         TextField_Widget(
                           userData["telephone"] == null
-                              ? "Telephone*"
+                              ? "Telephone*".tr
                               : userData["telephone"],
                           Icons.phone,
                           MediaQuery.of(context).size.width / 1.15,
@@ -200,7 +201,7 @@ TextEditingController emailController = TextEditingController();
               ),
               Positioned(
                 bottom: 0,
-                child: Button_Widget("Save", MediaQuery.of(context).size.width,
+                child: Button_Widget("Save".tr, MediaQuery.of(context).size.width,
                     75, Colors.orange, () {
                   
                   context.read<UserData>().setUserDataFunc(data);

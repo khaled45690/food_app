@@ -14,6 +14,7 @@ import 'package:food_app/contant/constant.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 class SandwichScreen extends StatefulWidget {
   const SandwichScreen({Key? key}) : super(key: key);
@@ -68,7 +69,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    "    Size",
+                    "    Size".tr,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -146,7 +147,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
               Row(
                 children: [
                   Text(
-                    "   Special Instructions",
+                    "   Special Instructions".tr,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -179,7 +180,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
               Row(
                 children: [
                   Text(
-                    "   Quantity",
+                    "   Quantity".tr,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   )
                 ],
@@ -245,7 +246,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
           ),
           Positioned(
             bottom: 0,
-            child: Button_Widget("Add to cart",
+            child: Button_Widget("Add to cart".tr,
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
               CartItem cartItem = Provider.of<CartItem>(context , listen: false);
 
