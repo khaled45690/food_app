@@ -7,6 +7,8 @@ import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/drawer_menuu.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:get/get.dart';
+
 
 // var myMarkers = HashSet<Marker>(); //collection
 class FirstPageSmallScreen extends StatelessWidget {
@@ -65,7 +67,7 @@ class FirstPageSmallScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Button_Widget(
-                            "See Menu&Order",
+                            "See Menu&Order".tr,
                             MediaQuery.of(context).size.width/1.5,
                             40,
                             Colors.blueGrey,

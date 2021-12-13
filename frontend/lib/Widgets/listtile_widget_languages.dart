@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
 import 'package:food_app/Widgets/listtile_widget.dart';
+import 'package:get/get.dart';
 
 class Listtile_widget_language extends StatelessWidget {
   final String Language;
@@ -17,7 +18,7 @@ class Listtile_widget_language extends StatelessWidget {
         ),
         onTap: () {
           Scaffold.of(context).showSnackBar(
-              SnackBar(content: Text("just available  in ENGLISH for now")));
+              SnackBar(content: Text("just available  in ENGLISH for now".tr)));
           // Navigator.push(
           //   context,
           //   new MaterialPageRoute(

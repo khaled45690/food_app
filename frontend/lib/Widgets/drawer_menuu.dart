@@ -8,6 +8,7 @@ import 'package:food_app/Screens/SmallScreens/profile_screen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 import 'package:food_app/Widgets/divider.dart';
 import 'package:food_app/Widgets/inkwell_widget.dart';
+import 'package:get/get.dart';
 
 // ignore: camel_case_types
 class Drawer_Widget extends StatefulWidget {
@@ -45,7 +46,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                   height: 30,
                 ),
                 const Dividerr(),
-                Inkwekk("Home", 24, 24, Icons.home, () {
+                Inkwekk("Home".tr, 24, 24, Icons.home, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -54,7 +55,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                   );
                 }),
                 const Dividerr(),
-                Inkwekk("Profile", 24, 24, Icons.person, () {
+                Inkwekk("Profile".tr, 24, 24, Icons.person, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -63,7 +64,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                   );
                 }),
                 const Dividerr(),
-                Inkwekk("Addresses", 24, 24, Icons.location_on_rounded, () {
+                Inkwekk("Addresses".tr, 24, 24, Icons.location_on_rounded, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -80,16 +81,16 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             color: Color(0xff2d343e),
             child: Column(
               children: [
-                const ListTile(
+                 ListTile(
                   title: Text(
-                    "OTHER",
+                    "OTHER".tr,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.w100),
                   ),
                 ),
-                Inkwekk("Language", 24, 24, Icons.language, () {
+                Inkwekk("Language".tr, 24, 24, Icons.language, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -97,7 +98,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                     ),
                   );
                 }),
-                Inkwekk("Terms", 24, 24, Icons.border_inner_outlined, () {
+                Inkwekk("Terms".tr, 24, 24, Icons.border_inner_outlined, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -105,7 +106,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                     ),
                   );
                 }),
-                Inkwekk("Privacy", 24, 24, Icons.lock_outline_rounded, () {
+                Inkwekk("Privacy".tr, 24, 24, Icons.lock_outline_rounded, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(
@@ -113,7 +114,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                     ),
                   );
                 }),
-                Inkwekk("About", 24, 24, Icons.info_outline, () {
+                Inkwekk("About".tr, 24, 24, Icons.info_outline, () {
                   Navigator.push(
                     context,
                     new MaterialPageRoute(

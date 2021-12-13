@@ -39,22 +39,18 @@ notifyListeners();
   addCartItem(Map productInfo){
     
      if( _cartList.any((element) => element["id"] == productInfo["id"])){
+      _cartList.remove(productInfo);
 
-    //  if( _cartList.any((element) => element["quantity"] =! productInfo["quantity"])){
-    //         productInfo['quantity'];
-
-    //  }
-        _cartList.remove(productInfo);
+          total -= int.parse( productInfo["price"].toString()) * int.parse(productInfo["quantity"].toString())   ;
+        print(total);
       
-                total -= int.parse( productInfo["price"].toString()) * int.parse(productInfo["quantity"].toString())   ;
-                print(total);
-               
-               // print(total);
+  
+                      // print(total);
 
      }else{
        _cartList.add(productInfo);
         total +=int.parse(productInfo["price"].toString())  * int.parse(productInfo["quantity"].toString())   ;
-     print(total);
+        print(total);
      }
 
     notifyListeners();

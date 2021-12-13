@@ -12,11 +12,13 @@ import 'package:food_app/Screens/SmallScreens/sandwichScreen.dart';
 import 'package:food_app/Screens/SmallScreens/showmenu.dart';
 import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
+import 'package:food_app/contant/languagesloaclstrings.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
 import 'models/UserData.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(
@@ -36,7 +38,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: LanguagesLocalString()  ,
+      locale:  const Locale('en','US'),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xffb74093)),
