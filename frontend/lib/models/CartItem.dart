@@ -7,6 +7,7 @@ class CartItem extends ChangeNotifier {
   int get total => _total;
   set total(int totalprice) {
     _total = totalprice;
+    notifyListeners();
   }
 
   List get cartList => _cartList;
@@ -27,39 +28,31 @@ class CartItem extends ChangeNotifier {
     });
   }
 
-  addCartItem(Map productInfo) {
+  addCartItem(Map productInfo, int quantity) {
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
-      _cartList.remove(productInfo);
-
-      total -= int.parse(productInfo["price"].toString()) *
-          int.parse(productInfo["quantity"].toString());
-      print(total);
-
-      // print(total);
-
+      removeCartItem(productInfo);
+      addCartItem(productInfo , quantity);
     } else {
+      productInfo["quantity"] = quantity;
       _cartList.add(productInfo);
       total += int.parse(productInfo["price"].toString()) *
           int.parse(productInfo["quantity"].toString());
-      print(total);
     }
 
     notifyListeners();
-    print(_cartList);
   }
 
-  // removeCartItem(Map productInfo){
-  //   var filter =[];
-  //   cartList.forEach((e) {
-  //     if(e["id"] == productInfo["id"]){
-
-  //     }else{
-  //       filter.add(e);
-  //   }
-  //   });
-
-  //   cartList=filter;
-  //   notifyListeners();
-  // }
-
+  removeCartItem(Map productInfo) {
+    var filter = [];
+    cartList.forEach((e) {
+      if (e["id"] == productInfo["id"]) {
+        total -= int.parse(e["price"].toString()) *
+            int.parse(e["quantity"].toString());
+      } else {
+        filter.add(e);
+      }
+    });
+    cartList = filter;
+    notifyListeners();
+  }
 }

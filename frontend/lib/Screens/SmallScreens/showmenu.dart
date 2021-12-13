@@ -50,7 +50,6 @@ class _ShowMenuState extends State<ShowMenu> {
 
   @override
   Widget build(BuildContext context) {
-    print(productsList);
 
     return Scaffold(
       appBar: AppBar_ShowMenu(),

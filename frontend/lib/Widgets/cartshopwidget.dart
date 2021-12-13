@@ -45,7 +45,7 @@ class _CartshopWidgetState extends State<CartshopWidget> {
                           onPressed: () {
                             CartItem cartItem =
                                 Provider.of<CartItem>(context, listen: false);
-                            cartItem.addCartItem(
+                            cartItem.removeCartItem(
                                 context.read<CartItem>().cartList[i]);
                           },
                           icon: Icon(

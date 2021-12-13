@@ -26,6 +26,7 @@ class SandwichScreen extends StatefulWidget {
 
 class _SandwichScreenState extends State<SandwichScreen> {
   Map ProductInfo = {};
+  int quantity = 0;
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -34,6 +35,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
         jsonEncode(ModalRoute.of(context)!.settings.arguments);
     setState(() {
       ProductInfo = jsonDecode(offerInfoString);
+      quantity = ProductInfo["quantity"];
     });
   }
 
@@ -50,7 +52,6 @@ class _SandwichScreenState extends State<SandwichScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(ProductInfo);
     return Scaffold(
       appBar: AppBar_ShowMenu(
         imageName: ProductInfo["name"],
@@ -194,7 +195,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
                       border: Border.all(color: Colors.black),
                     ),
                     child: Text(
-                      ProductInfo['quantity'].toString(),
+                      quantity.toString(),
                       style:
                           TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                     ),
@@ -246,14 +247,9 @@ class _SandwichScreenState extends State<SandwichScreen> {
             bottom: 0,
             child: Button_Widget("Add to cart".tr,
                 MediaQuery.of(context).size.width, 75, Colors.orange, () {
-              CartItem cartItem = Provider.of<CartItem>(context, listen: false);
-
-              print(ProductInfo);
-              cartItem.addCartItem(ProductInfo);
+              context.read<CartItem>().addCartItem(ProductInfo , quantity);
               //            Navigator.pushNamed(context, Cartshopscreen.roteName,
-              //  arguments: ProductInfo
-
-              //       );
+              //            );
             }),
           ),
         ],
@@ -264,14 +260,14 @@ class _SandwichScreenState extends State<SandwichScreen> {
   subtract() {
     setState(() {
       if (ProductInfo['quantity'] > 0) {
-        ProductInfo['quantity']--;
+        quantity--;
       }
     });
   }
 
   add() {
     setState(() {
-      ProductInfo['quantity']++;
+      quantity++;
     });
   }
 }
