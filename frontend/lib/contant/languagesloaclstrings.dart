@@ -29,7 +29,7 @@ class LanguagesLocalString extends Translations {
           "BUY NOW": "BUY NOW",
           "Go to Checkout": "Go to Checkout",
           "Cart is empty": "Cart is empty",
-          "Total": "المجموع",
+          "Total": "Total",
           "    Size": "    Size",
           "   Special Instructions": "   Special Instructions",
           "   Quantity": "   Quantity",

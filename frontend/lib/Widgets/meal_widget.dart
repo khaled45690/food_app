@@ -14,7 +14,7 @@ class MealWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height / 2.55,
-      width: MediaQuery.of(context).size.width / 5,
+      width: MediaQuery.of(context).size.width / 1,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         image: DecorationImage(
