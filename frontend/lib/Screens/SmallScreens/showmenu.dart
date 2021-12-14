@@ -84,11 +84,7 @@ bool loading= true;
             height: 20,
           ),
 
-          loading == true ? SpinKitRotatingCircle(
-              color: Colors.orange,
-            size: 50.0,
-              
-            ): 
+          loading == true ? SpinnerLoading(): 
           Column(
             children: [
                   for (int i = 0; i < offersList.length; i++)
