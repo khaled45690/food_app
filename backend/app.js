@@ -36,7 +36,7 @@ app.use('/image', getImageRouter);
 app.use('/address',AddresseRouter);
 app.use('/offer',OfferRouter);
 
-app.listen(port,()=>{
+app.listen(process.env.PORT || 4000,()=>{
     console.log("it is working");
 })
 
