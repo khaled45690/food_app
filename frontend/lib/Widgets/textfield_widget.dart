@@ -4,10 +4,10 @@ class TextField_Widget extends StatelessWidget {
   final String textt;
   final IconData iconn;
   final double width;
-  FormFieldValidator<String>? validator;
+   ValueChanged<String>? onChanged;
   TextEditingController textEditingController;
 
-  TextField_Widget(this.textt, this.iconn, this.width, this.validator,
+  TextField_Widget(this.textt, this.iconn, this.width, this.onChanged,
       this.textEditingController);
 
   @override
@@ -17,7 +17,7 @@ class TextField_Widget extends StatelessWidget {
       width: width,
       child: TextFormField(
         controller: textEditingController,
-        validator: validator,
+        onChanged: onChanged,
         decoration: InputDecoration(
             labelText: textt,
             isDense: true,

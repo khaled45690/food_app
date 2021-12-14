@@ -9,14 +9,16 @@ class SpinnerLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return 
-       Center(
-        child: SpinKitRotatingCircle(
-            color: Colors.orange,
-            size: 150.0,
-              
-            ),
-        
-      );
+      
+         Center(
+          child: SpinKitRotatingCircle(
+              color: Colors.orange,
+              size: 150.0,
+                
+              ),
+          
+             );
+      
     
   }
 }

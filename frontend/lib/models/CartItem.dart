@@ -28,12 +28,21 @@ class CartItem extends ChangeNotifier {
     });
   }
 
-  addCartItem(Map productInfo, int quantity) {
+  addCartItem(Map productInfo, int quantity,int price) {
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
       removeCartItem(productInfo);
-      addCartItem(productInfo , quantity);
+      addCartItem(productInfo , quantity,price );
     } else {
       productInfo["quantity"] = quantity;
+            productInfo["price"] = price;
+
+      if(productInfo["xlarge"] == true){
+        productInfo["price"] ++;
+         productInfo["price"] ++;
+
+        print( productInfo["price"]);
+
+      }
       _cartList.add(productInfo);
       total += int.parse(productInfo["price"].toString()) *
           int.parse(productInfo["quantity"].toString());
@@ -42,10 +51,18 @@ class CartItem extends ChangeNotifier {
     notifyListeners();
   }
 
-  removeCartItem(Map productInfo) {
+  removeCartItem(Map productInfo,  ) {
     var filter = [];
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
+      if(productInfo["xlarge"] == true){
+        productInfo["price"] --;
+        productInfo["price"] --;
+
+        print( productInfo["price"]);
+
+      }
+        
         total -= int.parse(e["price"].toString()) *
             int.parse(e["quantity"].toString());
       } else {

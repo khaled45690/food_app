@@ -27,6 +27,7 @@ class SandwichScreen extends StatefulWidget {
 class _SandwichScreenState extends State<SandwichScreen> {
   Map ProductInfo = {};
   int quantity = 0;
+  int price = 0;
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -36,6 +37,7 @@ class _SandwichScreenState extends State<SandwichScreen> {
     setState(() {
       ProductInfo = jsonDecode(offerInfoString);
       quantity = ProductInfo["quantity"];
+      price = ProductInfo["price"];
     });
   }
 
@@ -246,10 +248,15 @@ class _SandwichScreenState extends State<SandwichScreen> {
           Positioned(
             bottom: 0,
             child: Button_Widget("Add to cart".tr,
-                MediaQuery.of(context).size.width, 75, Colors.orange, () {
-              context.read<CartItem>().addCartItem(ProductInfo , quantity);
-              //            Navigator.pushNamed(context, Cartshopscreen.roteName,
-              //            );
+               MediaQuery.of(context).size.width
+               //100
+                , 75, Colors.orange, () {
+                  final snackBar = SnackBar(
+                    content: Text("you added : ${ProductInfo["name"]}  * ${quantity}",style: TextStyle(fontSize: 18),),
+                  );
+                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              context.read<CartItem>().addCartItem(ProductInfo , quantity,price);
+           
             }),
           ),
         ],

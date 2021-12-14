@@ -26,6 +26,8 @@ class UserData with ChangeNotifier {
 
   void getUserData() async {
     final SharedPreferences prefs = await _prefs;
+        print(prefs.getString("userData"));
+
     userData = jsonDecode(prefs.getString("userData") == null
         ? jsonEncode(_userAddressData)
         : prefs.getString("userData")!);

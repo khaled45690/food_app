@@ -19,7 +19,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  Map userData = {};
   Map data = {
     "firstName": null,
     "lastName": null,
@@ -44,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     setState(() {
-      userData = context.watch<UserData>().userData;
+      data = context.watch<UserData>().userData;
     });
   }
 
@@ -98,40 +97,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextField_Widget(
-                                userData["firstName"] == null
+                                data["firstName"] == null
                                     ? "Fist Name*".tr
-                                    : userData["firstName"],
+                                    : data["firstName"],
                                 Icons.person,
                                 MediaQuery.of(context).size.width / 2.3,
-                                (value) {
-                              onChange(value, "firstName");
-                              if (value!.isEmpty) {
-                                return 'please enter your name';
-                              }
-                              if (value.length < 10) {
-                                return 'Should be at  least 10 characters long';
-                              }
-                              return null;
-                            }, firstnameController),
+                                 (firstName) =>
+                            setState(() => onChange(firstName, "firstName"))
+                                
+                                , firstnameController),
                             Container(
                               // color: Colors.amber,
                               width: MediaQuery.of(context).size.width / 2.3,
                               child: TextFormField(
                                 controller: lastnameController,
-                                validator: (value) {
-                                  onChange(value, "lastName");
-                                  if (value!.isEmpty) {
-                                    return 'please enter your name';
-                                  }
-                                  if (value.length < 10) {
-                                    return 'Should be at  least 10 characters long';
-                                  }
-                                  return null;
-                                },
+                            onChanged:(lastName) =>
+                            setState(() => onChange(lastName, "lastName")) ,
                                 decoration: InputDecoration(
-                                    labelText: userData["lastName"] == null
+                                    labelText: data["lastName"] == null
                                         ? "Last Name*".tr
-                                        : userData["lastName"],
+                                        : data["lastName"],
                                     isDense: true,
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -149,38 +134,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                            userData["email"] == null
+                            data["email"] == null
                                 ? "E-mail*".tr
-                                : userData["email"],
+                                : data["email"],
                             Icons.email,
-                            MediaQuery.of(context).size.width / 1.15, (value) {
-                          onChange(value, "email");
-                          if (value!.isEmpty) {
-                            return 'please enter your Email';
-                          }
-
-                          return null;
-                        }, emailController),
+                            MediaQuery.of(context).size.width / 1.15, 
+                               (email) =>
+                            setState(() => onChange(email, "email"))
+                            , emailController
+                            
+                            ),
                         SizedBox(
                           height: 15,
                         ),
                         TextField_Widget(
-                            userData["telephone"] == null
+                            data["telephone"] == null
                                 ? "Telephone*".tr
-                                : userData["telephone"],
+                                : data["telephone"],
                             Icons.phone,
-                            MediaQuery.of(context).size.width / 1.15, (value) {
-                          onChange(value, "telephone");
-                          if (value!.isEmpty) {
-                            return 'please enter a number';
-                          }
-                          if (double.tryParse(value) == null) {
-                            return 'please enter a valid number';
-                          }
-                          if (value.characters == 7) {
-                            return 'non valid';
-                          }
-                        }, phoneController),
+                            MediaQuery.of(context).size.width / 1.15,
+                                   (telephone) =>
+                            setState(() => onChange(telephone, "telephone"))
+                            , phoneController),
                       ],
                     ),
                   ),

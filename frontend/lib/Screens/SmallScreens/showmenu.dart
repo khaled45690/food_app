@@ -42,31 +42,21 @@ class _ShowMenuState extends State<ShowMenu> {
       });
     }
   }
- isloading() async{
-   if (loading == true){
-     await Future.delayed(Duration(seconds: 2));
-   return 
-   setState(() {
-          loading =false;
 
-   });
-  
-   
- }
- }
+
+
   @override
   void initState() {
     super.initState();
-    isloading();
+ 
+
     getProduct();
     getOffers();
-    
-
   }
-bool loading= true;
+
+//bool loading =false;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar_ShowMenu(),
       body: ListView(
@@ -83,17 +73,16 @@ bool loading= true;
           SizedBox(
             height: 20,
           ),
-
-          loading == true ? SpinnerLoading(): 
-          Column(
-            children: [
-                  for (int i = 0; i < offersList.length; i++)
-            MealWidget(offersList[i]),
-            for (int p = 0; p < productsList.length; p++)
-              OfferDetailsWidget(productsList[p]),
-            ],
-          )
-        
+          productsList.length == 0
+              ? SpinnerLoading()
+              : Column(
+                  children: [
+                    for (int i = 0; i < offersList.length; i++)
+                      MealWidget(offersList[i]),
+                    for (int p = 0; p < productsList.length; p++)
+                      OfferDetailsWidget(productsList[p]),
+                  ],
+                )
         ],
       ),
     );

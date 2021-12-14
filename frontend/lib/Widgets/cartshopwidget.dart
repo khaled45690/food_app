@@ -10,6 +10,7 @@ class CartshopWidget extends StatefulWidget {
 }
 
 class _CartshopWidgetState extends State<CartshopWidget> {
+  int price = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
