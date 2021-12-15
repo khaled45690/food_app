@@ -96,11 +96,22 @@ class _Addresses_screenState extends State<Addresses_screen> {
                       ),
                       Textfieldaddres(
                         streetnameController,
+                        
                         data["streetName"] == null
                             ? "Street name & number*".tr
                             : data["streetName"],
                         (streetName) =>
-                            setState(() => onChange(streetName, "streetName")),
+                            setState(() => onChange(streetName, "streetName")),Icon(Icons.streetview_sharp),
+
+                            (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your streetname';
+    }                          if (value.trim().length < 3) {
+                            return 'Username must be at least 3 characters in length';
+                          }
+
+    return null;
+  },
                       ),
                       SizedBox(
                         height: 15,
@@ -110,7 +121,16 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         data["town"] == null
                             ? "Town or City Area*".tr
                             : data["town"],
-                        (town) => setState(() => onChange(town, "town")),
+                        (town) => setState(() => onChange(town, "town")),Icon(Icons.location_on_rounded),
+                        (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your TownName';
+    }                          if (value.trim().length < 3) {
+                            return 'Username must be at least 3characters in length';
+                          }
+
+    return null;
+  },
                       ),
                       SizedBox(
                         height: 15,
@@ -121,7 +141,21 @@ class _Addresses_screenState extends State<Addresses_screen> {
                               ? "Postcode, Block,intercom where tp park*".tr
                               : data["postcode"],
                           (postcode) =>
-                              setState(() => onChange(postcode, "postcode"))),
+                              setState(() => onChange(postcode, "postcode"),
+                              
+                              ),
+                              Icon(Icons.info),
+
+                              (value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your postcode';
+    }    if (value.length != 4)
+{
+  return "postcode Number must be of 4 digit";
+}
+    return null;
+  },
+                              ),
                     ],
                   ),
                 ),
@@ -133,6 +167,10 @@ class _Addresses_screenState extends State<Addresses_screen> {
                   75, Colors.orange, () {
                 context.read<UserData>().setUserAddressDataFunc(data);
                 postDateaddresses();
+                           final snackBar = SnackBar(
+                    content: Text("your information have been saved ",style: TextStyle(fontSize: 18),));
+                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
               }),
             ),
           ],

@@ -26,7 +26,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
       child: ListView(
         children: <Widget>[
           Container(
-            height: 330,
+            height: MediaQuery.of(context).size.height/2,
             color: Color(0xff313943),
             child: Column(
               children: [
@@ -77,7 +77,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             ),
           ),
           Container(
-            height: 420,
+            height: MediaQuery.of(context).size.height/2,
             color: Color(0xff2d343e),
             child: Column(
               children: [

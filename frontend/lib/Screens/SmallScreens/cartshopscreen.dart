@@ -8,8 +8,10 @@ import 'package:food_app/Widgets/cartisemptywidget.dart';
 import 'package:food_app/Widgets/cartshopwidget.dart';
 import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/models/CartItem.dart';
+import 'package:food_app/models/UserData.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Cartshopscreen extends StatefulWidget {
   static const roteName = '/CartShop';
@@ -25,6 +27,23 @@ class _CartshopscreenState extends State<Cartshopscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+                   //   print(context.read<UserData>().userData);
+
+
+// final Future<SharedPreferences> prefs =   SharedPreferences.getInstance();
+//         prefs.getString("userData");
+
+SharedPreferences.getInstance().then((data){
+    data.getKeys().forEach((key){
+      print(key+(key));
+    });
+});
+
+              //  context.read<UserData>().getUserData();
+              //    context.read<UserData>().getUserAddressData();
+
+
+
     CartItem cartItem = Provider.of<CartItem>(context, listen: false);
     //       print(cartItem.cartList);
     setState(() {
@@ -109,17 +128,20 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                 for (int i = 0;
                     i <= context.read<CartItem>().cartList.length;
                     i++)
+                    context.read<CartItem>().cartList.length == 0 ?Button_Widget_totaol("Go to Checkout",
+                    MediaQuery.of(context).size.width,
+                    75,
+                     Colors.orangeAccent,(){},"total"
+                    ):
                   Button_Widget_totaol(
-                      context.read<CartItem>().cartList.length == 0
-                          ? "Go to Checkout".tr
-                          : "BUY NOW".tr,
+                           "BUY NOW".tr,
                       MediaQuery.of(context).size.width,
                       75,
                       Colors.orange,
                       () {
+                                     
 
 
-                        
                       },
                       "total"),
               ],
