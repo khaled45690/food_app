@@ -1,6 +1,6 @@
 const { mongo, Mongoose } = require('mongoose');
 const CONTACTS = require('../model/contactsModel');
-
+const mongoose = require('mongoose');
 
 module.exports = {
     insertContacts: async (req, res) => {
@@ -38,27 +38,11 @@ module.exports = {
         const id = req.params.id;
         const del = await CONTACTS.findByIdAndRemove(id);
         res.json({"delete" : del});
-    },updatecontact:async(req,res,next)=>{
-        const contacts = await CONTACTS({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.lastname,
-            phone: req.body.phone
-        }).updateMany(
-            {
-                firstname: req.firstname,
-                lastname: req.lastname,
-                email: req.email,
-                phone: req.phone
-            },
-            {
-                firstname: contacts.firstname,
-                lastname: contacts.lastname,
-                email: contacts.email,
-                phone: contacts.phone
-
-            }
-        ) 
-
+    },
+    updatecontact:async(req,res)=>{
+        console.log(req.body);
+        const contacts = await CONTACTS
+        contacts.findOneAndUpdate({ id: req.body.id} , req.body);
+        // Character.findOneAndUpdate();
     }
 }

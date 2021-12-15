@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   postDateProfile() async {
-    var response = await http.post(Uri.parse('${serverURL}contacts'), body: {
+    var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
       "firstname": firstnameController.text,
       "lastname": lastnameController.text,
       "phone": phoneController.text,
