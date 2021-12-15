@@ -6,11 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserData with ChangeNotifier {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  Map _userData = {};
+  Map? _userData;
 
-  Map get userData => _userData;
+  Map? get userData => _userData;
 
-  set userData(Map UserDataParameter) {
+  set userData(Map? UserDataParameter) {
     _userData = UserDataParameter;
     notifyListeners();
   }
@@ -29,7 +29,7 @@ class UserData with ChangeNotifier {
         print(prefs.getString("userData"));
 
     userData = jsonDecode(prefs.getString("userData") == null
-        ? jsonEncode(_userAddressData)
+        ? "null"
         : prefs.getString("userData")!);
     notifyListeners();
   }

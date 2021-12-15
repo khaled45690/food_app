@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:core';
 
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late Map? sharedPrefrenceCheck;
   Map data = {
     "firstName": null,
     "lastName": null,
@@ -37,6 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement initState
     super.initState();
     context.read<UserData>().getUserData();
+    sharedPrefrenceCheck = context.read<UserData>().userData;
   }
 
   @override
@@ -44,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     setState(() {
-      data = context.watch<UserData>().userData;
+      // data = context.watch<UserData>().userData;
     });
   }
 
@@ -55,16 +58,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
       "phone": phoneController.text,
       "email": emailController.text
     });
-    print(response.body);
+    Map jsonBody = jsonDecode(response.body);
+    Map userData = {
+      "id" : jsonBody["id"],
+      "firstname" : jsonBody["firstname"],
+      "lastname" : jsonBody["lastname"],
+      "email" : jsonBody["email"],
+      "phone" : jsonBody["phone"],
+    };
+    context.read<UserData>().setUserDataFunc(userData);
+    
   }
   updatDateProfile() async {
     var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
+      "id" : context.read<UserData>().userData!["id"],
       "firstname": firstnameController.text,
       "lastname": lastnameController.text,
       "phone": phoneController.text,
       "email": emailController.text
     });
-    print(response.body);
+    Map jsonBody = jsonDecode(response.body);
+    Map userData = {
+      "id" : jsonBody["id"],
+      "firstname" : jsonBody["firstname"],
+      "lastname" : jsonBody["lastname"],
+      "email" : jsonBody["email"],
+      "phone" : jsonBody["phone"],
+    };
+    context.read<UserData>().setUserDataFunc(userData);
   }
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
@@ -221,10 +242,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           
                     MediaQuery.of(context).size.width, 75, Colors.orange, () {
                   if (_formKey.currentState!.validate()) {
-                   if(data["telephone"] == null &&  data["email"] == null&&data["lastName"] == null && data["firstName"] == null){
+                   if(sharedPrefrenceCheck == null){
                      postDateProfile();
                     context.read<UserData>().setUserDataFunc(data);
-     final snackBar = SnackBar(
+                 final snackBar = SnackBar(
                         content: Text(
                       "your information have been saved you can buy now",
                       style: TextStyle(fontSize: 14),
@@ -233,24 +254,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                    }else{
                       updatDateProfile();
-                    context.read<UserData>().setUserDataFunc(data);
                          final snackBar = SnackBar(
                         content: Text(
                       "your information have been saved you can buy now",
                       style: TextStyle(fontSize: 14),
                     ));
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-
                    }
-    
-
-
-
-                  
-
-               
-                 
                   }
                 }),
               ),
