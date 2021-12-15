@@ -26,9 +26,7 @@ class TextField_Widget extends StatelessWidget {
         decoration: InputDecoration(
           hintText: textt,
             labelText: texttt,
-           //prefixText: "fdfdf",
-           
-        //   prefix: Icon(Icons.close),
+
             isDense: true,
             border: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey, width: 5)),

@@ -100,6 +100,7 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         data["streetName"] == null
                             ? "Street name & number*".tr
                             : data["streetName"],
+                        "Street name & number".tr,
                         (streetName) =>
                             setState(() => onChange(streetName, "streetName")),Icon(Icons.streetview_sharp),
 
@@ -121,6 +122,8 @@ class _Addresses_screenState extends State<Addresses_screen> {
                         data["town"] == null
                             ? "Town or City Area*".tr
                             : data["town"],
+                                                          "Town or City Area*".tr,
+
                         (town) => setState(() => onChange(town, "town")),Icon(Icons.location_on_rounded),
                         (value) {
     if (value == null || value.isEmpty) {
@@ -140,6 +143,8 @@ class _Addresses_screenState extends State<Addresses_screen> {
                           data["postcode"] == null
                               ? "Postcode, Block,intercom where tp park*".tr
                               : data["postcode"],
+                              "Postcode, Block,intercom where tp park*".tr,
+                              
                           (postcode) =>
                               setState(() => onChange(postcode, "postcode"),
                               

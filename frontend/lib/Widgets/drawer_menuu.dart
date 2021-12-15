@@ -31,7 +31,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                   width: 100,
                 ),
                 Container(
@@ -39,7 +39,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
                     width: 100,
                     child: Image.asset('assets/images/nkhw.png')),
                 const SizedBox(
-                  height: 10,
+                  height: 50,
                   width: 100,
                 ),
                 const SizedBox(

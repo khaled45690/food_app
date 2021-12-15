@@ -149,7 +149,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         ? "Last Name*".tr
                                         : data["lastName"] ,
                                     labelText: "Last Name*".tr,
+                                    
                                     isDense: true,
+                                    
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
                                           color: Colors.grey, width: 5),
