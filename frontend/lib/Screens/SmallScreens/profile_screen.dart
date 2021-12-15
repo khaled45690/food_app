@@ -31,7 +31,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       data[variableName] = value;
     });
   }
-    
 
   @override
   void initState() {
@@ -99,72 +98,62 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextField_Widget(
-                             data["firstName"] == null
-                                    ? "Fist Name*".tr
-                                    : data["firstName"]
-                                ,
-                                
-                                     "Fist Name*".tr
-                                    ,
+                              data["firstName"] == null
+                                  ? "Fist Name*".tr
+                                  : data["firstName"],
+                              "Fist Name*".tr,
+                              Icons.person,
+                              MediaQuery.of(context).size.width / 2.3,
+                              (firstName) => setState(
+                                  () => onChange(firstName, "firstName")),
+                              firstnameController,
+                              (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your firstname';
+                                }
+                                if (value.length < 3) {
+                                  return 'Username must be at least 3 characters in length';
+                                }
 
-                                Icons.person,
-                                MediaQuery.of(context).size.width / 2.3,
-                                 (firstName) =>
-                            setState(() => onChange(firstName, "firstName"))
-                                
-                                , firstnameController,
-                                (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your firstname';
-    }
-                              if (value.trim().length < 3) {
-                            return 'Username must be at least 3 characters in length';
-                          }
-
-    return null;
-  },
-                                
-                                ),
-                                
+                                return null;
+                              },
+                            ),
                             Container(
                               // color: Colors.amber,
                               width: MediaQuery.of(context).size.width / 2.3,
                               child: TextFormField(
-                                
                                 validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                  return 'Please enter your last name';
-                                                      }
-                                  if (value.trim().length < 3) {
-                            return 'Username must be at least 3 characters in length';
-                          }
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter your last name';
+                                  }
+                                  if (value.length < 3) {
+                                    return 'Username must be at least 3 characters in length';
+                                  }
 
-                                return null;
-                                          },
+                                  return null;
+                                },
                                 controller: lastnameController,
-                            onChanged:(lastName) =>
-                            setState(() => onChange(lastName, "lastName")) ,
+                                onChanged: (lastName) => setState(
+                                    () => onChange(lastName, "lastName")),
                                 decoration: InputDecoration(
-                                  hintText:data["lastName"] == null
-                                        ? "Last Name*".tr
-                                        : data["lastName"] ,
-                                    labelText: "Last Name*".tr,
-                                    
-                                    isDense: true,
-                                    
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey, width: 5),
-                                    ),
-                                  
-                                    //  prefixIcon: Icon(Icons.person),
-                                    disabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.yellow, width: 5),
-                                            
-                                            ),
-                                            
-                                            ),
+                                  hintText: data["lastName"] == null
+                                      ? "Last Name*".tr
+                                      : data["lastName"],
+                                  labelText: "Last Name*".tr,
+
+                                  isDense: true,
+
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.grey, width: 5),
+                                  ),
+
+                                  //  prefixIcon: Icon(Icons.person),
+                                  disabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.yellow, width: 5),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -173,51 +162,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                           data["email"] == null
-                                ? "E-mail*".tr
-                                : data["email"], 
-                                 "E-mail*".tr
-                                ,
-                            Icons.email,
-                            MediaQuery.of(context).size.width / 1.15, 
-                               (email) =>
-                            setState(() => onChange(email, "email"))
-                            , emailController,(value) {
-                 if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
-                             }    if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                            return 'Please enter a valid email address';
-                          }
-                                                    return null;
-
-
-                               },
-                            
-                            ),
+                          data["email"] == null ? "E-mail*".tr : data["email"],
+                          "E-mail*".tr,
+                          Icons.email,
+                          MediaQuery.of(context).size.width / 1.15,
+                          (email) => setState(() => onChange(email, "email")),
+                          emailController,
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
+                          },
+                        ),
                         SizedBox(
                           height: 15,
                         ),
                         TextField_Widget(
-                            data["telephone"] == null
-                                ? "Telephone*".tr
-                                : data["telephone"],
-                           "Telephone*".tr,
-                               
-                            Icons.phone,
-                            MediaQuery.of(context).size.width / 1.15,
-                                   (telephone) =>
-                            setState(() => onChange(telephone, "telephone"))
-                            , phoneController,(value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your telephone';
-    }
-                              if (value.length != 11) {
-                            return 'telephone must be at least 11 digit ';
-                          }
+                          data["telephone"] == null
+                              ? "Telephone*".tr
+                              : data["telephone"],
+                          "Telephone*".tr,
+                          Icons.phone,
+                          MediaQuery.of(context).size.width / 1.15,
+                          (telephone) =>
+                              setState(() => onChange(telephone, "telephone")),
+                          phoneController,
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your telephone';
+                            }
+                            if (value.length != 11) {
+                              return 'telephone must be at least 11 digit ';
+                            }
 
-    return null;
-  },),
-                           
+                            return null;
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -227,16 +211,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: 0,
                 child: Button_Widget("Save".tr,
                     MediaQuery.of(context).size.width, 75, Colors.orange, () {
-                      if (_formKey.currentState!.validate()){
- context.read<UserData>().setUserDataFunc(data);
-                  postDateProfile();
-                        final snackBar = SnackBar(
-                    content: Text("your information have been saved you can buy now",style: TextStyle(fontSize: 14),));
-                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                             Navigator.pushNamed(context, Cartshopscreen.roteName,
-             );
-                      }
-                 
+                  if (_formKey.currentState!.validate()) {
+                    context.read<UserData>().setUserDataFunc(data);
+                    postDateProfile();
+                    final snackBar = SnackBar(
+                        content: Text(
+                      "your information have been saved you can buy now",
+                      style: TextStyle(fontSize: 14),
+                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.pushNamed(
+                      context,
+                      Cartshopscreen.roteName,
+                    );
+                  }
                 }),
               ),
             ],

@@ -1,3 +1,4 @@
+const { mongo, Mongoose } = require('mongoose');
 const CONTACTS = require('../model/contactsModel');
 
 
@@ -37,5 +38,27 @@ module.exports = {
         const id = req.params.id;
         const del = await CONTACTS.findByIdAndRemove(id);
         res.json({"delete" : del});
+    },updatecontact:async(req,res,next)=>{
+        const contacts = await CONTACTS({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.lastname,
+            phone: req.body.phone
+        }).updateMany(
+            {
+                firstname: req.firstname,
+                lastname: req.lastname,
+                email: req.email,
+                phone: req.phone
+            },
+            {
+                firstname: contacts.firstname,
+                lastname: contacts.lastname,
+                email: contacts.email,
+                phone: contacts.phone
+
+            }
+        ) 
+
     }
 }
