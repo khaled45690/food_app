@@ -7,9 +7,9 @@ const cors = require('cors');
 const ContactRouter = require('./route/contactsRouter');
 const AddresseRouter = require('./route/addressesRouter');
 const OfferRouter = require('./route/offerRouter');
-const AuthRouter = require('./route/authRouter');
-const user_check = require('./middleware/verify_user');
-const admin_check = require('./middleware/verify_admin');
+// const AuthRouter = require('./route/authRouter');
+// const user_check = require('./middleware/verify_user');
+// const admin_check = require('./middleware/verify_admin');
 
 
 
@@ -38,7 +38,7 @@ app.use('/image', getImageRouter);
 app.use('/address', AddresseRouter);
 app.use('/offer', OfferRouter);
 
-app.use('/auth', AuthRouter);
+//app.use('/auth', AuthRouter);
 // app.get('/contacts',user_check);
 // app.post('/contacts',admin_check);
 app.use('/contacts', ContactRouter);

@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      translations: LanguagesLocalString(),
-      locale: const Locale('en', 'US'),
+     translations: LanguagesLocalString(),
+     locale: const Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xffb74093)),

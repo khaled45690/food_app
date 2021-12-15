@@ -31,7 +31,7 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 10,
                   width: 100,
                 ),
                 Container(

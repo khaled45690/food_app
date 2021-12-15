@@ -49,6 +49,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   postDateProfile() async {
+    var response = await http.post(Uri.parse('${serverURL}contacts'), body: {
+      "firstname": firstnameController.text,
+      "lastname": lastnameController.text,
+      "phone": phoneController.text,
+      "email": emailController.text
+    });
+    print(response.body);
+  }
+  updatDateProfile() async {
     var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
       "firstname": firstnameController.text,
       "lastname": lastnameController.text,
@@ -57,7 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
     print(response.body);
   }
-
   TextEditingController firstnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -138,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 decoration: InputDecoration(
                                   hintText: data["lastName"] == null
                                       ? "Last Name*".tr
-                                      : data["lastName"],
+                                      :  data["lastName"],
                                   labelText: "Last Name*".tr,
 
                                   isDense: true,
@@ -162,7 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: 15,
                         ),
                         TextField_Widget(
-                          data["email"] == null ? "E-mail*".tr : data["email"],
+                          data["email"] == null ? "E-mail*".tr : data["email"] ,
                           "E-mail*".tr,
                           Icons.email,
                           MediaQuery.of(context).size.width / 1.15,
@@ -210,20 +218,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Positioned(
                 bottom: 0,
                 child: Button_Widget("Save".tr,
+          
                     MediaQuery.of(context).size.width, 75, Colors.orange, () {
                   if (_formKey.currentState!.validate()) {
+                   if(data["telephone"] == null &&  data["email"] == null&&data["lastName"] == null && data["firstName"] == null){
+                     postDateProfile();
                     context.read<UserData>().setUserDataFunc(data);
-                    postDateProfile();
-                    final snackBar = SnackBar(
+     final snackBar = SnackBar(
                         content: Text(
                       "your information have been saved you can buy now",
                       style: TextStyle(fontSize: 14),
                     ));
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    Navigator.pushNamed(
-                      context,
-                      Cartshopscreen.roteName,
-                    );
+
+                   }else{
+                      updatDateProfile();
+                    context.read<UserData>().setUserDataFunc(data);
+                         final snackBar = SnackBar(
+                        content: Text(
+                      "your information have been saved you can buy now",
+                      style: TextStyle(fontSize: 14),
+                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+
+                   }
+    
+
+
+
+                  
+
+               
+                 
                   }
                 }),
               ),

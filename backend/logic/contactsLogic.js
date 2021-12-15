@@ -1,6 +1,6 @@
 const { mongo, Mongoose } = require('mongoose');
-const CONTACTS = require('../model/contactsModel');
 const mongoose = require('mongoose');
+const CONTACTS = require('../model/contactsModel');
 
 module.exports = {
     insertContacts: async (req, res) => {
@@ -42,7 +42,11 @@ module.exports = {
     updatecontact:async(req,res)=>{
         console.log(req.body);
         const contacts = await CONTACTS
-        contacts.findOneAndUpdate({ id: req.body.id} , req.body);
+        contacts.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body.id)} , req.body).then((error , result)=>{
+            res.end("the change was suc");
+            console.log(error);
+            console.log(result);
+        });
         // Character.findOneAndUpdate();
     }
 }
