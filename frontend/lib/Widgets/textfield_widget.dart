@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TextField_Widget extends StatelessWidget {
-  final String textt;
+  final String initialValue;
   final String texttt;
+  
 
   final IconData iconn;
   final double width;
   ValueChanged<String>? onChanged;
-  TextEditingController textEditingController;
+//  TextEditingController textEditingController;
   FormFieldValidator<String> fieldValidator;
 
-  TextField_Widget(this.textt, this.texttt, this.iconn, this.width,
-      this.onChanged, this.textEditingController, this.fieldValidator);
+  TextField_Widget(this.initialValue, this.texttt, this.iconn, this.width,
+      this.onChanged,  this.fieldValidator);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,12 @@ class TextField_Widget extends StatelessWidget {
       // color: Colors.amber,
       width: width,
       child: TextFormField(
-        controller: textEditingController,
+        initialValue:initialValue ,
+       // controller: textEditingController,
         onChanged: onChanged,
         validator: fieldValidator,
         decoration: InputDecoration(
-            hintText: textt,
+           // hintText: textt,
             labelText: texttt,
             isDense: true,
             border: OutlineInputBorder(
