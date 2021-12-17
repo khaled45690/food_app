@@ -21,59 +21,45 @@ class CartItem extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-  addCartItem(
-    Map productInfo,
-    int quantity,
-  ) async {
+  addCartItem(Map productInfo, int quantity, bool isXlarge) async {
+    final SharedPreferences prefs = await _prefs;
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
       removeCartItem(productInfo);
-      addCartItem(productInfo,quantity,);
+      addCartItem(productInfo, quantity, isXlarge);
       //  final SharedPreferences prefs =  await _prefs;
       //  prefs.setString("cartshop",jsonEncode( addCartItem(productInfo , quantity,price )) );
-          notifyListeners();
-
     } else {
       productInfo["quantity"] = quantity;
-
-      if (productInfo["xlarge"] == true) {
+      if (isXlarge == true) {
         total += int.parse(productInfo["pricemax"].toString()) *
             int.parse(productInfo["quantity"].toString());
-                    _cartList.add(productInfo);
-
-                notifyListeners();
-
+        productInfo["xlarge"] = isXlarge;
+        _cartList.add(productInfo);
       } else {
         total += int.parse(productInfo["price"].toString()) *
             int.parse(productInfo["quantity"].toString());
-                    _cartList.add(productInfo);
-
-                notifyListeners();
-
+        productInfo["xlarge"] = isXlarge;
+        _cartList.add(productInfo);
       }
     }
 
     notifyListeners();
+    prefs.setString("cartList", jsonEncode(cartList));
+
   }
 
-  removeCartItem(
-    Map productInfo,
-  ) {
+  removeCartItem(Map productInfo) async {
+    final SharedPreferences prefs = await _prefs;
     var filter = [];
+
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
-        if (productInfo["xlarge"] == true) {
+        if (e["xlarge"] == true) {
           total -= int.parse(e["pricemax"].toString()) *
               int.parse(e["quantity"].toString());
-                  notifyListeners();
-
-        }else{
+        } else {
           total -= int.parse(e["price"].toString()) *
               int.parse(e["quantity"].toString());
-                  notifyListeners();
-
-
         }
       } else {
         filter.add(e);
@@ -81,5 +67,6 @@ class CartItem extends ChangeNotifier {
     });
     cartList = filter;
     notifyListeners();
+    prefs.setString("cartList", jsonEncode(cartList));
   }
 }

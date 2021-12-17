@@ -17,6 +17,7 @@ class Sandwichwidget extends StatefulWidget {
 
 class _SandwichwidgetState extends State<Sandwichwidget> {
   Map ProductInfo = {};
+  bool isXlarge = false;
   int quantity = 0;
   int price = 0;
   @override
@@ -29,16 +30,17 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
       ProductInfo = jsonDecode(offerInfoString);
       quantity = ProductInfo["quantity"];
       price = ProductInfo["price"];
+      if (ProductInfo['large'] == ProductInfo['xlarge']) {
+        ProductInfo['large'] != ProductInfo['xlarge'];
+      }
+      print("ProductInfo");
+      print(ProductInfo);
     });
   }
 
   @override
   void initState() {
     super.initState();
-    print(context.read<CartShop>().cartshop);
-    if (ProductInfo['large'] == ProductInfo['xlarge']) {
-      ProductInfo['large'] != ProductInfo['xlarge'];
-    }
   }
 
   TextEditingController descriptionController = TextEditingController();
@@ -70,25 +72,24 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                 Container(
                   width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    color: ProductInfo['xlarge']!
+                    color: isXlarge
                         ? Colors.blue.shade50
                         : Colors.white,
                     border: Border.all(color: Colors.black),
                   ),
                   child: CheckboxListTile(
                     title: Text(
-                      " +${ ProductInfo['pricemax']-ProductInfo['price']} اكس لارج",
+                      " +${ProductInfo['pricemax'] - ProductInfo['price']} اكس لارج",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     dense: true,
-                    value: ProductInfo['xlarge'],
+                    value: isXlarge,
                     onChanged: (value) {
                       setState(
                         () {
                           if (value == true) {
-                            ProductInfo['xlarge'] = value;
-                            ProductInfo['large'] = false;
+                            isXlarge = value!;
                           }
                         },
                       );
@@ -105,9 +106,9 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                 Container(
                   width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
-                    color: ProductInfo['large']!
-                        ? Colors.blue.shade50
-                        : Colors.white,
+                    color: isXlarge
+                        ? Colors.white
+                        : Colors.blue.shade50,
                     border: Border.all(color: Colors.black),
                   ),
                   child: CheckboxListTile(
@@ -117,11 +118,11 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     dense: true,
-                    value: ProductInfo['large'],
+                    value:isXlarge ? false : true,
                     onChanged: (value) {
                       setState(() {
                         if (value == true) {
-                          ProductInfo['large'] = value;
+                          isXlarge = false;
                           ProductInfo['xlarge'] = false;
                         }
                       });
@@ -251,14 +252,10 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
               75,
               Colors.orange, () {
             final snackBar = SnackBar(
-              content:
-                  Text("you added : ${ProductInfo["name"]}  * ${quantity}"),
+              content: Text("you added : ${ProductInfo["name"]}  *${quantity}"),
             );
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            context.read<CartItem>().addCartItem(
-                  ProductInfo,
-                  quantity,
-                );
+            context.read<CartItem>().addCartItem(ProductInfo, quantity , isXlarge);
           }),
         ),
       ],
