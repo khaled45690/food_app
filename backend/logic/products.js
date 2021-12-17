@@ -8,6 +8,7 @@ res.json({
        return{
         id:res.id,
         price:res.price,
+        pricemax:res.pricemax,
         name:res.name,
         desc:res.desc,
         quantity:res.quantity,
@@ -21,11 +22,21 @@ res.json({
         const product = await new PRODUCTS({
             name: req.body.name,
             price: req.body.price,
-            desc: req.body.desc
+            pricemax:req.body.pricemax,
+            desc: req.body.desc,
+            quantity: req.body.quantity,
+            large:req.body.large,
+            xlarge:req.body.xlarge
         }).save()
         res.json({"message":"isnerted successfully",
         id: product.id,
-        name:product.name
+        price:product.price,
+        pricemax:product.pricemax,
+        name:product.name,
+        desc:product.desc,
+        quantity:product.quantity,
+        large:product.large,
+        xlarge:product.xlarge
         })
 
     },

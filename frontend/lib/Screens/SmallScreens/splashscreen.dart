@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
+import 'package:food_app/Widgets/splashscreen_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -28,21 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            //   color: Colors.red,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage("assets/images/spll.jpg"))),
-          ),
-        ],
-      ),
-    ));
+        body: SplashScreenWidget()
+    );
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/SmallScreens/buy_item_screen.dart';
 import 'package:food_app/Widgets/OfferDetailsWidget.dart';
+import 'package:food_app/Widgets/appbarKhawater.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/buttonwidgettotal%20price.dart';
 import 'package:food_app/Widgets/cartisemptywidget.dart';
@@ -27,22 +29,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-                   //   print(context.read<UserData>().userData);
-
-
-// final Future<SharedPreferences> prefs =   SharedPreferences.getInstance();
-//         prefs.getString("userData");
-
-SharedPreferences.getInstance().then((data){
-    data.getKeys().forEach((key){
-      print(key+(key));
-    });
-});
-
-              //  context.read<UserData>().getUserData();
-              //    context.read<UserData>().getUserAddressData();
-
-
+    print(context.read<UserData>().userData);
 
     CartItem cartItem = Provider.of<CartItem>(context, listen: false);
     //       print(cartItem.cartList);
@@ -55,16 +42,7 @@ SharedPreferences.getInstance().then((data){
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "خواطر دمشقيه",
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 19),
-        ),
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white54,
-        shadowColor: Colors.white54,
-      ),
+      appBar: AppbarKhawater('خواطر دمشقيه'),
       body: Stack(
         children: [
           Column(
@@ -128,22 +106,38 @@ SharedPreferences.getInstance().then((data){
                 for (int i = 0;
                     i <= context.read<CartItem>().cartList.length;
                     i++)
-                    context.read<CartItem>().cartList.length == 0 ?Button_Widget_totaol("Go to Checkout",
-                    MediaQuery.of(context).size.width,
-                    75,
-                     Colors.orangeAccent,(){},"total"
-                    ):
-                  Button_Widget_totaol(
-                           "BUY NOW".tr,
-                      MediaQuery.of(context).size.width,
-                      75,
-                      Colors.orange,
-                      () {
-                                     
-
-
-                      },
-                      "total"),
+                  context.read<CartItem>().cartList.length == 0
+                      ? Button_Widget_totaol(
+                          "Go to Checkout",
+                          MediaQuery.of(context).size.width,
+                          75,
+                          Colors.orangeAccent,
+                          () {},
+                        )
+                      : Button_Widget_totaol(
+                          "BUY NOW".tr,
+                          MediaQuery.of(context).size.width,
+                          75,
+                          Colors.orange,
+                          () {
+                            if (context.read<UserData>().userData == null) {
+                              final snackBar = SnackBar(
+                                  content: Text(
+                                "please save your data first",
+                                style: TextStyle(fontSize: 18),
+                              ));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            } else {
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                  builder: (context) => Buy_item_Screen(),
+                                ),
+                              );
+                            }
+                          },
+                        ),
               ],
             ),
           ),

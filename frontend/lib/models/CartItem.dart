@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CartItem extends ChangeNotifier {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   List _cartList = [];
 
   int _total = 0;
@@ -16,55 +21,60 @@ class CartItem extends ChangeNotifier {
     notifyListeners();
   }
 
-  geTotal(Map productInfo) {
-    cartList.forEach((e) {
-      if (e["id"] == productInfo["id"]) {
-        total = productInfo["price"] * productInfo["quantity"];
-        notifyListeners();
-      } else {
-        total = productInfo["price"] * productInfo["quantity"];
-        notifyListeners();
-      }
-    });
-  }
 
-  addCartItem(Map productInfo, int quantity,int price) {
+
+  addCartItem(
+    Map productInfo,
+    int quantity,
+  ) async {
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
       removeCartItem(productInfo);
-      addCartItem(productInfo , quantity,price );
+      addCartItem(productInfo,quantity,);
+      //  final SharedPreferences prefs =  await _prefs;
+      //  prefs.setString("cartshop",jsonEncode( addCartItem(productInfo , quantity,price )) );
+          notifyListeners();
+
     } else {
       productInfo["quantity"] = quantity;
-            productInfo["price"] = price;
 
-      if(productInfo["xlarge"] == true){
-        productInfo["price"] ++;
-         productInfo["price"] ++;
+      if (productInfo["xlarge"] == true) {
+        total += int.parse(productInfo["pricemax"].toString()) *
+            int.parse(productInfo["quantity"].toString());
+                    _cartList.add(productInfo);
 
-        print( productInfo["price"]);
+                notifyListeners();
+
+      } else {
+        total += int.parse(productInfo["price"].toString()) *
+            int.parse(productInfo["quantity"].toString());
+                    _cartList.add(productInfo);
+
+                notifyListeners();
 
       }
-      _cartList.add(productInfo);
-      total += int.parse(productInfo["price"].toString()) *
-          int.parse(productInfo["quantity"].toString());
     }
 
     notifyListeners();
   }
 
-  removeCartItem(Map productInfo,  ) {
+  removeCartItem(
+    Map productInfo,
+  ) {
     var filter = [];
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
-      if(productInfo["xlarge"] == true){
-        productInfo["price"] --;
-        productInfo["price"] --;
+        if (productInfo["xlarge"] == true) {
+          total -= int.parse(e["pricemax"].toString()) *
+              int.parse(e["quantity"].toString());
+                  notifyListeners();
 
-        print( productInfo["price"]);
+        }else{
+          total -= int.parse(e["price"].toString()) *
+              int.parse(e["quantity"].toString());
+                  notifyListeners();
 
-      }
-        
-        total -= int.parse(e["price"].toString()) *
-            int.parse(e["quantity"].toString());
+
+        }
       } else {
         filter.add(e);
       }

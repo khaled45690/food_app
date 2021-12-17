@@ -7,6 +7,8 @@ const cors = require('cors');
 const ContactRouter = require('./route/contactsRouter');
 const AddresseRouter = require('./route/addressesRouter');
 const OfferRouter = require('./route/offerRouter');
+const CartshopRouter = require('./route/cartshopRouter');
+
 // const AuthRouter = require('./route/authRouter');
 // const user_check = require('./middleware/verify_user');
 // const admin_check = require('./middleware/verify_admin');
@@ -42,6 +44,7 @@ app.use('/offer', OfferRouter);
 // app.get('/contacts',user_check);
 // app.post('/contacts',admin_check);
 app.use('/contacts', ContactRouter);
+app.use('/cartshop',CartshopRouter);
 
 
 app.listen(process.env.PORT || 4000, () => {

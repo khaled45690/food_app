@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/FirstPageScreen.dart';
+import 'package:food_app/Widgets/appbar_widget.dart';
 import 'package:food_app/Widgets/languagewidget.dart';
-import 'package:food_app/Widgets/listtile_widget_languages.dart';
 import 'package:get/get.dart';
 
 class LanguageScreen extends StatefulWidget {
@@ -37,16 +37,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        centerTitle: true,
-        title: Text(
-          "Languages",
-          style: TextStyle(fontSize: 20, color: Colors.black),
-        ),
-        shape: const Border(bottom: BorderSide(color: Colors.red, width: 2)),
-        backgroundColor: Colors.white,
-      ),
+      appBar: Appbar_widget('Languages'),
       body: ListView(
         children: [
           InkWell(
@@ -55,20 +46,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 "English",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              // trailing:Checkbox(
-
-              //         value: _checked ,
-              //         onChanged: (value) {
-
-              //           setState(() {
-              //             if (value == true) {
-              //               _checked  = value;
-              //               _checked1 = false;
-              //             }
-              //           });
-              //         },
-              //         activeColor: Colors.green,
-              //       ),
               onTap: () {
                 var local = Locale('en', "US");
                 Get.updateLocale(local);
@@ -93,20 +70,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 "عربي",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              // trailing:Checkbox(
-
-              //         value: _checked1 ,
-              //         onChanged: (value) {
-
-              //           setState(() {
-              //             if (value == true) {
-              //               _checked1  = value;
-              //               _checked = false;
-              //             }
-              //           });
-              //         },
-              //         activeColor: Colors.green,
-              //       ),
               onTap: () {
                 var local = Locale('ar', "AR");
                 Get.updateLocale(local);

@@ -1,4 +1,5 @@
 const ADDRESSES = require('../model/addressesModel');
+const mongoose = require('mongoose');
 
 
 module.exports = {
@@ -10,10 +11,11 @@ module.exports = {
             
         }).save();
         res.json({
-            message: "insert successfully",
+            message: "insert successfulllllly",
             id: addresses.id,
             streetname: addresses.streetname,
             town: addresses.town,
+            postcode:addresses.postcode
             
 
 
@@ -27,6 +29,7 @@ module.exports = {
                     id: res.id,
                     streetname: res.streetname,
                     town: res.town,
+                    postcode:res.postcode
                 }
             })
         });
@@ -35,5 +38,23 @@ module.exports = {
         const id = req.params.id;
         const del = await ADDRESSES.findByIdAndRemove(id);
         res.json({"delete" : del});
+    },
+    updateaddress: async (req, res) => {
+        console.log(req.body);
+        const addresses = await ADDRESSES
+        addresses.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body.id) }, req.body).then((result, error) => {
+            // res.end("the change was suc");
+            addresses.findOne({ _id: mongoose.Types.ObjectId(req.body.id) }, (error, result) => {
+                console.log(result);
+                res.json({
+                    id: result.id,
+                    streetname: result.streetname,
+                    town: result.town,
+                    postcode: result.postcode,
+                });
+            });
+
+        });
+        // Character.findOneAndUpdate();
     }
 }

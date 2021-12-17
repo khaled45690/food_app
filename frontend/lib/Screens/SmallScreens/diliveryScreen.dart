@@ -1,9 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
+import 'package:food_app/Widgets/appbarKhawater.dart';
 import 'package:food_app/Widgets/diliverywidget.dart';
-import 'package:food_app/Widgets/vdivider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DeliveryScreen extends StatefulWidget {
@@ -34,16 +33,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.white54,
-        shadowColor: Colors.white54,
-        title: Text(
-          "خواطر دمشقيه",
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
-        ),
-      ),
+      appBar: AppbarKhawater('خواطر دمشقيه'),
       body: ListView(
         children: <Widget>[
           SizedBox(

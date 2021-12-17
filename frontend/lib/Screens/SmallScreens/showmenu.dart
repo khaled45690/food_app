@@ -5,6 +5,7 @@ import 'package:food_app/Widgets/AppBar_ShowMenu.dart';
 import 'package:food_app/Widgets/OfferDetailsWidget.dart';
 import 'package:food_app/Widgets/loadingspinner.dart';
 import 'package:food_app/Widgets/meal_widget.dart';
+import 'package:food_app/Widgets/showpicOfmenu.dart';
 import 'package:food_app/contant/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -43,12 +44,9 @@ class _ShowMenuState extends State<ShowMenu> {
     }
   }
 
-
-
   @override
   void initState() {
     super.initState();
- 
 
     getProduct();
     getOffers();
@@ -61,15 +59,7 @@ class _ShowMenuState extends State<ShowMenu> {
       appBar: AppBar_ShowMenu(),
       body: ListView(
         children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height / 3,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage("assets/images/krs.jpg"),
-            )),
-          ),
+       ShowPicOfMenu(),
           SizedBox(
             height: 20,
           ),

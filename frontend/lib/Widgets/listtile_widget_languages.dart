@@ -19,7 +19,6 @@ class Listtile_widget_language extends StatelessWidget {
         onTap: () {
           Scaffold.of(context).showSnackBar(
               SnackBar(content: Text("just available  in ENGLISH for now".tr)));
-      
         },
       ),
     );

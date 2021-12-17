@@ -36,12 +36,19 @@ class _CartshopWidgetState extends State<CartshopWidget> {
                 children: [
                   Row(
                     children: [
-                      Text(
-                        "\$ ${context.watch<CartItem>().cartList[i]['price'] * context.watch<CartItem>().cartList[i]["quantity"]}"
-                            .toString(),
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
+                      context.watch<CartItem>().cartList[i]['xlarge'] == true
+                          ? Text(
+                              "\$ ${context.watch<CartItem>().cartList[i]['pricemax'] * context.watch<CartItem>().cartList[i]["quantity"]}"
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            )
+                          : Text(
+                              "\$ ${context.watch<CartItem>().cartList[i]['price'] * context.watch<CartItem>().cartList[i]["quantity"]}"
+                                  .toString(),
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
                       IconButton(
                           onPressed: () {
                             CartItem cartItem =

@@ -6,10 +6,14 @@ class Button_Widget_totaol extends StatelessWidget {
   final double hightofButton;
   final Color colorr;
   final GestureTapCallback function;
-  final String textt;
 
-  Button_Widget_totaol(this.text, this.widthOfButton, this.hightofButton,
-      this.colorr, this.function, this.textt);
+  Button_Widget_totaol(
+    this.text,
+    this.widthOfButton,
+    this.hightofButton,
+    this.colorr,
+    this.function,
+  );
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class TextField_Widget extends StatelessWidget {
   final String textt;
-    final String texttt;
+  final String texttt;
 
   final IconData iconn;
   final double width;
@@ -10,9 +10,8 @@ class TextField_Widget extends StatelessWidget {
   TextEditingController textEditingController;
   FormFieldValidator<String> fieldValidator;
 
-
-  TextField_Widget(this.textt, this.texttt,this.iconn, this.width, this.onChanged,
-      this.textEditingController,this.fieldValidator);
+  TextField_Widget(this.textt, this.texttt, this.iconn, this.width,
+      this.onChanged, this.textEditingController, this.fieldValidator);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +23,8 @@ class TextField_Widget extends StatelessWidget {
         onChanged: onChanged,
         validator: fieldValidator,
         decoration: InputDecoration(
-          hintText: textt,
+            hintText: textt,
             labelText: texttt,
-
             isDense: true,
             border: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey, width: 5)),

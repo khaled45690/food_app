@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Widgets/AppBar_ShowMenu.dart';
 import 'package:food_app/Widgets/button_widget.dart';
-import 'package:food_app/Widgets/vdivider.dart';
 import 'package:food_app/contant/constant.dart';
 
 class MealScreen extends StatefulWidget {

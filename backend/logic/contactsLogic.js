@@ -1,13 +1,12 @@
 const { mongo, Mongoose } = require('mongoose');
 const mongoose = require('mongoose');
 const CONTACTS = require('../model/contactsModel');
-const { getContactst } = require('./contactsLogic');
 module.exports = {
     insertContacts: async (req, res) => {
         const contacts = await CONTACTS({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            email: req.body.lastname,
+            email: req.body.email,
             phone: req.body.phone
         }).save();
         res.json({
