@@ -20,12 +20,7 @@ class ProfileWidget extends StatefulWidget {
 class _ProfileWidgetState extends State<ProfileWidget> {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late Map? sharedPrefrenceCheck;
-  Map data = {
-    "firstName": null,
-    "lastName": null,
-    "email": null,
-    "telephone": null,
-  };
+  Map data = profileMapData;
   onChange(value, variableName) {
     setState(() {
       data[variableName] = value;
@@ -52,41 +47,42 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   }
 
   postDateProfile() async {
-    var response = await http.post(Uri.parse('${serverURL}contacts'), body: {
-      "firstname": firstnameController.text,
-      "lastname": lastnameController.text,
-      "phone": phoneController.text,
-      "email": emailController.text
-    });
-    Map jsonBody = jsonDecode(response.body);
-    Map userData = {
-      "id": jsonBody["id"],
-      "firstname": jsonBody["firstname"],
-      "lastname": jsonBody["lastname"],
-      "email": jsonBody["email"],
-      "phone": jsonBody["phone"],
-    };
-    userData["id"];
-    context.read<UserData>().setUserDataFunc(userData);
+    print(data);
+    // var response = await http.post(Uri.parse('${serverURL}contacts'), body: {
+    //   "firstname": data["firstname"],
+    //   "lastname": data["lastname"],
+    //   "phone": data["phone"],
+    //   "email": data["email"]
+    // });
+    // Map jsonBody = jsonDecode(response.body);
+    // Map userData = {
+    //   "id": jsonBody["id"],
+    //   "firstname": jsonBody["firstname"],
+    //   "lastname": jsonBody["lastname"],
+    //   "email": jsonBody["email"],
+    //   "phone": jsonBody["phone"],
+    // };
+    // context.read<UserData>().setUserDataFunc(userData);
   }
 
   updatDateProfile() async {
-    var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
-      "id": context.read<UserData>().userData!["id"],
-      "firstname": firstnameController.text,
-      "lastname": lastnameController.text,
-      "phone": phoneController.text,
-      "email": emailController.text
-    });
-    Map jsonBody = jsonDecode(response.body);
-    Map userData = {
-      "id": jsonBody["id"],
-      "firstname": jsonBody["firstname"],
-      "lastname": jsonBody["lastname"],
-      "email": jsonBody["email"],
-      "phone": jsonBody["phone"],
-    };
-    context.read<UserData>().setUserDataFunc(userData);
+    print(data);
+    // var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
+    //   "id": context.read<UserData>().userData!["id"],
+    //   "firstname": firstnameController.text,
+    //   "lastname": lastnameController.text,
+    //   "phone": phoneController.text,
+    //   "email": emailController.text
+    // });
+    // Map jsonBody = jsonDecode(response.body);
+    // Map userData = {
+    //   "id": jsonBody["id"],
+    //   "firstname": jsonBody["firstname"],
+    //   "lastname": jsonBody["lastname"],
+    //   "email": jsonBody["email"],
+    //   "phone": jsonBody["phone"],
+    // };
+    // context.read<UserData>().setUserDataFunc(userData);
   }
 
   TextEditingController firstnameController = TextEditingController();
