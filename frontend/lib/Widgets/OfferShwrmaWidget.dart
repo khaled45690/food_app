@@ -13,21 +13,12 @@ class OfferShwrmaWidget extends StatelessWidget {
       children: [
         if (productInfo['category']=="SH")
         
-        Listtile_widet(productInfo["name"], productInfo["price"].toString(),
+        Listtile_widet(
+            productInfo["name"], productInfo["price"].toString(),
             () {
              Navigator.pushNamed(context, SandwichScreen.roteName,
                 arguments: productInfo);
         }),
-        //         if (productInfo['category']=="SU")
-        //               Listtile_widet(productInfo["name"], productInfo["price"].toString(),
-        //     () {
-        //      Navigator.pushNamed(context, SandwichScreen.roteName,
-        //         arguments: productInfo);
-        // }),
-
-
-
-        
       ],
     );
   }

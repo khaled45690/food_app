@@ -56,7 +56,7 @@ class _ShowMenuState extends State<ShowMenu> {
                       MealWidget(offersList[i]),
                     // for (int p = 0; p < productsList.length; p++)
                     //                OfferDetailsWidget(productsList[p]),
-                    SandwichListWidget(sandwichTypeOnChange , "shawarma" , "سناندوتش الشاورما" , productsList),
+                    SandwichListWidget(sandwichTypeOnChange , "shawarma" , sandwichType, "سناندوتش الشاورما" , productsList),
 
                     iSmaria
                         ? InkWell(
@@ -309,8 +309,10 @@ class _ShowMenuState extends State<ShowMenu> {
   }
 
   sandwichTypeOnChange(String sandwichType){
+
     setState(() {
       this.sandwichType = sandwichType;
+      print(this.sandwichType);
     });
   }
   getProduct() async {
