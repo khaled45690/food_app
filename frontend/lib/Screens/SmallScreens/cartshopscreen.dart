@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/buy_item_screen.dart';
-import 'package:food_app/Widgets/OfferDetailsWidget.dart';
+import 'package:food_app/Widgets/OfferShwrmaWidget.dart';
 import 'package:food_app/Widgets/appbarKhawater.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/Widgets/buttonwidgettotal%20price.dart';

@@ -6,7 +6,8 @@ const products = mongoose.Schema({
     desc:String,
     quantity:Number,
     large:Boolean,
-    xlarge:Boolean
+    xlarge:Boolean,
+    category:String
 })
 
 module.exports = mongoose.model('PRODUCTS',products);

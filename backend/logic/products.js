@@ -13,7 +13,9 @@ res.json({
         desc:res.desc,
         quantity:res.quantity,
         large:res.large,
-        xlarge:res.xlarge
+        xlarge:res.xlarge,
+        category:res.category
+        
        }
     })
 })
@@ -26,7 +28,8 @@ res.json({
             desc: req.body.desc,
             quantity: req.body.quantity,
             large:req.body.large,
-            xlarge:req.body.xlarge
+            xlarge:req.body.xlarge,
+            category:req.body.category
         }).save()
         res.json({"message":"isnerted successfully",
         id: product.id,
@@ -36,7 +39,8 @@ res.json({
         desc:product.desc,
         quantity:product.quantity,
         large:product.large,
-        xlarge:product.xlarge
+        xlarge:product.xlarge,
+        category:product.category
         })
 
     },

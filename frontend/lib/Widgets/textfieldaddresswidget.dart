@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Textfieldaddres extends StatelessWidget {
-  final TextEditingController? controller;
-  final String? hint;
+  final String? intialValue;
   final String? labelText;
 
   ValueChanged<String>? onChanged;
   Widget widget;
   FormFieldValidator<String> validator;
-  Textfieldaddres(this.controller, this.hint, this.labelText, this.onChanged,
+  Textfieldaddres(this.intialValue, this.labelText, this.onChanged,
       this.widget, this.validator);
 
   @override
@@ -16,10 +15,11 @@ class Textfieldaddres extends StatelessWidget {
     return Container(
       width: 350,
       child: TextFormField(
-          controller: controller,
+        initialValue: intialValue,
+          //controller: controller,
           validator: validator,
           decoration: InputDecoration(
-            hintText: hint,
+        //    hintText: hint,
             labelText: labelText,
             isDense: true,
             border: OutlineInputBorder(

@@ -41,6 +41,9 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
   @override
   void initState() {
     super.initState();
+    print("object");
+          print(ProductInfo);
+
   }
 
   TextEditingController descriptionController = TextEditingController();
@@ -80,6 +83,7 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                   child: CheckboxListTile(
                     title: Text(
                       " +${ProductInfo['pricemax'] - ProductInfo['price']} اكس لارج",
+                
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),

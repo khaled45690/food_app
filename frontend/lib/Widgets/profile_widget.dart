@@ -47,6 +47,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   postDateProfile() async {
     print(data);
+      print(data['firstname']);
+   print(data["lastname"]) ;
+   print(data['email']);
+   print(data['phone']);
     var response = await http.post(Uri.parse('${serverURL}contacts'), body: {
       "firstname": data["firstname"],
       "lastname": data["lastname"],
@@ -62,10 +66,15 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       "phone": jsonBody["phone"],
     };
     context.read<UserData>().setUserDataFunc(userData);
-  }
+   }
 
   updatDateProfile() async {
-    print(data);
+        print(data);
+
+       print(data['firstname']);
+   print(data["lastname"]) ;
+   print(data['email']);
+   print(data['phone']);
     var response = await http.put(Uri.parse('${serverURL}contacts'), body: {
       "id": context.read<UserData>().userData!["id"],
       "firstname": data["firstname"],
@@ -120,7 +129,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           Icons.person,
                           MediaQuery.of(context).size.width / 2.3,
                           (firstName) => setState(
-                            () => onChange(firstName, "firstName"),
+                            () => onChange(firstName, "firstname"),
                           ),
                           (value) {
                             if (value == null || value.isEmpty) {
@@ -156,7 +165,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               return null;
                             },
                             onChanged: (lastName) =>
-                                setState(() => onChange(lastName, "lastName")),
+                                setState(() => onChange(lastName, "lastname")),
                             decoration: InputDecoration(
                               labelText: "Last Name*".tr,
 
@@ -203,16 +212,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     ),
                     TextField_Widget(
                       context.read<UserData>().userData?['phone'] == null
-                          ? "Telephone*".tr
+                          ? "phone*".tr
                           : context.read<UserData>().userData?['phone'],
-                      "Telephone*".tr,
+                      "phone*".tr,
                       Icons.phone,
                       MediaQuery.of(context).size.width / 1.15,
                       (telephone) =>
-                          setState(() => onChange(telephone, "telephone")),
+                          setState(() => onChange(telephone, "phone")),
                       (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your telephone';
+                          return 'Please enter your phone';
                         }
                         if (value.length != 11) {
                           return 'telephone must be at least 11 digit ';
@@ -243,6 +252,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 } else {
                   updatDateProfile();
+                                    context.read<UserData>().setUserDataFunc(data);
+
                   final snackBar = SnackBar(
                       content: Text(
                     "your information have been saved you can buy now",

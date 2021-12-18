@@ -19,11 +19,7 @@ class AddressWidget extends StatefulWidget {
 class _AddressWidgetState extends State<AddressWidget> {
    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     late Map? sharedPrefrenceCheck;
-  Map data = {
-    "streetname": null,
-    "town": null,
-    "postcode": null,
-  };
+  Map data =addressMapData;
   onChange(value, VariableName) {
     setState(() {
       data[VariableName] = value;
@@ -34,9 +30,15 @@ class _AddressWidgetState extends State<AddressWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<UserData>().getUserAddressData();
+   context.read<UserData>().getUserAddressData();
     sharedPrefrenceCheck = context.read<UserData>().userAddressData;
-    print(context.read<UserData>().userAddressData);
+    // print(context.read<UserData>().userAddressData);
+    // print(context.read<UserData>().userAddressData?['streetname']);
+    // print(context.read<UserData>().userAddressData?['town']);
+    // print(context.read<UserData>().userAddressData?['postcode']);
+
+
+
     
    // print(sharedPrefrenceCheck);
   }
@@ -50,10 +52,14 @@ class _AddressWidgetState extends State<AddressWidget> {
   }
 
   postDateaddresses() async {
+    print(data);
+     print(data['streetname']);
+    print(data['postcode']);
+        print(data['town']);
     var response = await http.post(Uri.parse('${serverURL}address'), body: {
-      "streetname": streetnameController.text,
-      "postcode": postcodeController.text,
-      "town": townController.text,
+      "streetname": data['streetname'],
+      "postcode":data['postcode'],
+      "town": data['town'],
     });
     print(response.body);
     Map jsonBody = jsonDecode(response.body);
@@ -67,11 +73,16 @@ class _AddressWidgetState extends State<AddressWidget> {
   }
 
   updatDateAddresses() async {
+   print(data);
+    print(data['streetname']);
+    print(data['postcode']);
+        print(data['town']);
+
     var response = await http.put(Uri.parse('${serverURL}address'), body: {
       "id": context.read<UserData>().userAddressData!["id"],
-      "streetname": streetnameController.text,
-      "postcode": postcodeController.text,
-      "town": townController.text,
+      "streetname":  data['streetname'],
+      "postcode": data['postcode'],
+      "town": data['town'],
     });
     Map jsonBody = jsonDecode(response.body);
     Map addressdata = {
@@ -113,13 +124,13 @@ class _AddressWidgetState extends State<AddressWidget> {
                         height: 20,
                       ),
                       Textfieldaddres(
-                        streetnameController,
-                        data["streetName"] == null
-                            ? "Street name & number*".tr
-                            : data["streetName"],
+                        context.read<UserData>().userAddressData?['streetname'] ==null?
+                        "Street name & number":
+                        context.read<UserData>().userAddressData?['streetname']
+                        ,
                         "Street name & number".tr,
                         (streetName) =>
-                            setState(() => onChange(streetName, "streetName")),
+                            setState(() => onChange(streetName, "streetname")),
                         Icon(Icons.streetview_sharp),
                         (value) {
                           if (value == null || value.isEmpty) {
@@ -136,10 +147,10 @@ class _AddressWidgetState extends State<AddressWidget> {
                         height: 15,
                       ),
                       Textfieldaddres(
-                        townController,
-                        data["town"] == null
-                            ? "Town or City Area*".tr
-                            : data["town"],
+                       
+                        context.read<UserData>().userAddressData?['town'] ==null?
+                        "Town or City Area*":
+                        context.read<UserData>().userAddressData?['town'],
                         "Town or City Area*".tr,
                         (town) => setState(() => onChange(town, "town")),
                         Icon(Icons.location_on_rounded),
@@ -158,10 +169,10 @@ class _AddressWidgetState extends State<AddressWidget> {
                         height: 15,
                       ),
                       Textfieldaddres(
-                        postcodeController,
-                        data["postcode"] == null
-                            ? "Postcode, Block,intercom where tp park*".tr
-                            : data["postcode"],
+                  
+                                 context.read<UserData>().userAddressData?['postcode'] ==null?
+                        "Postcode, Block,intercom where tp park*":
+                        context.read<UserData>().userAddressData?['postcode'],
                         "Postcode, Block,intercom where tp park*".tr,
                         (postcode) => setState(
                           () => onChange(postcode, "postcode"),
