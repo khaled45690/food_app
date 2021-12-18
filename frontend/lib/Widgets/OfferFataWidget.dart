@@ -12,22 +12,11 @@ class OfferFataWidget extends StatelessWidget {
     return Column(
       children: [
         if (productInfo['category']=="FT")
-        
         Listtile_widet(productInfo["name"], productInfo["price"].toString(),
             () {
              Navigator.pushNamed(context, SandwichScreen.roteName,
                 arguments: productInfo);
         }),
-        //         if (productInfo['category']=="SU")
-        //               Listtile_widet(productInfo["name"], productInfo["price"].toString(),
-        //     () {
-        //      Navigator.pushNamed(context, SandwichScreen.roteName,
-        //         arguments: productInfo);
-        // }),
-
-
-
-        
       ],
     );
   }
