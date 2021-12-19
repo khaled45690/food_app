@@ -43,8 +43,9 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FirstPageSmallScreen(myMarkers, onMapCreated);
-       
+    return MediaQuery.of(context).size.width < 700
+        ? FirstPageSmallScreen(myMarkers, onMapCreated)
+        : Login();
         
   }
 }
