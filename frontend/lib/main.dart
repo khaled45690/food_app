@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/Loginscreen.dart';
 import 'package:food_app/Screens/MainScreens/SignUpScreen.dart';
@@ -50,9 +51,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xffb74093)),
-      home: MediaQuery.of(context).size.width < 700
-        ? SplashScreen()
-        : Login(),
+      home:  SplashScreen(),
       routes: {
         FirstPageScreen.roteName: (ctx) => FirstPageScreen(),
         ProfileScreen.roteName: (ctx) => const ProfileScreen(),
