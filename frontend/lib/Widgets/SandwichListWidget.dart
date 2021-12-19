@@ -57,26 +57,22 @@ class SandwichListWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  AnimatedContainer(
-                      duration: Duration(milliseconds: 1000),
-                      decoration: BoxDecoration(color: Colors.grey),
-                      height : isSandwichType == sandwichType ? MediaQuery.of(context).size.height /2: 0,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image:
-                                        AssetImage("assets/images/shawrma.jpg"))),
-                          ),
-                          for (int p = 0; p < productList.length; p++)
-                            OfferShwrmaWidget(productList[p]),
-                        ],
-                      ))
+                  Column(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height / 5,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image:
+                                    AssetImage("assets/images/shawrma.jpg"))),
+                      ),
+                      for (int p = 0; p < productList.length; p++)
+                        OfferShwrmaWidget(productList[p]),
+                    ],
+                  )
                 ],
               ),
             ],

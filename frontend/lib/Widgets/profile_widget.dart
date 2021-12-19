@@ -93,10 +93,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     context.read<UserData>().setUserDataFunc(userData);
   }
 
-  // TextEditingController firstnameController = TextEditingController();
-  // TextEditingController lastnameController = TextEditingController();
-  // TextEditingController phoneController = TextEditingController();
-  // TextEditingController emailController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/MainScreens/Loginscreen.dart';
 import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -44,6 +45,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
   Widget build(BuildContext context) {
     return MediaQuery.of(context).size.width < 700
         ? FirstPageSmallScreen(myMarkers, onMapCreated)
-        : Container();
+        : Login();
+        
   }
 }
