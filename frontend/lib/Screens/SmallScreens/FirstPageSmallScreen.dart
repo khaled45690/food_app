@@ -25,9 +25,9 @@ class FirstPageSmallScreen extends StatelessWidget {
       // backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black, size: 40),
+        iconTheme: IconThemeData(color: Colors.grey, size: 40),
         backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent.withOpacity(0.1)
+        shadowColor: Colors.transparent.withOpacity(0.05)
       // centerTitle: true,
       ),
       drawer: const Drawer_Widget(),
