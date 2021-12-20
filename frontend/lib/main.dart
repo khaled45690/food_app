@@ -54,9 +54,9 @@ class MyApp extends StatelessWidget {
       home:  SplashScreen(),
       routes: {
         FirstPageScreen.roteName: (ctx) => FirstPageScreen(),
-        ProfileScreen.roteName: (ctx) => const ProfileScreen(),
+        ProfileScreen.roteName: (ctx) =>  ProfileScreen(),
         Addresses_screen.roteName: (ctx) => Addresses_screen(),
-        Terms_screen.roteName: (ctx) => const Terms_screen(),
+        Terms_screen.roteName: (ctx) =>  Terms_screen(),
         AboutScreen.routename: (ctx) => const AboutScreen(),
         Privacy_screen.roteName: (ctx) => const Privacy_screen(),
         ShowMenu.roteName: (ctx) => const ShowMenu(),

@@ -8,6 +8,7 @@ import 'package:food_app/Widgets/OfferShwrmaWidget.dart';
 import 'package:food_app/Widgets/SandwichListWidget.dart';
 import 'package:food_app/Widgets/loadingspinner.dart';
 import 'package:food_app/Widgets/meal_widget.dart';
+import 'package:food_app/Widgets/productcategory.dart';
 import 'package:food_app/Widgets/showpicOfmenu.dart';
 import 'package:food_app/contant/constant.dart';
 import 'package:http/http.dart' as http;
@@ -54,180 +55,23 @@ class _ShowMenuState extends State<ShowMenu> {
                   children: [
                     for (int i = 0; i < offersList.length; i++)
                       MealWidget(offersList[i]),
-                    // for (int p = 0; p < productsList.length; p++)
-                    //                OfferDetailsWidget(productsList[p]),
-                  //  SandwichListWidget(sandwichTypeOnChange , "shawarma" , sandwichType, "سناندوتش الشاورما" , productsList),
+          
+        
+                        
+
+
                   iSshawrma 
-                  ?InkWell(
-                            onTap: () {
-                              setState(() {
-                                iSshawrma = !iSshawrma;
-                              });
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height / 10,
-                                    decoration:
-                                        BoxDecoration(color: Colors.grey),
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 10, left: 15, bottom: 10),
-                                            child: Text("شاندوتش شاورما",
-                                                style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Container(
-                                              margin: EdgeInsets.only(),
-                                              child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.arrow_drop_up,
-                                                    size: 35,
-                                                  )))
-                                        ],
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          ) :
-                           InkWell(
-                            onTap: () {},
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 1000),
-                              child: Container(
-                                  height: MediaQuery.of(context).size.height / 1,
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(color: Colors.white),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                9,
-                                        decoration:
-                                            BoxDecoration(color: Colors.grey),
-                                        child: InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              iSshawrma = !iSshawrma;
-                                            });
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 15,
-                                                    bottom: 10),
-                                                child: Text("ساندوتش شاورما",
-                                                    style: TextStyle(
-                                                      fontSize: 22,
-                                                      fontWeight: FontWeight.bold,
-                                                    )),
-                                              ),
-                                              Spacer(),
-                                              Container(
-                                                child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.arrow_drop_down,
-                                                    size: 35,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                          decoration:
-                                              BoxDecoration(color: Colors.grey),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    5,
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.green,
-                                                    image: DecorationImage(
-                                                        fit: BoxFit.fill,
-                                                        image: AssetImage(
-                                                            "assets/images/shawrma.jpg"))),
-                                              ),
-                                              for (int p = 0;
-                                                  p < productsList.length;
-                                                  p++)
-                                                OfferMariaWidget(productsList[p]),
-                                            ],
-                                          ))
-                                    ],
-                                  )),
-                            ),
-                          ),
+                          ?ProductCategory(isshawrmachange,"ساندوتش شاورما") :
+                                             SandwichListWidget(isshawrmachange  , productsList),
+
 
                     iSmaria
-                        ? InkWell(
-                            onTap: () {
-                              setState(() {
-                                iSmaria = !iSmaria;
-                              });
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height / 10,
-                                    decoration:
-                                        BoxDecoration(color: Colors.grey),
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 10, left: 15, bottom: 10),
-                                            child: Text("ماريا شاورما جديد",
-                                                style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Container(
-                                              margin: EdgeInsets.only(),
-                                              child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.arrow_drop_up,
-                                                    size: 35,
-                                                  )))
-                                        ],
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                        : InkWell(
+                        ?   ProductCategory(ismaraichange,"ماريا شاورما جديد") :
+
+                         InkWell(
                             onTap: () {},
                             child: Container(
-                                height: MediaQuery.of(context).size.height / 1,
+                                height: MediaQuery.of(context).size.height / 1.5,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: Column(
@@ -305,51 +149,11 @@ class _ShowMenuState extends State<ShowMenu> {
                           ),
 
                     iSfta
-                        ? InkWell(
-                            onTap: () {
-                              setState(() {
-                                iSfta = !iSfta;
-                              });
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height / 10,
-                                    decoration:
-                                        BoxDecoration(color: Colors.grey),
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                top: 10, left: 15, bottom: 10),
-                                            child: Text("فتات",
-                                                style: TextStyle(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.bold,
-                                                )),
-                                          ),
-                                          Spacer(),
-                                          Container(
-                                              margin: EdgeInsets.only(),
-                                              child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.arrow_drop_up,
-                                                    size: 35,
-                                                  )))
-                                        ],
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
+                        ? ProductCategory(isfetachange,"فتات")
                         : InkWell(
                             onTap: () {},
                             child: Container(
-                                height: MediaQuery.of(context).size.height / 1,
+                                height: MediaQuery.of(context).size.height / 1.5,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: Column(
@@ -431,12 +235,22 @@ class _ShowMenuState extends State<ShowMenu> {
       ),
     );
   }
+  
 
-  sandwichTypeOnChange(String sandwichType){
-
+  isshawrmachange(){
+      setState(() {
+              iSshawrma = !iSshawrma;
+          });
+  }
+  isfetachange(){
     setState(() {
-      this.sandwichType = sandwichType;
-      print(this.sandwichType);
+          iSfta = !iSfta;
+
+    });
+  }
+  ismaraichange(){
+    setState(() {
+      iSmaria = !iSmaria;
     });
   }
   getProduct() async {

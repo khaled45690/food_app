@@ -1,9 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:food_app/Screens/SmallScreens/buy_item_screen.dart';
 import 'package:food_app/Widgets/AppBar_ShowMenu.dart';
 import 'package:food_app/Widgets/button_widget.dart';
 import 'package:food_app/contant/constant.dart';
+import 'package:food_app/models/CartItem.dart';
+import 'package:food_app/models/UserData.dart';
+import 'package:provider/src/provider.dart';
 
 class MealScreen extends StatefulWidget {
   const MealScreen({Key? key}) : super(key: key);
@@ -15,6 +19,21 @@ class MealScreen extends StatefulWidget {
 
 class _MealScreenState extends State<MealScreen> {
   Map offerInfo = {};
+    List productList = [];
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(context.read<UserData>().userData);
+
+    CartItem cartItem = Provider.of<CartItem>(context, listen: false);
+    //       print(cartItem.cartList);
+    setState(() {
+      productList = cartItem.cartList;
+    });
+    print(productList);
+  }
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -84,7 +103,29 @@ class _MealScreenState extends State<MealScreen> {
           Positioned(
             bottom: 0,
             child: Button_Widget("Order now", MediaQuery.of(context).size.width,
-                75, Colors.orange, () {}),
+                75, Colors.orange, () {
+        if (context.read<UserData>().userData == null) {
+                              final snackBar = SnackBar(
+                                  content: Text(
+                                "please save your data first",
+                                style: TextStyle(fontSize: 18),
+                              ));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            } else {
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                  builder: (context) => Buy_item_Screen(),
+                                ),
+                              );
+                            }
+                          },
+
+
+
+
+                ),
           ),
         ],
       ),

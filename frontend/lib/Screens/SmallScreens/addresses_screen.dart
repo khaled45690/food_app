@@ -12,14 +12,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
-class Addresses_screen extends StatefulWidget {
+class Addresses_screen extends StatelessWidget {
   static const roteName = '/AddressScreen';
 
-  @override
-  _Addresses_screenState createState() => _Addresses_screenState();
-}
-
-class _Addresses_screenState extends State<Addresses_screen> {
  
   @override
   Widget build(BuildContext context) {

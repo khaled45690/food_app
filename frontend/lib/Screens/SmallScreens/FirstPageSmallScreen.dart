@@ -14,21 +14,26 @@ class FirstPageSmallScreen extends StatelessWidget {
   final HashSet<Marker> myMarkers;
   final Function onMapCreated;
 
-  const FirstPageSmallScreen(this.myMarkers, this.onMapCreated);
+
+
+   FirstPageSmallScreen(this.myMarkers, this.onMapCreated);
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(      
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        
         iconTheme: IconThemeData(color: Colors.grey, size: 40),
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        centerTitle: true,
+      // centerTitle: true,
       ),
       drawer: const Drawer_Widget(),
       body: Stack(children: [
+  
         GoogleMap(
           initialCameraPosition:
               const CameraPosition(target: LatLng(31.2001, 29.9187), zoom: 10),
