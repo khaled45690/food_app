@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/Loginscreen.dart';
 import 'package:food_app/Screens/MainScreens/SignUpScreen.dart';
+import 'package:food_app/Screens/MainScreens/welcomescreen.dart';
 import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
 import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
 import 'package:food_app/Screens/SmallScreens/Languagesscreen.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xffb74093)),
-      home:  SplashScreen(),
+      home:kIsWeb ? WellcomeScreen():  SplashScreen(),
       routes: {
         FirstPageScreen.roteName: (ctx) => FirstPageScreen(),
         ProfileScreen.roteName: (ctx) =>  ProfileScreen(),
@@ -67,7 +68,8 @@ class MyApp extends StatelessWidget {
         DeliveryScreen.roteName: (ctx) => DeliveryScreen(),
         Buy_item_Screen.roteName:(ctx)=>Buy_item_Screen(),
         Login.routename:(ctx)=>Login(),
-        SingUp.routename:(ctx)=>SingUp()
+        SingUp.routename:(ctx)=>SingUp(),
+        WellcomeScreen.routename:(ctx)=>WellcomeScreen()
       },
     );
   }
