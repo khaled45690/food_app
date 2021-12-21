@@ -31,19 +31,18 @@ class _Drawer_WidgetState extends State<Drawer_Widget> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 30,
                   width: 100,
                 ),
                 Container(
                     height: 95,
-                    width: 100,
                     child: Image.asset('assets/images/nkhw.png')),
                 const SizedBox(
-                  height: 50,
-                  width: 100,
+                  height: 20,
+                 // width: 100,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 const Dividerr(),
                 Inkwekk("Home".tr, 24, 24, Icons.home, () {

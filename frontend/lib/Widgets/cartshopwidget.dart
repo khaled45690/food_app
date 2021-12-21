@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:food_app/models/CartItem.dart';
 import 'package:provider/src/provider.dart';
 
-class CartshopWidget extends StatefulWidget {
-  const CartshopWidget({Key? key}) : super(key: key);
+class CartshopWidget extends StatelessWidget {
 
-  @override
-  _CartshopWidgetState createState() => _CartshopWidgetState();
-}
 
-class _CartshopWidgetState extends State<CartshopWidget> {
   int price = 0;
+  int quantity =0;
+
   @override
   Widget build(BuildContext context) {
     return Column(

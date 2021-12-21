@@ -11,8 +11,10 @@ import 'package:food_app/Widgets/meal_widget.dart';
 import 'package:food_app/Widgets/productcategory.dart';
 import 'package:food_app/Widgets/showpicOfmenu.dart';
 import 'package:food_app/contant/constant.dart';
+import 'package:food_app/models/CartItem.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/src/provider.dart';
 
 class ShowMenu extends StatefulWidget {
   const ShowMenu({Key? key}) : super(key: key);
@@ -29,7 +31,6 @@ class _ShowMenuState extends State<ShowMenu> {
   String sandwichType = "";
   List productsList = [];
   List offersList = [];
-
 
   @override
   void initState() {
@@ -55,23 +56,16 @@ class _ShowMenuState extends State<ShowMenu> {
                   children: [
                     for (int i = 0; i < offersList.length; i++)
                       MealWidget(offersList[i]),
-          
-        
-                        
-
-
-                  iSshawrma 
-                          ?ProductCategory(isshawrmachange,"ساندوتش شاورما") :
-                                             SandwichListWidget(isshawrmachange  , productsList),
-
-
+                    iSshawrma
+                        ? ProductCategory(isshawrmachange, "ساندوتش شاورما")
+                        : SandwichListWidget(isshawrmachange, productsList),
                     iSmaria
-                        ?   ProductCategory(ismaraichange,"ماريا شاورما جديد") :
-
-                         InkWell(
+                        ? ProductCategory(ismaraichange, "ماريا شاورما جديد")
+                        : InkWell(
                             onTap: () {},
                             child: Container(
-                                height: MediaQuery.of(context).size.height / 1.5,
+                                height:
+                                    MediaQuery.of(context).size.height / 1.5,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: Column(
@@ -147,13 +141,13 @@ class _ShowMenuState extends State<ShowMenu> {
                                   ],
                                 )),
                           ),
-
                     iSfta
-                        ? ProductCategory(isfetachange,"فتات")
+                        ? ProductCategory(isfetachange, "فتات")
                         : InkWell(
                             onTap: () {},
                             child: Container(
-                                height: MediaQuery.of(context).size.height / 1.5,
+                                height:
+                                    MediaQuery.of(context).size.height / 1.5,
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: Column(
@@ -235,24 +229,25 @@ class _ShowMenuState extends State<ShowMenu> {
       ),
     );
   }
-  
 
-  isshawrmachange(){
-      setState(() {
-              iSshawrma = !iSshawrma;
-          });
-  }
-  isfetachange(){
+  isshawrmachange() {
     setState(() {
-          iSfta = !iSfta;
-
+      iSshawrma = !iSshawrma;
     });
   }
-  ismaraichange(){
+
+  isfetachange() {
+    setState(() {
+      iSfta = !iSfta;
+    });
+  }
+
+  ismaraichange() {
     setState(() {
       iSmaria = !iSmaria;
     });
   }
+
   getProduct() async {
     var url = Uri.parse('${serverURL}products');
     var res = await http.get(url);

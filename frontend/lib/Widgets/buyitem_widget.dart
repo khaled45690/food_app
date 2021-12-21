@@ -211,7 +211,7 @@ class _buyitemWidgetState extends State<buyitemWidget> {
                 Text(
                   "please make sure of that yout information in right",
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                       color: Colors.red),
                 )

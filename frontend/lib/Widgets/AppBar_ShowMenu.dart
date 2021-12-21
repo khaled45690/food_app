@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_app/Screens/SmallScreens/cartshopscreen.dart';
 import 'package:food_app/Screens/SmallScreens/diliveryScreen.dart';
 import 'package:food_app/Widgets/vdivider.dart';
+import 'package:food_app/models/CartItem.dart';
+import 'package:provider/src/provider.dart';
+
 
 class AppBar_ShowMenu extends StatelessWidget with PreferredSizeWidget {
   final String? imageName;
@@ -50,20 +53,33 @@ class AppBar_ShowMenu extends StatelessWidget with PreferredSizeWidget {
             ),
           ),
           Divider_widget(),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                new MaterialPageRoute(
-                  builder: (context) => Cartshopscreen(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.shopping_cart_outlined,
-              color: Colors.grey,
-              size: 28,
+
+          Stack(
+            children:[
+             CircleAvatar(
+               radius: 8,
+               backgroundColor: Colors.red,
+               child: Text(
+                 "${context.watch<CartItem>().itemCount}"
+
+                 ,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+             ),
+               IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (context) => Cartshopscreen(),
+                  ),
+                );
+              },
+              icon: Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.grey,
+                size: 28,
+              ),
             ),
+            ],
           ),
         ])
       ],

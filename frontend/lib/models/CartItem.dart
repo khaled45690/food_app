@@ -6,8 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CartItem extends ChangeNotifier {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  List _cartList = [];
 
+
+  int _itemCount=0;
+  int get itemCount => _itemCount;
+  set itemCount(int addtocart){
+
+    _itemCount = addtocart;
+
+notifyListeners();
+  }
+
+  List _cartList = [];
   int _total = 0;
   int get total => _total;
   set total(int totalprice) {
@@ -26,10 +36,12 @@ class CartItem extends ChangeNotifier {
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
       removeCartItem(productInfo);
       addCartItem(productInfo, quantity, isXlarge);
-      //  final SharedPreferences prefs =  await _prefs;
-      //  prefs.setString("cartshop",jsonEncode( addCartItem(productInfo , quantity,price )) );
+
     } else {
+          itemCount ++;
       productInfo["quantity"] = quantity;
+
+
       if (isXlarge == true) {
         total += int.parse(productInfo["pricemax"].toString()) *
             int.parse(productInfo["quantity"].toString());
@@ -48,12 +60,13 @@ class CartItem extends ChangeNotifier {
 
   }
 
-  removeCartItem(Map productInfo) async {
+  removeCartItem(Map productInfo, ) async {
     final SharedPreferences prefs = await _prefs;
     var filter = [];
-
+       itemCount --;
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
+
         if (e["xlarge"] == true) {
           total -= int.parse(e["pricemax"].toString()) *
               int.parse(e["quantity"].toString());

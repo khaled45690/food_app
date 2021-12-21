@@ -43,6 +43,8 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
     super.initState();
     print("object");
           print(ProductInfo);
+       //      print(context.watch<CartItem>().cartList);
+
 
   }
 
@@ -267,11 +269,18 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
   }
 
   subtract() {
+
     setState(() {
-      if (ProductInfo['quantity'] > 0) {
+ 
+
+
+
+      if (ProductInfo["quantity"] > 1) {
         quantity--;
       }
+
     });
+          
   }
 
   add() {
