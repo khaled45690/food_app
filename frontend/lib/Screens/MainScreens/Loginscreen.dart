@@ -3,7 +3,6 @@ import 'package:food_app/Screens/MainScreens/SignUpScreen.dart';
 import 'package:food_app/Screens/MainScreens/welcomescreen.dart';
 import 'package:food_app/Screens/MainScreens/widgetsformainScreen.dart/buttonWidget.dart';
 import 'package:food_app/Screens/MainScreens/widgetsformainScreen.dart/textformfieldWidget.dart';
-import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();

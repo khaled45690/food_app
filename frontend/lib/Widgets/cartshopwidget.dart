@@ -51,7 +51,7 @@ class CartshopWidget extends StatelessWidget {
                             CartItem cartItem =
                                 Provider.of<CartItem>(context, listen: false);
                             cartItem.removeCartItem(
-                                context.read<CartItem>().cartList[i]);
+                                context.read<CartItem>().cartList[i] , false);
                           },
                           icon: Icon(
                             Icons.close,

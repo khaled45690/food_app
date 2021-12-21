@@ -129,7 +129,6 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                       setState(() {
                         if (value == true) {
                           isXlarge = false;
-                          ProductInfo['xlarge'] = false;
                         }
                       });
                     },
@@ -271,10 +270,6 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
   subtract() {
 
     setState(() {
- 
-
-
-
       if (ProductInfo["quantity"] > 1) {
         quantity--;
       }

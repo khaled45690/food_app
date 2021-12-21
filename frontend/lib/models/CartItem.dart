@@ -33,24 +33,23 @@ notifyListeners();
 
   addCartItem(Map productInfo, int quantity, bool isXlarge) async {
     final SharedPreferences prefs = await _prefs;
+    print(cartList);
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
-      removeCartItem(productInfo);
+      removeCartItem(productInfo , isXlarge);
       addCartItem(productInfo, quantity, isXlarge);
 
     } else {
           itemCount ++;
       productInfo["quantity"] = quantity;
-
-
+      productInfo["xlarge"] = isXlarge;
       if (isXlarge == true) {
         total += int.parse(productInfo["pricemax"].toString()) *
             int.parse(productInfo["quantity"].toString());
-        productInfo["xlarge"] = isXlarge;
+
         _cartList.add(productInfo);
       } else {
         total += int.parse(productInfo["price"].toString()) *
             int.parse(productInfo["quantity"].toString());
-        productInfo["xlarge"] = isXlarge;
         _cartList.add(productInfo);
       }
     }
@@ -60,14 +59,13 @@ notifyListeners();
 
   }
 
-  removeCartItem(Map productInfo, ) async {
+  removeCartItem(Map productInfo, bool isXlarge) async {
     final SharedPreferences prefs = await _prefs;
     var filter = [];
        itemCount --;
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
-
-        if (e["xlarge"] == true) {
+        if (productInfo["xlarge"] == true) {
           total -= int.parse(e["pricemax"].toString()) *
               int.parse(e["quantity"].toString());
         } else {
