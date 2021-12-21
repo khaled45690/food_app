@@ -19,7 +19,6 @@ import 'package:food_app/Screens/SmallScreens/splashscreen.dart';
 import 'package:food_app/Screens/SmallScreens/terms_screen.dart';
 import 'package:food_app/contant/languagesloaclstrings.dart';
 import 'package:food_app/models/CartItem.dart';
-import 'package:food_app/models/Cartshop.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
@@ -32,8 +31,6 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => UserData()),
         ChangeNotifierProvider(create: (_) => CartItem()),
-        ChangeNotifierProvider(create: (_) => CartShop()),
-
       ],
       child: const MyApp(),
     ),

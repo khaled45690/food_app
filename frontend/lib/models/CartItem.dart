@@ -3,18 +3,16 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'UserData.dart';
+
 class CartItem extends ChangeNotifier {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-
-
-  int _itemCount=0;
+  int _itemCount = 0;
   int get itemCount => _itemCount;
-  set itemCount(int addtocart){
-
+  set itemCount(int addtocart) {
     _itemCount = addtocart;
-
-notifyListeners();
+    notifyListeners();
   }
 
   List _cartList = [];
@@ -35,11 +33,10 @@ notifyListeners();
     final SharedPreferences prefs = await _prefs;
     print(cartList);
     if (_cartList.any((element) => element["id"] == productInfo["id"])) {
-      removeCartItem(productInfo , isXlarge);
+      removeCartItem(productInfo, isXlarge);
       addCartItem(productInfo, quantity, isXlarge);
-
     } else {
-          itemCount ++;
+      itemCount++;
       productInfo["quantity"] = quantity;
       productInfo["xlarge"] = isXlarge;
       if (isXlarge == true) {
@@ -56,13 +53,12 @@ notifyListeners();
 
     notifyListeners();
     prefs.setString("cartList", jsonEncode(cartList));
-
   }
 
   removeCartItem(Map productInfo, bool isXlarge) async {
     final SharedPreferences prefs = await _prefs;
     var filter = [];
-       itemCount --;
+    itemCount--;
     cartList.forEach((e) {
       if (e["id"] == productInfo["id"]) {
         if (productInfo["xlarge"] == true) {
@@ -80,4 +76,15 @@ notifyListeners();
     notifyListeners();
     prefs.setString("cartList", jsonEncode(cartList));
   }
+
+  sendCartItems(context) async {
+
+    ;
+    Map serverCartData = {
+      "userId": context.read<UserData>().userData,
+      "cartList" : cartList,
+    };
+    print(serverCartData);
+  }
+
 }

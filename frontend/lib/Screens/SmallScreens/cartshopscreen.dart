@@ -129,6 +129,12 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
                             } else {
+                              // context.watch<CartItem>().sendCartItems(context);
+                              Map serverCartData = {
+                                "userId": context.read<UserData>().userData!["id"],
+                                "cartList" : context.read<CartItem>().cartList,
+                              };
+                              print(serverCartData);
                               Navigator.push(
                                 context,
                                 new MaterialPageRoute(

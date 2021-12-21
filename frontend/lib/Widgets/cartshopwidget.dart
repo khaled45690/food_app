@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/models/CartItem.dart';
+import 'package:food_app/models/UserData.dart';
 import 'package:provider/src/provider.dart';
 
 class CartshopWidget extends StatelessWidget {

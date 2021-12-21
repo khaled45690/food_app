@@ -70,7 +70,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   updatDateProfile() async {
         print(data);
-
        print(data['firstname']);
    print(data["lastname"]) ;
    print(data['email']);
@@ -143,14 +142,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           // color: Colors.amber,
                           width: MediaQuery.of(context).size.width / 2.3,
                           child: TextFormField(
-                            initialValue: context
-                                        .read<UserData>()
-                                        .userData?['lastname'] ==
-                                    null
-                                ? "Last Name*"
-                                : context
-                                    .read<UserData>()
-                                    .userData?['lastname'],
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter your last name';

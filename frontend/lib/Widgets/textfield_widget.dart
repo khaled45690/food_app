@@ -20,13 +20,13 @@ class TextField_Widget extends StatelessWidget {
       // color: Colors.amber,
       width: width,
       child: TextFormField(
-        initialValue:initialValue ,
+        // initialValue:initialValue ,
        // controller: textEditingController,
         onChanged: onChanged,
         validator: fieldValidator,
         decoration: InputDecoration(
            // hintText: textt,
-            labelText: texttt,
+            labelText: initialValue,
             isDense: true,
             border: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey, width: 5)),
