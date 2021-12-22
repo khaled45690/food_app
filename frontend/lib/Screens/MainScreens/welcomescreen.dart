@@ -20,7 +20,7 @@ class WellcomeScreen extends StatelessWidget {
             children: [
               Container(
                   //height: MediaQuery.of(context).size.height/15,
-                  width: MediaQuery.of(context).size.width / 8,
+                  width: MediaQuery.of(context).size.width / 2,
                   child: ButtonWidget('عرض قائمه المنيو', () {
                     Navigator.push(
                       context,
@@ -34,7 +34,7 @@ class WellcomeScreen extends StatelessWidget {
               ),
               Container(
                   //   height: MediaQuery.of(context).size.height/15,
-                  width: MediaQuery.of(context).size.width / 8,
+                  width: MediaQuery.of(context).size.width / 2,
                   child: ButtonWidget('عرض قائمه العروض ', () {
                     Navigator.push(
                       context,
@@ -49,7 +49,7 @@ class WellcomeScreen extends StatelessWidget {
               Container(
                   //    height: MediaQuery.of(context).size.height/15,
 
-                  width: MediaQuery.of(context).size.width / 8,
+                  width: MediaQuery.of(context).size.width / 2,
                   child: ButtonWidget('اضافه عرض جديد', () {
     Navigator.push(
                       context,

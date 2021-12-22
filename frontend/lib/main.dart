@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primaryColor: const Color(0xffb74093)),
-      home:kIsWeb ? WellcomeScreen():  SplashScreen(),
+      home: WellcomeScreen(),
       routes: {
         FirstPageScreen.roteName: (ctx) => FirstPageScreen(),
         ProfileScreen.roteName: (ctx) =>  ProfileScreen(),

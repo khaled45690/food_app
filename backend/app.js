@@ -15,7 +15,7 @@ const CartshopRouter = require('./route/cartshopRouter');
 
 
 
-const getImageRouter = require('./route/getImageRouter');
+const imageRouter = require('./route/ImageRouter');
 
 
 
@@ -36,7 +36,7 @@ app.use(cors());
 
 
 app.use('/products', productRoute);
-app.use('/image', getImageRouter);
+app.use('/image', imageRouter);
 app.use('/address', AddresseRouter);
 app.use('/offer', OfferRouter);
 
