@@ -54,8 +54,8 @@ class _ShowMenuState extends State<ShowMenu> {
               ? SpinnerLoading()
               : Column(
                   children: [
-                    for (int i = 0; i < offersList.length; i++)
-                      MealWidget(offersList[i]),
+                    // for (int i = 0; i < offersList.length; i++)
+                    //   MealWidget(offersList[i]),
                     iSshawrma
                         ? ProductCategory(isshawrmachange, "ساندوتش شاورما")
                         : SandwichListWidget(isshawrmachange, productsList),

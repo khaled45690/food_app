@@ -5,6 +5,8 @@ module.exports = {
     insertOffers: async (req, res) => {
         const offers = await OFFERS({
             imagename: req.body.imagename,
+            offername: req.body.offername,
+            offerprice: req.body.offerprice,
             description: req.body.description,
       
         }).save();
@@ -12,6 +14,8 @@ module.exports = {
             message: "insert successfully",
             id: offers.id,
             imagename: offers.imagename,
+            offername: offers.offername,
+            offerprice:offers.offerprice,
             description: offers.description,
         });
     },
@@ -22,6 +26,8 @@ module.exports = {
                 return {
                     id: res.id,
                     imagename: res.imagename,
+                    offername: res.offername,
+                    offerprice: res.offerprice,
                     description: res.description,
                     
                 }

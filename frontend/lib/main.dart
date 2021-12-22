@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/Screens/MainScreens/Loginscreen.dart';
 import 'package:food_app/Screens/MainScreens/SignUpScreen.dart';
+import 'package:food_app/Screens/MainScreens/productsscreen.dart';
 import 'package:food_app/Screens/MainScreens/welcomescreen.dart';
 import 'package:food_app/Screens/SmallScreens/AboutScreen.dart';
 import 'package:food_app/Screens/SmallScreens/FirstPageSmallScreen.dart';
@@ -22,6 +23,7 @@ import 'package:food_app/models/CartItem.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/MainScreens/FirstPageScreen.dart';
+import 'Screens/MainScreens/offerscreen.dart';
 import 'models/UserData.dart';
 import 'package:get/get.dart';
 
@@ -66,7 +68,9 @@ class MyApp extends StatelessWidget {
         Buy_item_Screen.roteName:(ctx)=>Buy_item_Screen(),
         Login.routename:(ctx)=>Login(),
         SingUp.routename:(ctx)=>SingUp(),
-        WellcomeScreen.routename:(ctx)=>WellcomeScreen()
+        WellcomeScreen.routename:(ctx)=>WellcomeScreen(),
+        OfferScreen.roteName:(ctx)=> OfferScreen(),
+        
       },
     );
   }

@@ -26,7 +26,7 @@ class SandwichListWidget extends StatelessWidget {
                                       width: MediaQuery.of(context).size.width,
                                       height:  MediaQuery.of(context).size.height /9,
                                       decoration:
-                                          BoxDecoration(color: Colors.white),
+                                          BoxDecoration(color: Colors.grey),
                                       child: InkWell(
                                         onTap: () {
                                           sandwichTypeOnChange();
