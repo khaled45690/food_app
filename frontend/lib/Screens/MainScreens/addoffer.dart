@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_app/Screens/MainScreens/SignUpScreen.dart';
 import 'package:food_app/Screens/MainScreens/offerscreen.dart';
 import 'package:food_app/Screens/MainScreens/welcomescreen.dart';
@@ -9,19 +12,39 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
 
-class addoffer extends StatelessWidget {
+class addoffer extends StatefulWidget {
+  static const routename = '/addoffer';
+
+  @override
+  State<addoffer> createState() => _addofferState();
+}
+
+class _addofferState extends State<addoffer> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
   final TextEditingController offername = TextEditingController();
 
   final TextEditingController offerprice = TextEditingController();
+
     final TextEditingController description = TextEditingController();
+
       final ImagePicker _picker = ImagePicker();
 
+File? image;
 
-  static const routename = '/addoffer';
+Future pickimage() async{
+  try{
+  final image =await ImagePicker().pickImage(source: ImageSource.gallery);
+  if ( image == null) return;
+  final imageTemporary = File(image.path);
+  setState(() {
+      this.image =imageTemporary;
+ 
+  });}on PlatformException catch(e){
+    print("faild to pick image:$e");
+  }
+}
 
-
-  
     postoffer() async { 
     var response = await http.post(Uri.parse('${serverURL}offer'), body: {
       "imagename": "shawrma.jpg",
@@ -32,7 +55,7 @@ class addoffer extends StatelessWidget {
     return response;  
 
    }
-   
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffb74093),
@@ -89,8 +112,16 @@ class addoffer extends StatelessWidget {
                   }, false)),
                    
               SizedBox(
-                height: 20,
+                height: 120,
               ),
+        image != null ? Image.file(image!,
+        width: 120,
+        height: 120,
+        
+        ) : Container(
+          width: 160,
+          height: 160,
+          child: Text("no image uploaded")),
               Container(
           width: MediaQuery.of(context).size.width / 6,
                 child: ElevatedButton(
@@ -100,7 +131,9 @@ class addoffer extends StatelessWidget {
                     onPrimary: Colors.black,
                     textStyle: TextStyle(fontSize: 20)
                   ),
-                  onPressed: (){}, child: Row(
+                  onPressed: (){
+                   pickimage();
+                  }, child: Row(
                   children: [
                     Icon(Icons.picture_in_picture)
                   ],
