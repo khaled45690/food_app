@@ -71,7 +71,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 25),
                           ),
-                          trailing: Text("0.00",
+                          trailing: Text("EGP 0.00",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 25)),
                         )
@@ -80,7 +80,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                             for (int i = 0; i < 1; i++)
                               ListTile(
                                 trailing: Text(
-                                  "\$ ${context.watch<CartItem>().total}"
+                                  "\EGP ${context.watch<CartItem>().total}.00"
                                       .toString(),
                                   style: TextStyle(
                                       fontSize: 22,
@@ -115,7 +115,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                           () {},
                         )
                       : Button_Widget_totaol(
-                          "BUY NOW".tr,
+                          "Go to Checkout".tr,
                           MediaQuery.of(context).size.width,
                           75,
                           Colors.orange,
