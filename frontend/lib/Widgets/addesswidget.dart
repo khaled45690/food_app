@@ -32,10 +32,10 @@ class _AddressWidgetState extends State<AddressWidget> {
     super.initState();
    context.read<UserData>().getUserAddressData();
     sharedPrefrenceCheck = context.read<UserData>().userAddressData;
-    // print(context.read<UserData>().userAddressData);
-    // print(context.read<UserData>().userAddressData?['streetname']);
-    // print(context.read<UserData>().userAddressData?['town']);
-    // print(context.read<UserData>().userAddressData?['postcode']);
+    print(context.read<UserData>().userAddressData);
+    print(context.read<UserData>().userAddressData?['streetname']);
+    print(context.read<UserData>().userAddressData?['town']);
+    print(context.read<UserData>().userAddressData?['postcode']);
 
 
 

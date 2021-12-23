@@ -65,11 +65,16 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                   margin: EdgeInsets.only(left: 17),
                   child: Text(
                     "Size".tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, ),
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 6),
+                  child: Text("(Required)",style: TextStyle(fontSize: 10),),
+                )
               ],
             ),
+            SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -79,9 +84,10 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                     color: isXlarge
                         ? Colors.blue.shade50
                         : Colors.white,
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.grey),
                   ),
                   child: CheckboxListTile(
+                    
                     title: Text(
                       " +${ProductInfo['pricemax'] - ProductInfo['price']} اكس لارج",
                 
@@ -99,6 +105,7 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                         },
                       );
                     },
+                    
                     activeColor: Colors.blueGrey,
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
@@ -114,7 +121,7 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                     color: isXlarge
                         ? Colors.white
                         : Colors.blue.shade50,
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.grey),
                   ),
                   child: CheckboxListTile(
                     title: Text(
@@ -146,11 +153,12 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                   margin: EdgeInsets.only(left: 17),
                   child: Text(
                     "Special Instructions".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, ),
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 10,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -158,7 +166,7 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                   width: MediaQuery.of(context).size.width / 1.1,
                   decoration: BoxDecoration(
                     color: Colors.white54,
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.grey),
                   ),
                   child: TextFormField(
                       controller: descriptionController,
@@ -168,9 +176,13 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                       decoration: InputDecoration(
                           hintText: "Example: No pepper/ sugar /salt Please",
                           helperStyle: TextStyle(color: Colors.grey),
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))))),
+                          // border: OutlineInputBorder(
+                          //    // borderRadius:
+                          //         // BorderRadius.all(Radius.circular(5)
+                          //         // ,)
+                          //         )
+                                   ),
+                                  ),
                 ),
               ],
             ),
@@ -183,11 +195,15 @@ class _SandwichwidgetState extends State<Sandwichwidget> {
                   margin: EdgeInsets.only(left: 17),
                   child: Text(
                     "Quantity".tr,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, ),
                   ),
                 )
               ],
             ),
+            SizedBox(
+              height: 10,
+            ),
+          
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

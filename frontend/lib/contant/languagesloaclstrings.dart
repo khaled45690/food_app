@@ -43,14 +43,14 @@ class LanguagesLocalString extends Translations {
         },
         'ar_AR': {
           "See Menu&Order": "قائمه الطعام",
-          "Home": "المنزل",
-          "Profile": "الصفحه الشخصيه",
-          "Addresses": 'عنوان',
+          "Home": "الصفحه الرئيسيه",
+          "Profile": "البيانات الشخصيه",
+          "Addresses": 'العنوان',
           "OTHER": "اخري",
           "Language": "لغات",
           "Terms": "شروط واحكام",
           "Privacy": "خصوصيات",
-          "About": "عن ماذا",
+          "About": " من نحن",
           'just available  in ENGLISH for now':
           "متوفر فقط بالغه الغربيه والانجليزيه",
           "Save": "حفظ",

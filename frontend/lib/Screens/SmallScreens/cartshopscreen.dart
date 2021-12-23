@@ -123,7 +123,7 @@ class _CartshopscreenState extends State<Cartshopscreen> {
                             if (context.read<UserData>().userData == null) {
                               final snackBar = SnackBar(
                                   content: Text(
-                                "please save your data first",
+                                "please go to profile screen and save your data first",
                                 style: TextStyle(fontSize: 18),
                               ));
                               ScaffoldMessenger.of(context)

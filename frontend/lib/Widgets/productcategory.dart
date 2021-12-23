@@ -17,7 +17,7 @@ ProductCategory(this.categoryvarialbechange,this.name);
                                     height:
                                         MediaQuery.of(context).size.height / 10,
                                     decoration:
-                                        BoxDecoration(color: Colors.grey),
+                                        BoxDecoration(color: Colors.grey.shade50),
                                     child: Container(
                                       child: Row(
                                         children: [

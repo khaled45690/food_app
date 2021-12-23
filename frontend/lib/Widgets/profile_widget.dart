@@ -117,6 +117,28 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextField_Widget(
+                          context.read<UserData>().userData?['lastname'] ==
+                                  null
+                              ? "Last Name*".tr
+                              : context.read<UserData>().userData?['lastname'],
+                          "Last Name*".tr,
+                          Icons.person,
+                          MediaQuery.of(context).size.width / 2.3,
+                          (lastname) => setState(
+                            () => onChange(lastname, "lastname"),
+                          ),
+                          (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your lastname';
+                            }
+                            if (value.length < 3) {
+                              return 'Username must be at least 3 characters in length';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        TextField_Widget(
                           context.read<UserData>().userData?['firstname'] ==
                                   null
                               ? "Fist Name*".tr
@@ -138,40 +160,44 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             return null;
                           },
                         ),
-                        Container(
-                          // color: Colors.amber,
-                          width: MediaQuery.of(context).size.width / 2.3,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your last name';
-                              }
-                              if (value.length < 3) {
-                                return 'Username must be at least 3 characters in length';
-                              }
+                        // Container(
+                        //   // color: Colors.amber,
+                        //   width: MediaQuery.of(context).size.width / 2.3,
+                        //   child: TextFormField(
+                        //     // initialValue:context.read<UserData>().userData?['lastname'] ==
+                        //     //       null
+                        //     //   ? "Last Name*".tr
+                        //     //   : context.read<UserData>().userData?['lastname'] ,
+                        //     validator: (value) {
+                        //       if (value == null || value.isEmpty) {
+                        //         return 'Please enter your last name';
+                        //       }
+                        //       if (value.length < 3) {
+                        //         return 'Username must be at least 3 characters in length';
+                        //       }
 
-                              return null;
-                            },
-                            onChanged: (lastName) =>
-                                setState(() => onChange(lastName, "lastname")),
-                            decoration: InputDecoration(
-                              labelText: "Last Name*".tr,
+                        //       return null;
+                        //     },
+                        //     onChanged: (lastName) =>
+                        //         setState(() => onChange(lastName, "lastname")),
+                        //     decoration: InputDecoration(
+                        //       labelText: "Last Name*".tr,
 
-                              isDense: true,
+                        //       isDense: true,
 
-                              border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.grey, width: 5),
-                              ),
+                        //       border: OutlineInputBorder(
+                        //         borderSide:
+                        //             BorderSide(color: Colors.grey, width: 5),
+                        //       ),
 
-                              //  prefixIcon: Icon(Icons.person),
-                              disabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.yellow, width: 5),
-                              ),
-                            ),
-                          ),
-                        ),
+                        //       //  prefixIcon: Icon(Icons.person),
+                        //       disabledBorder: OutlineInputBorder(
+                        //         borderSide:
+                        //             BorderSide(color: Colors.yellow, width: 5),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -211,9 +237,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your phone';
                         }
-                        if (value.length != 11) {
-                          return 'telephone must be at least 11 digit ';
-                        }
+                        String patttern = r'^01[0125][0-9]{8,9}$';
+                         RegExp regExp = new RegExp(patttern);
+                         if(!regExp.hasMatch(value)){
+                           return "please enter vaild number";
+                         }
+                        // if (value.length != 11) {
+                        //   return 'telephone must be at least 11 digit ';
+                        // }
 
                         return null;
                       },

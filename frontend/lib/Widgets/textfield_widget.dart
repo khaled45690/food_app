@@ -11,7 +11,7 @@ class TextField_Widget extends StatelessWidget {
 //  TextEditingController textEditingController;
   FormFieldValidator<String> fieldValidator;
 
-  TextField_Widget(this.initialValue, this.texttt, this.iconn, this.width,
+  TextField_Widget(this.initialValue, this.texttt, this.iconn , this.width,
       this.onChanged,  this.fieldValidator);
 
   @override
@@ -20,7 +20,7 @@ class TextField_Widget extends StatelessWidget {
       // color: Colors.amber,
       width: width,
       child: TextFormField(
-        // initialValue:initialValue ,
+         initialValue:initialValue ,
        // controller: textEditingController,
         onChanged: onChanged,
         validator: fieldValidator,

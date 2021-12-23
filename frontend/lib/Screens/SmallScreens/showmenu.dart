@@ -8,6 +8,7 @@ import 'package:food_app/Widgets/OfferShwrmaWidget.dart';
 import 'package:food_app/Widgets/SandwichListWidget.dart';
 import 'package:food_app/Widgets/loadingspinner.dart';
 import 'package:food_app/Widgets/meal_widget.dart';
+import 'package:food_app/Widgets/offerpizzawidget.dart';
 import 'package:food_app/Widgets/productcategory.dart';
 import 'package:food_app/Widgets/showpicOfmenu.dart';
 import 'package:food_app/contant/constant.dart';
@@ -26,8 +27,9 @@ class ShowMenu extends StatefulWidget {
 
 class _ShowMenuState extends State<ShowMenu> {
   bool iSshawrma = false;
-  bool iSmaria = true;
-  bool iSfta = true;
+  bool iSmaria = false;
+  bool iSfta = false;
+  bool iSpizza = false;
   String sandwichType = "";
   List productsList = [];
   List offersList = [];
@@ -55,7 +57,8 @@ class _ShowMenuState extends State<ShowMenu> {
               : Column(
                   children: [
                     // for (int i = 0; i < offersList.length; i++)
-                    //   MealWidget(offersList[i]),
+                    //     MealWidget(offersList[i]),
+
                     iSshawrma
                         ? ProductCategory(isshawrmachange, "ساندوتش شاورما")
                         : SandwichListWidget(isshawrmachange, productsList),
@@ -76,7 +79,7 @@ class _ShowMenuState extends State<ShowMenu> {
                                           MediaQuery.of(context).size.height /
                                               9,
                                       decoration:
-                                          BoxDecoration(color: Colors.grey),
+                                          BoxDecoration(color: Colors.grey.shade200),
                                       child: InkWell(
                                         onTap: () {
                                           setState(() {
@@ -158,7 +161,7 @@ class _ShowMenuState extends State<ShowMenu> {
                                           MediaQuery.of(context).size.height /
                                               9,
                                       decoration:
-                                          BoxDecoration(color: Colors.grey),
+                                          BoxDecoration(color: Colors.grey.shade200),
                                       child: InkWell(
                                         onTap: () {
                                           setState(() {
@@ -222,6 +225,86 @@ class _ShowMenuState extends State<ShowMenu> {
                                         ))
                                   ],
                                 )),
+                          ),
+                    iSpizza
+                        ? ProductCategory(ispizzachange, "بيتزا")
+                        : InkWell(
+                            onTap: () {},
+                            child: Container(
+                                height:
+                                    MediaQuery.of(context).size.height / 1,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(color: Colors.white),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              9,
+                                      decoration:
+                                          BoxDecoration(color: Colors.grey.shade200),
+                                      child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            iSpizza = !iSpizza;
+                                          });
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  top: 10,
+                                                  left: 15,
+                                                  bottom: 10),
+                                              child: Text("بيتزا",
+                                                  style: TextStyle(
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.bold,
+                                                  )),
+                                            ),
+                                            Spacer(),
+                                            Container(
+                                              child: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(
+                                                  Icons.arrow_drop_down,
+                                                  size: 35,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                        decoration:
+                                            BoxDecoration(color: Colors.grey),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.green,
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.fill,
+                                                      image: AssetImage(
+                                                          "assets/images/pizza.jpg"))),
+                                            ),
+                                            for (int p = 0;p < productsList.length; p++)
+                                           OfferpizzaWidget(productsList[p]),
+                                          ],
+                                        ))
+                                  ],
+                                )),
                           )
                   ],
                 )
@@ -230,6 +313,11 @@ class _ShowMenuState extends State<ShowMenu> {
     );
   }
 
+ispizzachange(){
+  setState(() {
+      iSpizza = !iSpizza;
+    });
+}
   isshawrmachange() {
     setState(() {
       iSshawrma = !iSshawrma;
