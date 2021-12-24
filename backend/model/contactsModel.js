@@ -5,6 +5,7 @@ const contacts = mongoose.Schema({
     lastname:String,
     email:String,
     phone:String,
+    cartshop:Array,
 });
 
 module.exports = mongoose.model("CONTACTS",contacts);

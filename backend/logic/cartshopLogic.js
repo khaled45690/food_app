@@ -7,34 +7,20 @@ res.json({
     result: cartshop.map(res=>{
        return[{
         id:res.id,
-        price:res.price,
-        name:res.name,
-        desc:res.desc,
-        quantity:res.quantity,
-        large:res.large,
-        xlarge:res.xlarge
+       cartshop:res.cartshop
        }]
     })
 })
     },
     insertCartshop:async(req,res)=>{
         const cartshop = await new CARTSHOP({
-            name: req.body.name,
-            price: req.body.price,
-            pricemax:req.body.price,
-            desc: req.body.desc,
-            quantity:req.body.quantity,
-           large:req.body.large,
-           xlarge:req.body.large
+            cartshop: req.body.cartshop
         }).save()
         res.json({"message":"isnerted successfulllllyy",
-        name: cartshop.name,
+  
         id:cartshop.id,
-        price:cartshop.price,
-        desc:cartshop.desc,
-        quantity:cartshop.quantity,
-     //   large:cartshop.large,
-       // xlarge:cartshop.xlarge
+     cartshop:cartshop.cartshop
+
 
         });
 

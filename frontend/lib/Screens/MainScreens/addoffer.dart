@@ -38,7 +38,6 @@ class _addofferState extends State<addoffer> {
       if (image == null) return;
       final imageTemporary = File(image.path);
    image.readAsBytes().then((value) =>  uploadImage(value, "name"));
-      // imageTemporary.openRead().first.then((value) => print(value));
 
 
       setState(() {
@@ -138,12 +137,10 @@ class _addofferState extends State<addoffer> {
                   height: 120,
                 ),
                 image != null
-                    ? Container()
-                // Image.asset(
-                //         image!.path,
-                //         width: 120,
-                //         height: 120,
-                //       )
+                    ? Container(
+                      width: 100,
+                      height: 10,
+                    )
                     : Container(
                         width: 160,
                         height: 160,
